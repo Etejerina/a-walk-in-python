@@ -1,4 +1,4 @@
-# A walk un Python
+# A walk in Python
 
 ## Preface
 
