@@ -7,12 +7,8 @@
   * [Constants](./day_2.md#constants)
   * [Global Variables](./day_2.md#global-variables)
   * [Multiple assigment and unpacking](./day_2.md#multiple-assigment-and-unpacking)
-* [Data Types](day_2.md#data-types)
-  * [Installing Python](https://www.python.org/downloads/)
-  * [IDE (VS Code)](https://code.visualstudio.com/)
-  * [Pip](day_1.md#pip)
-  * [Virtual Environments](day_1.md#virtual-environments)
-  * [Syntax](day_1.md@syntax)
+* Data Types
+  * [Built-in Data Types](day_2.md#data-types)
 
 ## **Variables**
 
@@ -191,3 +187,80 @@ World
 ___
 
 ## Data Types
+
+## Built-in Data Types
+
+In programming in general, data types are very important. You can do different things with different data types.
+As in Python everything is an object, every type has its own methods and attributes.
+
+Python has the following data types built-in by default, in these categories:
+
+Text Type: ***str***
+
+* Strings in python are surrounded by either single quotation marks, or double quotation marks.
+'hello' is the same as "hello".
+You can display a string literal with the print() function.
+
+Numeric Types: ***int, float, complex***
+
+* Int, or integer, is a whole number, positive or negative, without decimals, of unlimited length.
+* Float, or "floating point number" is a number, positive or negative, containing one or more decimals. Float can also be scientific numbers with an "e" to indicate the power of 10.
+* Complex numbers are written with a "j" as the imaginary part.
+
+Sequence Types: ***list, tuple***
+
+* Lists are one of 4 built-in data types in Python used to store collections of data.
+Lists are created using square brackets.
+
+* Tuples are used to store multiple items in a single variable.
+A tuple is a collection which is ordered and unchangeable.
+Tuples are written with round brackets.
+
+Mapping Type: ***dict***
+
+* Dictionaries are used to store data values in key:value pairs.
+A dictionary is a collection which is ordered*, changeable and do not allow duplicates.
+
+Set Types: ***set, frozenset***
+
+* Sets are used to store multiple items in a single variable.
+A set is a collection which is unordered, unchangeable*, and unindexed.
+* Frozenset is just an inmutable version of a set.
+
+Boolean Type: ***bool***
+
+* In programming you often need to know if an expression is True or False. Those are boolean values.
+
+In order to get the data type from a variable you can just run:
+
+```python
+name = 'pepe'
+print(type(name))
+
+# output
+<class 'str'>
+```
+
+Again, is you wamnt to set a specific data type to a variable, you need to use casting,
+
+```python
+a = int(1)
+print(a)
+print(type(a))
+
+b = float(1)
+print(b)
+print(type(b))
+
+c = str(1)
+print(c)
+print(type(c))
+
+# output
+1
+<class 'int'>
+1.0
+<class 'float'>
+1
+<class 'str'>
+```
