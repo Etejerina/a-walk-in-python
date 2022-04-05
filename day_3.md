@@ -338,11 +338,8 @@ Floats, ints and complex can be casted using *int()*, *float()* or *complex()*.
 
 As you might know, boolean values are two... True and False
 
-
-
 Sequence Types: ***list, tuple***
 
 Mapping Type: ***dict***
 
 Set Types: ***set, frozenset***
-
