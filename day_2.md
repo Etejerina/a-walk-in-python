@@ -200,6 +200,7 @@ Text Type: ***str***
 * Strings in python are surrounded by either single quotation marks, or double quotation marks.
 'hello' is the same as "hello".
 You can display a string literal with the print() function.
+* Strings are immutable
 
 Numeric Types: ***int, float, complex***
 
@@ -241,7 +242,7 @@ print(type(name))
 <class 'str'>
 ```
 
-Again, is you wamnt to set a specific data type to a variable, you need to use casting,
+Again, is you want to set a specific data type to a variable, you need to use the casting method,
 
 ```python
 a = int(1)
