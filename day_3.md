@@ -483,7 +483,7 @@ print(a_list)
 ['Pearl jam', 'bass', 10, True]
 ```
 
-And also, yopu can change a range of items
+And also, you can change a range of items
 
 ```python
 a_list = ['Pearl jam', 'guitar', 10, True]
@@ -493,3 +493,47 @@ print(a_list)
 # output
 ['Pearl jam', 'bass', 23, True]
 ```
+
+There are more options to change a range of items. You can read about them [here](https://www.w3schools.com/python/python_lists_change.asp).
+
+The way to join two lists, is this...
+
+```python
+first_list = ['Peral Jam', 'guitar']
+second_list = [10, True]
+a_list = first_list + second_list
+
+# output
+['Pearl jam', 'guitar', 10, True]
+```
+
+By the way, [here](https://www.w3schools.com/python/python_lists_methods.asp) is the list of lists methods, which are many and pretty self explanatory.
+
+List Comprehension
+
+As many of us saw when we were childrens, there is more than one way to create a set, or in this case a list. By extension and by comprehension.
+We have covered the first one. NOw let's ee the second.
+
+Here is the sintax:
+
+```python
+newlist = [expression for item in iterable if condition == True]
+```
+
+And an example:
+
+```python
+even_numbers = [x for x in range(20) if x % 2 == 0]
+print(even_numbers)
+
+# output
+[0, 2, 4, 6, 8, 10, 12, 14, 16, 18]
+```
+
+I know, we haven't seen loops and operators yet, but we will... Be patient! :D
+
+So bare with me... we'll circle back to this.
+
+## Tuples
+
+Just like lists, tuples are intended to store multiple values in one variable, with the difference that tuples are **immutable**. This means that can not be changed.
