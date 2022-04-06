@@ -330,16 +330,166 @@ print(type(a)) # or b or c with the same output
 <class 'complex'>
 ```
 
-Floats, ints and complex can be casted using *int()*, *float()* or *complex()*.
+Floats, ints and complex numbers can be casted using *int()*, *float()* or *complex()*.
 
 **But!!!!** Complex cannot be casted to other types.
 
 ## Boolean Type: ***bool***
 
-As you might know, boolean values are two... True and False
+As you might know, boolean values are one of two... True and False
 
-Sequence Types: ***list, tuple***
+Boolean types are used to evaluate expressions. So, if we compare to values, using a logilcal operator, we get a boolean response.
 
-Mapping Type: ***dict***
+Let's se that with an example
 
-Set Types: ***set, frozenset***
+```python
+print(1 < 10)
+print(1 == 10)
+print(1 > 10)
+
+# output
+True
+False
+False
+```
+
+If statements use booleans to continue with one part of the code or the other but we'll see that later...
+
+But at this point I feel the need to intriduce **Truthy** and **Falsy** values.
+These are non-boolean values that can count, or be evaluated, as True or False.
+
+We can see that, when we try to cast some values...
+
+```python
+print(bool(15))
+True
+print(bool(-15))
+True
+print(bool(0))
+False
+print(bool('Hi!'))
+True
+print(bool(''))
+False
+
+```
+
+We can see on the examples that some values are Trythy and some are Falsy.
+In general terms values that are 0 or empty strngs, empty sets or empty lists, are Falsy.
+
+Falsy Values
+Sequences and Collections:
+
+* Empty lists: []
+* Empty tuples: ()
+* Empty dictionaries: {}
+* Empty sets: set()
+* Empty strings: ""
+* Empty ranges: range(0)
+
+Numbers
+
+* Zero of any numeric type.
+  * Integer: 0
+  * Float: 0.0
+  * Complex: 0j
+
+Constants
+
+* None
+* False
+
+___
+
+## Collections
+
+There are 4 types of conllections in Python:
+
+* Lists
+  * ordered
+  * mutable
+  * allows duplicates
+* Tuples
+  * ordered
+  * immutable
+  * allows duplicates
+* Sets
+  * unordered
+  * immutable
+  * no duplicates
+* Dictionaries
+  * ordered (in python 3.6< are unordered)
+  * mutable
+  * no duplicates
+
+## Lists
+
+When you need to store multiple values on one variable, maybe you'll use a **List**.
+
+Lists are ordered, mutable, and allow repeated items. Keep in mind that Python is zero based, this means that indexes start at 0.
+
+```python
+one_list = ['Pearl jam', 'guitar', 10, True]
+```
+
+As we see up here, we can store different types of values.
+
+Just as strings (we sais that a string is kinda linke a chararcter list) we can get one item, get the length of the list, and many other things
+
+```python
+one_list = ['Pearl jam', 'guitar', 10, True]
+print(one_list[1]) # using index
+
+# output
+guitar
+
+print(one_list[-2]) # using negative index
+
+# output
+10
+
+print(one_list[1:3]) # using slicing
+
+# output
+['guitar', 10]
+
+print(len(one_list)) # length
+
+# output
+4
+```
+
+Another way to vreate a list is using the list constructor.
+
+```python
+a_list = list(('Pearl jam', 'guitar', 10, True))
+```
+
+Using this constructor is also the way to cast, for example, a tuple to a list.
+
+```python
+a_tuple = ('Pearl jam', 'guitar', 10, True)
+a_list = list(a_tuple)
+```
+
+You can change a value on the list this way...
+
+```python
+a_list = ['Pearl jam', 'guitar', 10, True]
+a_list[1] = 'bass'
+print(a_list)
+
+# output
+['Pearl jam', 'bass', 10, True]
+```
+
+And also, yopu can change a range of items
+
+```python
+a_list = ['Pearl jam', 'guitar', 10, True]
+a_list[1:3] = ['bass', 23]
+print(a_list)
+
+# output
+['Pearl jam', 'bass', 23, True]
+```
