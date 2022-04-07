@@ -208,6 +208,10 @@ Numeric Types: ***int, float, complex***
 * Float, or "floating point number" is a number, positive or negative, containing one or more decimals. Float can also be scientific numbers with an "e" to indicate the power of 10.
 * Complex numbers are written with a "j" as the imaginary part.
 
+Boolean Type: ***bool***
+
+* In programming you often need to know if an expression is True or False. Those are boolean values.
+
 Sequence Types: ***list, tuple***
 
 * Lists are one of 4 built-in data types in Python used to store collections of data.
@@ -227,10 +231,6 @@ Set Types: ***set, frozenset***
 * Sets are used to store multiple items in a single variable.
 A set is a collection which is unordered, unchangeable*, and unindexed.
 * Frozenset is just an inmutable version of a set.
-
-Boolean Type: ***bool***
-
-* In programming you often need to know if an expression is True or False. Those are boolean values.
 
 In order to get the data type from a variable you can just run:
 

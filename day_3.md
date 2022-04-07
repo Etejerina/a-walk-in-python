@@ -13,7 +13,7 @@ ___
 
 Let's dive in Python Data Types!!!!
 
-## Text Type: ***str***
+## Strings
 
 A string is assignable to a variable like any other type of value. You can do it that, this way:
 
@@ -266,7 +266,7 @@ print(f'My age is {age} and my name is {name}')
 My age is 46 and my name is Ezequiel
 ```
 
-## Numeric Types: ***int, float, complex***
+## Numeric Types
 
 Numeric typoes in general are pretty much self explanatory.
 
@@ -334,7 +334,7 @@ Floats, ints and complex numbers can be casted using *int()*, *float()* or *comp
 
 **But!!!!** Complex cannot be casted to other types.
 
-## Boolean Type: ***bool***
+## Booleans
 
 As you might know, boolean values are one of two... True and False
 
@@ -415,10 +415,10 @@ There are 4 types of conllections in Python:
   * allows duplicates
 * Sets
   * unordered
-  * immutable
+  * mutable (*but elements must be of an immutable type*)
   * no duplicates
 * Dictionaries
-  * ordered (in python 3.6< are unordered)
+  * ordered (*in python <3.6 are unordered*)
   * mutable
   * no duplicates
 
@@ -509,6 +509,42 @@ a_list = first_list + second_list
 
 By the way, [here](https://www.w3schools.com/python/python_lists_methods.asp) is the list of lists methods, which are many and pretty self explanatory.
 
+As we saw yesterday, we con *unpack* a list. Let's ee some examples of it.
+
+```python
+a_list = ['Pearl jam', 'guitar', 10, True]
+first, second, third, fourth = a_list
+
+print(first)
+print(second)
+print(third)
+print(fourth)
+
+# output
+Pearl jam
+guitar
+10
+True
+```
+
+or we can do this...
+
+```python
+a_list = ['Pearl jam', 'guitar', 10, True]
+first, second, *third = a_list
+
+print(first)
+print(second)
+print(third)
+
+# output
+Pearl jam
+guitar
+[10, True]
+```
+
+Note that with the '*' we can unpack the final items in one variable, creating a list.
+
 List Comprehension
 
 As many of us saw when we were childrens, there is more than one way to create a set, or in this case a list. By extension and by comprehension.
@@ -537,3 +573,72 @@ So bare with me... we'll circle back to this.
 ## Tuples
 
 Just like lists, tuples are intended to store multiple values in one variable, with the difference that tuples are **immutable**. This means that can not be changed.
+
+```python
+a_tuple = ('Pearl jam', 'guitar', 10, True)
+another_tuple = 'Alice in chains', 'guitar', 90, False
+ ```
+
+Note than () can be omitted, but not the commas.
+Try getting the type of both these variables and see what happens...
+
+Actually, to create a tuple with one element we need to do it this way:
+
+```python
+a_tuple = ('Pearl jam',)
+another_tuple = 'Alice in chains',
+ ```
+
+*Note: the comma at the end of the tuple. It's not a typo!!!*.
+
+Like with lists, we can use a constructor to create a tuple.
+
+```python
+a_tuple = tuple(('Pearl jam', 'guitar', 10, True)) 
+```
+
+We can access a tuples item, just like with lists, using an index, negative index, a range, etc.
+
+```python
+a_tuple = ('Pearl jam', 'guitar', 10, True)
+print(a_tuple[1]) # using index
+
+# output
+guitar
+```
+
+Now, what happens if we try to change an item of a tuple? Right, we can't!!!
+
+We said before thta tuples are immutable. Let's e what happens...
+
+```python
+a_tuple = ('Pearl jam', 'guitar', 10, True)
+a_tuple[1] = 'bass'
+
+# output
+Traceback (most recent call last):
+  File "<stdin>", line 1, in <module>
+TypeError: 'tuple' object does not support item assignment
+```
+
+So, in order to that there is a workaround, but for a reason we have created a tuple and not a list.
+
+Having said that, if you need to change an item of a tuple we have to cast it to a list and the cast it back tu a tuple.
+
+```python
+a_tuple = ('Pearl jam', 'guitar', 10, True)
+a_list = list(a_tuple)
+a_list[1] = 'bass'
+a_tuple = tuple(a_list)
+```
+
+I'd recommend to thing thoroughly wich type of data we need in our code. We can do the same workaround in oprder to remove and item.
+
+We can join tu tuples using the '+' operator, just like with lists.
+
+[Here](https://www.w3schools.com/python/python_tuples_methods.asp) is the list of tuples methods, which are many and pretty self explanatory.
+
+Do you remember how to **unpack** a List?
+Cool, we can do exactly the same thing with a tuple.
+
+## Sets
