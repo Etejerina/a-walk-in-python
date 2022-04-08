@@ -22,7 +22,7 @@ ___
 ## What is Python
 
 Python is a popular programming language. It was created by Guido van Rossum, and released in 1991.
-There are two versions of Python, *Python 2* and *Python 3*. The latter is teh one we are going to see thoughout this course.
+There are two versions of Python, *Python 2* and *Python 3*. The latter is the one we are going to see throughout this course.
 
 We can say that Python is:
 
@@ -34,11 +34,11 @@ We can say that Python is:
 
 ### Interpreted
 
-The program directly executes the instructions written, without requiring them previously to have been compiled into a machine language program.
+The program directly executes the instructions written, without requiring them to have been previously compiled into a machine language program.
 
 ### High-level
 
-Is a programming language with strong abstraction from the details of the computer.
+It is a programming language with strong abstraction from the details of the computer.
 
 ### Cross-platform
 
@@ -46,7 +46,7 @@ Refers to a language that is supportes in multiple platforms, such as Windows, L
 
 ### Multi-paradigm
 
-Is a language that can use procedural programming, functional programming and/or object-oriented.
+It is a language that can use procedural programming, functional programming and/or object-oriented.
 
 ### Dynamically and strongly typed
 
@@ -60,7 +60,7 @@ Python is an easy to learn language since it has a simple syntax similar to the 
 
 There are many more advantages, but these two qualities were the most important for me, since like many of us, we are self-taught developers.
 
-Having both an easy to learn and a very rich language, that can be suplemented with lots of libraries, are the things that makes Python a very powerfull one.
+Having both an easy to learn and a very rich language, that can be suplemented with lots of libraries, are the things that makes Python a very powerful one.
 
 ## Clarifying
 
@@ -108,7 +108,7 @@ Python's development is conducted largely through the Python Enhancement Proposa
 
 Python coding style is covered in [PEP 8](https://www.python.org/dev/peps/pep-0008/). Outstanding PEPs are reviewed and commented on by the Python community and the steering council.
 
-## **Staring with Python**
+## **Starting with Python**
 
 ___
 
@@ -126,7 +126,7 @@ ___
 
 ### Virtual Environments
 
-Most times when developing with Python, you might need external libraries or packages. In order to do that, you'll need to install them. This can be done with Pip command.
+Most of the times when developing with Python, you might need external libraries or packages. In order to do that, you'll need to install them. This can be done with Pip command.
 
 But if we don't create a virtual Environment, those packages are going to be installed globally and we might want to install only the packages we need for a certain program and not another.
 
