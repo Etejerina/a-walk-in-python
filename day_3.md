@@ -621,7 +621,7 @@ Traceback (most recent call last):
   File "<stdin>", line 1, in <module>
 TypeError: 'tuple' object does not support item assignment
 ```
-// no entendi esta oracion
+// no entendi esta oracion// 
 So, in order so that there is a workaround, but for a reason we have created a tuple and not a list.
 
 Having said that, if you need to change an item of a tuple we have to cast it to a list and the cast it back to a tuple.
