@@ -26,7 +26,7 @@ b = 1
 c = True
 ```
 
-As we said before, Python is dinamically typed, so the interpreter assumes the type from the type of the value assigened to that variable name. You can even change the type after they have been set.
+As we said before, Python is dinamically typed, so the interpreter assumes the type from the type of the value assigned to that variable name. You can even change the type after they have been set.
 
 ```python
 a = "Hello world!"
