@@ -16,7 +16,7 @@ ___
 
 ## What are variables?
 
-Variables in Python are containers for storing data. There is no reserved word for declaring a variables. Yo just go like this...
+Variables in Python are containers for storing data. There is no reserved word for declaring a variables. You just go like this...
 
 ```python
 a = "Hello world!"
@@ -26,7 +26,7 @@ b = 1
 c = True
 ```
 
-As we said before, Python is dinamically typed, so the interpreter assumes the type from the type of the value assigened to that variable name. You can even change the tyoe after they have been set.
+As we said before, Python is dinamically typed, so the interpreter assumes the type from the type of the value assigened to that variable name. You can even change the type after they have been set.
 
 ```python
 a = "Hello world!"
@@ -45,7 +45,7 @@ c = int(1)               # c will be 1
 d = float(1)             # d will be 1.0
 ```
 
-To know the tyope of a variable ypou can use the reserved word **type**
+To know the type of a variable you can use the reserved word **type**
 
 ```python
 a = "Hello world!"
@@ -78,18 +78,18 @@ Other conventions are:
 
 ## Constants
 
-Another one of these conventions, are constants as we just saw. There is no way to declare a variable as a contant. The convention says that if you see a variable name in uppercases, it is a constant.
+Another one of these conventions, are constants as we just saw. There is no way to declare a variable as a constant. The convention says that if you see a variable name in uppercase, it is a constant.
 
 ```python
 CONSTANT_NAME = 1
 ANOTHER_CONSTANT = 'Hello'
 ```
 
-You can change the value of these contants, although if you see the name in upeercase, you're not supposed to. You will be cursed by the Python Community (:D).
+You can change the value of these constants, although if you see the name in uppercase, you're not supposed to. You will be cursed by the Python Community (:D).
 
 ## Global variables
 
-All the variables that are created outside of a function, in Python is by default a global variable. This variable can be used outside and inside a function.
+All variables that are created outside of a function in Python are, by default, global variables. Global variables can be used outside and inside of a function.
 
 ```python
 name = 'Ezequiel'
@@ -105,7 +105,7 @@ My name is Ezequiel
 Hello Ezequiel
 ```
 
-But if a variable with the same name, is declared inside the function, this variable is going to be local, available to use inside the function, and the one declared outside, will be used outside the function.
+However, if a variable with the same name is declared inside the function, this variable is going to be local, available to use inside the function, and the one declared outside, will be used outside the function.
 
 ```python
 name = 'Ezequiel'
@@ -139,7 +139,7 @@ My name is Jose
 
 ## Multiple assigment and unpacking
 
-You also can assign multiple variables, like this...
+You can also assign multiple variables, like this...
 
 ```python
 x, y, z = 'Hello', 'beautiful', 'World'
@@ -155,7 +155,7 @@ World
 
 *Note: the number of values and variable names, should match, or you will get an error.*
 
-Also you can assign the same value to different variables in one line, like this...
+Also, you can assign the same value to different variables in one line, like this...
 
 ```python
 x, y, z = 'Ezequiel'
@@ -169,7 +169,7 @@ Ezequiel
 Ezequiel
 ```
 
-There is a way to extract the values of a collection, into different variables. This is called **unpacking**
+There is a way to extract the values of a collection into different variables. This is called **unpacking**
 
 ```python
 words = ['Hello', 'beautiful', 'World']
@@ -193,7 +193,7 @@ ___
 In programming in general, data types are very important. You can do different things with different data types.
 As in Python everything is an object, every type has its own methods and attributes.
 
-Python has the following data types built-in by default, in these categories:
+Python has the following data types built-in by default, divided into these categories:
 
 Text Type: ***str***
 
@@ -242,7 +242,7 @@ print(type(name))
 <class 'str'>
 ```
 
-Again, is you want to set a specific data type to a variable, you need to use the casting method,
+Again, if you want to set a specific data type to a variable, you need to use the casting method.
 
 ```python
 a = int(1)
