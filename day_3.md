@@ -15,7 +15,7 @@ Let's dive in Python Data Types!!!!
 
 ## Strings
 
-A string is assignable to a variable like any other type of value. You can do it that, this way:
+A string is assignable to a variable like any other type of value. You can do that this way:
 
 ```python
 greeting = 'Hello World!'
@@ -25,7 +25,7 @@ print(greeting)
 Hello Wolrd!
 ```
 
-There's a way to assign a multiline string to a variable by using three quotes. You can do that this way:
+There is a way to assign a multiline string to a variable by using three quotes. You can do that this way:
 
 ```python
 blacks_chorus = """And now my bitter hands
@@ -49,9 +49,9 @@ Tattooed everything
 
 Note that the line breaks are in the same place that in the code.
 
-As we said Strings are a list of character, but there is not a type Char in Python. This would be a string with length equal to 1.
+As we said Strings are a list of characters, but there is not a type Char in Python. This would be a string with length equal to 1.
 
-As Strings are list of characters, we can access to them by their position:
+As Strings are list of characters, we can access them by their position:
 
 ```python
 greeting = 'Hello World!'
@@ -61,7 +61,7 @@ print(greeting[1])
 e
 ```
 
-We can alse iterate through them:
+We can also iterate through them:
 
 ```python
 greeting = 'Hello World!'
@@ -108,20 +108,20 @@ print(len(greeting))
 Keeping in mind what we saw, we can extract or return a part of the string (or a list for that matter...)
 This is called ***slicing***.
 
-Let's say i want to print parts (or substrings) of the greeting variable.
+Let's say that I want to print parts (or substrings) of the greeting variable.
 We will have to use this sintax:
 
 {var_name}[{start}:{end}:{step}]
 
 * start by default is 0, the start of the string.
 
-* end by default is the ength of the string.
+* end by default is the length of the string.
 
 * step by default is 1.
 
 We can use positive and negative indexes.
 
-Positives count from the start anmd negative count form the end of the string.
+Positives count from the start and negative count form the end of the string.
 
 ```python
 greeting = 'Hello cruel World!'
@@ -197,7 +197,8 @@ print(greeting.replace('H', 'J'))
 Jello cruel World!
 ```
 
-Another thing you can do sith strings is concatenate them. But as I said, you can concatenate two strings, and not a string and something else.
+Another thing you can do with strings is to concatenate them. You can concatenate two or more strings, but if you try to concatenate a string with something else, you will get a TypeError.
+// But as I said, you can concatenate two strings, and not a string and something else.
 
 For example:
 
@@ -219,7 +220,7 @@ Traceback (most recent call last):
 TypeError: can only concatenate str (not "int") to str
 ```
 
-We can see ages type is int, right?
+We can see age's type is int, right?
 So we can do various things. Let's see...
 
 ```python
@@ -268,7 +269,7 @@ My age is 46 and my name is Ezequiel
 
 ## Numeric Types
 
-Numeric typoes in general are pretty much self explanatory.
+Numeric types in general are pretty much self explanatory.
 
 That's why I will show you some examples.
 
@@ -338,9 +339,9 @@ Floats, ints and complex numbers can be casted using *int()*, *float()* or *comp
 
 As you might know, boolean values are one of two... True and False
 
-Boolean types are used to evaluate expressions. So, if we compare to values, using a logilcal operator, we get a boolean response.
+Boolean types are used to evaluate expressions. So, if we compare to values, using a logical operator, we get a boolean response.
 
-Let's se that with an example
+Let's see that with an example
 
 ```python
 print(1 < 10)
@@ -353,9 +354,9 @@ False
 False
 ```
 
-If statements use booleans to continue with one part of the code or the other but we'll see that later...
+'If' statements use booleans to continue with one part of the code or the other but we'll see that later...
 
-But at this point I feel the need to intriduce **Truthy** and **Falsy** values.
+But at this point I feel the need to introduce **Truthy** and **Falsy** values.
 These are non-boolean values that can count, or be evaluated, as True or False.
 
 We can see that, when we try to cast some values...
@@ -374,8 +375,8 @@ False
 
 ```
 
-We can see on the examples that some values are Trythy and some are Falsy.
-In general terms values that are 0 or empty strngs, empty sets or empty lists, are Falsy.
+We can see on the examples that some values are Truthy and some are Falsy.
+In general terms values that are 0 or empty strings, empty sets or empty lists, are Falsy.
 
 Falsy Values
 Sequences and Collections:
@@ -403,7 +404,7 @@ ___
 
 ## Collections
 
-There are 4 types of conllections in Python:
+There are 4 types of collections in Python:
 
 * Lists
   * ordered
@@ -434,7 +435,7 @@ one_list = ['Pearl jam', 'guitar', 10, True]
 
 As we see up here, we can store different types of values.
 
-Just as strings (we sais that a string is kinda linke a chararcter list) we can get one item, get the length of the list, and many other things
+Just as strings (we said that a string is kinda like a character list) we can get one item, get the length of the list, and many other things
 
 ```python
 one_list = ['Pearl jam', 'guitar', 10, True]
@@ -459,7 +460,7 @@ print(len(one_list)) # length
 4
 ```
 
-Another way to vreate a list is using the list constructor.
+Another way to create a list is using the list constructor.
 
 ```python
 a_list = list(('Pearl jam', 'guitar', 10, True))
@@ -509,7 +510,7 @@ a_list = first_list + second_list
 
 By the way, [here](https://www.w3schools.com/python/python_lists_methods.asp) is the list of lists methods, which are many and pretty self explanatory.
 
-As we saw yesterday, we con *unpack* a list. Let's ee some examples of it.
+As we saw yesterday, we con *unpack* a list. Let's see some examples of it.
 
 ```python
 a_list = ['Pearl jam', 'guitar', 10, True]
@@ -547,8 +548,8 @@ Note that with the '*' we can unpack the final items in one variable, creating a
 
 List Comprehension
 
-As many of us saw when we were childrens, there is more than one way to create a set, or in this case a list. By extension and by comprehension.
-We have covered the first one. NOw let's ee the second.
+As many of us saw when we were children, there is more than one way to create a set, or in this case a list. By extension and by comprehension.
+We have covered the first one. Now let's see the second.
 
 Here is the sintax:
 
@@ -572,7 +573,7 @@ So bare with me... we'll circle back to this.
 
 ## Tuples
 
-Just like lists, tuples are intended to store multiple values in one variable, with the difference that tuples are **immutable**. This means that can not be changed.
+Just like lists, tuples are intended to store multiple values in one variable, with the difference that tuples are **immutable**. This means that cannot be changed.
 
 ```python
 a_tuple = ('Pearl jam', 'guitar', 10, True)
@@ -609,7 +610,7 @@ guitar
 
 Now, what happens if we try to change an item of a tuple? Right, we can't!!!
 
-We said before thta tuples are immutable. Let's e what happens...
+We said before that tuples are immutable. Let's see what happens...
 
 ```python
 a_tuple = ('Pearl jam', 'guitar', 10, True)
@@ -620,10 +621,10 @@ Traceback (most recent call last):
   File "<stdin>", line 1, in <module>
 TypeError: 'tuple' object does not support item assignment
 ```
+// no entendi esta oracion
+So, in order so that there is a workaround, but for a reason we have created a tuple and not a list.
 
-So, in order to that there is a workaround, but for a reason we have created a tuple and not a list.
-
-Having said that, if you need to change an item of a tuple we have to cast it to a list and the cast it back tu a tuple.
+Having said that, if you need to change an item of a tuple we have to cast it to a list and the cast it back to a tuple.
 
 ```python
 a_tuple = ('Pearl jam', 'guitar', 10, True)
@@ -632,9 +633,9 @@ a_list[1] = 'bass'
 a_tuple = tuple(a_list)
 ```
 
-I'd recommend to thing thoroughly wich type of data we need in our code. We can do the same workaround in oprder to remove and item.
+I'd recommend to thing thoroughly about which type of data we need in our code. We can do the same workaround in order to remove an item.
 
-We can join tu tuples using the '+' operator, just like with lists.
+We can join two tuples using the '+' operator, just like we can do with lists.
 
 [Here](https://www.w3schools.com/python/python_tuples_methods.asp) is the list of tuples methods, which are many and pretty self explanatory.
 
