@@ -684,4 +684,62 @@ print(a_set)
 {'guitar', 10, True, 'Pearl jam'}
 ```
 
-Note that over and over we have the same result, better said, the same set.
+Note that over and over we have the same result, or the same set if you will.
+
+Let's ytry to add an immutable item to the set.
+
+```python
+a_set = {'Pearl jam', 'guitar', 10, True}
+a_set.add(['Eddie', 'Mike'])
+
+# output
+Traceback (most recent call last):
+  File "<stdin>", line 1, in <module>
+TypeError: unhashable type: 'list'
+```
+
+That's because, as was mentioned, sets only admit immutable item. Of course a list, is not an immutable item.
+
+Another way to create a set is using the set constructor.
+
+```python
+a_set = set(('Pearl jam', 'guitar', 10, True))
+```
+
+Using this constructor is also the way to cast, for example, a tuple to a set.
+
+```python
+a_tuple = ('Pearl jam', 'guitar', 10, True)
+a_set = set(a_set)
+```
+
+This might be used, for example, to eliminate repeated items on a list, instead of iterating the list, and checking if the item is already on the list.
+Let's see that.
+
+```python
+a_list = ['Pearl jam', 'guitar', 10, True, 'guitar']
+a_list = list(set(a_list))
+```
+
+In the case of the set, we can't use '+', to join to sets. But there are a few ways to do that.
+
+```python
+a_set = {'Pearl jam', 'guitar'}
+another_set = {10, True}
+
+print(a_set.union(another_set))
+
+# output
+{'guitar', True, 10, 'Pearl jam'}
+
+print(a_set.update(another_set))
+
+# output
+{'guitar', True, 10, 'Pearl jam'}
+```
+
+By the way, [here](https://www.w3schools.com/python/python_sets_methods.asp) is the list of sets methods, which are many and pretty self explanatory.
+
+## Dictionaries
+
+Dictionaries are used to store data values in key:value pairs.
