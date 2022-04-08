@@ -198,7 +198,6 @@ Jello cruel World!
 ```
 
 Another thing you can do with strings is to concatenate them. You can concatenate two or more strings, but if you try to concatenate a string with something else, you will get a TypeError.
-// But as I said, you can concatenate two strings, and not a string and something else.
 
 For example:
 
@@ -621,10 +620,10 @@ Traceback (most recent call last):
   File "<stdin>", line 1, in <module>
 TypeError: 'tuple' object does not support item assignment
 ```
-// no entendi esta oracion// 
-So, in order so that there is a workaround, but for a reason we have created a tuple and not a list.
 
-Having said that, if you need to change an item of a tuple we have to cast it to a list and the cast it back to a tuple.
+We have to keep in mind that for some reason, we chose to create a tuple and not a list.
+
+Having said that, if you need to change an item of a tuple, we have to cast it to a list and then the cast it back to a tuple.
 
 ```python
 a_tuple = ('Pearl jam', 'guitar', 10, True)
@@ -643,3 +642,46 @@ Do you remember how to **unpack** a List?
 Cool, we can do exactly the same thing with a tuple.
 
 ## Sets
+
+Just like lists and tuples, sets are intended to store multiple values in one variable, with the difference that sets are **unordered, no duplicates allowed and the items must be immutable**.
+
+```python
+a_set = {'Pearl jam', 'guitar', 10, True}
+print(a_set)
+
+# output
+{'guitar', True, 10, 'Pearl jam'}
+ ```
+
+There we can see why we said that sets are unordered. The main thing is that multiple items in the same variable.
+
+As sets are unordered group of items, we can **NOT** access them by index.
+You can use the operator 'in' to see if an item is contained in the set, like this:
+
+```python
+a_set = {'Pearl jam', 'guitar', 10, True}
+print('guitar' in a_set)
+
+# output
+True
+```
+
+Because of the same thing, you can't change an item of a set. But you have methods to remove and add a new one.
+
+Another characteristic is that sets don't allow duplicates.
+
+```python
+a_set = {'Pearl jam', 'guitar', 10, True, 'guitar'}
+print(a_set)
+
+# output
+{'guitar', True, 10, 'Pearl jam'}
+
+a_set.add(10)
+print(a_set)
+
+# output
+{'guitar', 10, True, 'Pearl jam'}
+```
+
+Note that over and over we have the same result, better said, the same set.
