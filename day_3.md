@@ -9,8 +9,6 @@
 
 ___
 
-## Data types in details
-
 Let's dive in Python Data Types!!!!
 
 ## Strings
