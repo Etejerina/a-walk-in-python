@@ -420,7 +420,7 @@ There are 4 types of collections in Python:
 * Dictionaries
   * ordered (*in python <3.6 are unordered*)
   * mutable
-  * no duplicates
+  * no duplicates **keys**
 
 ## Lists
 
@@ -743,3 +743,101 @@ By the way, [here](https://www.w3schools.com/python/python_sets_methods.asp) is 
 ## Dictionaries
 
 Dictionaries are used to store data values in key:value pairs.
+The key name of a dictionary must be always a string.
+
+```python
+a_dict = {
+  'band': 'Pearl Jam',
+  'instrument': 'guitar',
+  'album': 10,
+  'best_band': True
+}
+```
+
+We can access a dictionaries item, using the key name between brackets.
+
+```python
+print(a_dict['band'])
+
+# output
+Pearl Jam
+```
+
+Seeing how you can access a dicts item, I think you could guess why dicts don't allow duplicate keys. Just to state the obvious, if there were two equal keys, how could Python realize wich one you want to access?
+
+There is another way to access a dicts item, that can be better to use in some scenarios, and is using the *get* method.
+
+```python
+print(a_dict['band'])
+
+# output
+Pearl Jam
+
+print(a_dict.get('band'))
+
+# output
+Pearl Jam
+```
+
+What's the difference??? Well, using the *get* method, if you try to access an item wich key doesn't exists, the returned value will be None, instead of an Exception.
+
+```python
+print(a_dict['drummer'])
+
+# output
+Traceback (most recent call last):
+  File "<stdin>", line 1, in <module>
+KeyError: 'drummer'
+
+print(a_dict.get('drummer'))
+
+# output
+None
+```
+
+As easy as you can access an item, you can change an item.
+
+```python
+a_dict['instrument'] = 'bass' # or a_dict.update({'instrument': 'bass'})
+print(a_dict)
+
+# output
+{
+  'band': 'Pearl Jam',
+  'instrument': 'bass',
+  'album': 10,
+  'best_band': True
+}
+```
+
+In order to add an item to a dict, you can use the same sintax you use to change an item.
+
+```python
+a_dict['singer'] = 'Eddie Vedder' # or a_dict.update({'singer': 'Eddie Vedder'})
+print(a_dict)
+
+# output
+{
+  'band': 'Pearl Jam',
+  'instrument': 'guitar',
+  'album': 10,
+  'best_band': True,
+  'singer': 'Eddie Vedder'
+}
+```
+
+There are alse two important methods in order to know a dicts content.
+One is *keys* and the other is *values*.
+
+Let's see...
+
+```python
+print(a_dict.keys())
+print(a_dict.values())
+
+# output
+dict_keys(['band', 'instrument', 'album', 'best_band'])
+dict_values(['Pearl Jam', 'guitar', 10, True])
+```
+
+By the way, [here](https://www.w3schools.com/python/python_dictionaries_methods.asp) is the list of dicts methods, which are many and pretty self explanatory.
