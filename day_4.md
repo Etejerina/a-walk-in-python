@@ -302,13 +302,57 @@ This is False
 Very straightforward, right?
 Ok, let's move on...
 
-There is another way to write this code and that way is using one liners or one line statements.
+There is another way to write this code and that way is using one liners, ternary operators, or Conditional Expressions.
 
 ```python
 if True: print('This is True') # if statemente
 
 print('This is True') if True else print('This is False') # if...else statement
-
 ```
 
 >Note that we used one line instead of four in the last example and it look's nicer sometimes. But be careful!!! When the code is longer it might be easier to read in the traditional multiline way.
+
+### Elif
+
+We also have `elif` in tha case that we have a few different options in an if statement.
+
+Here is the syntax:
+
+```python
+if first_condition:
+    # some conde
+elif second_condition:
+    # some other code
+else:
+    #another piece of code
+```
+
+Let's see an example:
+
+```python
+a_number = -10
+
+if a_number > 0:
+    print('The number is positive')
+elif a_number < 0:
+    print('The number is negative')
+else:
+    print('The number is zero')
+
+print("Positive") if a_number > 0 else print("Negative") if a_number < 0 else print("Zero") # one liner
+```
+
+Remember that the `condition` in an if statement, can be as small or extended as we need. This means that can be a simple **boolean**, a condition with two values and a operator, or multiple values and operators.
+
+```python
+if True:
+    pass
+
+if a > b:
+    pass
+
+if a > b and b > c or b == c:
+    pass
+```
+
+>Note that we used the `pass` reserved word, to express that this part of the code has no code to execute. This also avoid an error to be raised.
