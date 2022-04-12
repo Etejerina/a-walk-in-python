@@ -45,7 +45,7 @@ All been washed in black
 Tattooed everything
 ```
 
-Note that the line breaks are in the same place that in the code.
+>Note that the line breaks are in the same place that in the code.
 
 As we said Strings are a list of characters, but there is not a type Char in Python. This would be a string with length equal to 1.
 
@@ -541,7 +541,7 @@ guitar
 [10, True]
 ```
 
-Note that with the '*' we can unpack the final items in one variable, creating a list.
+>Note that with the '*' we can unpack the final items in one variable, creating a list.
 
 List Comprehension
 
@@ -577,7 +577,7 @@ a_tuple = ('Pearl jam', 'guitar', 10, True)
 another_tuple = 'Alice in chains', 'guitar', 90, False
  ```
 
-Note than () can be omitted, but not the commas.
+>Note than () can be omitted, but not the commas.
 Try getting the type of both these variables and see what happens...
 
 Actually, to create a tuple with one element we need to do it this way:
@@ -682,7 +682,7 @@ print(a_set)
 {'guitar', 10, True, 'Pearl jam'}
 ```
 
-Note that over and over we have the same result, or the same set if you will.
+>Note that over and over we have the same result, or the same set if you will.
 
 Let's ytry to add an immutable item to the set.
 

@@ -153,7 +153,7 @@ beautiful
 World
 ```
 
-*Note: the number of values and variable names, should match, or you will get an error.*
+>Note: the number of values and variable names, should match, or you will get an error.
 
 Also, you can assign the same value to different variables in one line, like this...
 
