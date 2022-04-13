@@ -536,7 +536,7 @@ for number in range(10):
 9
 ```
 
-The function `range()` creates a sequence of numbers from 0 (default value) to the number before a specified number, incrementing by 1 (default value).
+The built-in `range()` function, creates a sequence of numbers from 0 (default value) to the number before a specified number, incrementing by 1 (default value).
 
 A quick peak into range examples...
 
@@ -555,7 +555,7 @@ print(*range(2,5,2))
 2 4
 ```
 
->Note the '*' before the range() function? Is not a typo! This is used to unpack a sequence
+>Note the '*' before the range() function? It's not a typo! This is used to unpack a sequence
 
 Just like in slicing, we can reverse a range...
 
