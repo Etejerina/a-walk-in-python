@@ -236,7 +236,10 @@ One of those 'things' are **Control Structures**, wich are used to modify the fl
 There are two kinds of Control Structures:
 
 * **Conditionals**, used to execute one or more statements if a condition is met.
+  * If conditional
 * **Loops**, which purpose is to repeat a statement a certain number of times or while a condition is met.
+  * While loops
+  * For loops
 
 ### If statement
 
@@ -356,3 +359,222 @@ if a > b and b > c or b == c:
 ```
 
 >Note that we used the `pass` reserved word, to express that this part of the code has no code to execute. This also avoid an error to be raised.
+
+In Python there is not such thing as a Switch/Case, so you'll have to use the complete if statement.
+
+### While Loop
+
+The While loop is used to perform an acrion, or a bunch of code, as long as a condition is true.
+
+Syntax:
+
+```python
+while condition:
+    # some code
+```
+
+For example...
+
+```python
+a_number = 1
+while a_number < 10:
+    print(a_number)
+    a_number += 1
+
+# output
+1
+2
+3
+4
+5
+6
+7
+8
+9
+```
+
+>Note that we need to inclement `a_number`, otherwise the loop will continue for ever.
+
+We have two reserved words that we can use inside a While loop. These are `break` and `continue`.
+
+With `continue` we continue with the next iteration of the look.
+
+Let's see an example.
+
+```python
+a_number = 0
+while a_number < 10:
+    a_number += 1
+    if a_number == 5:
+        continue
+    print(a_number)
+
+# output
+1
+2
+3
+4
+6
+7
+8
+9
+10
+```
+
+>Note that the `5`was not printed, as we have the continue statement, that "jumps" to the next iteration.
+
+With `break` in the other hand, stops the loop, right where it's executed.
+
+```python
+a_number = 1
+while a_number < 10:
+    if a_number == 5:
+        break
+    print(a_number)
+    a_number += 1
+
+# output
+1
+2
+3
+4
+```
+
+>This code doesn't make much sense, but let's just take this as an example, and something we shouldn't do... :D
+
+In order to complete the While loop syntax, we should include the `else` statement.
+
+This will be excuted when the condition is not met.
+
+Let's take a look at it...
+
+```python
+a_number = 1
+while a_number < 10:
+    print(a_number)
+    a_number += 1
+else:
+    print('No longer less than 10...')
+
+# output
+1
+2
+3
+4
+5
+6
+7
+8
+9
+No longer less than 10...
+```
+
+### For Loop
+
+The For loop is use to iterate over a sequence. As we saw we know the lists, tuples, sets, dictionaries are sequences... even a string is one.
+
+So, we can do *something* with every item of a sequence.
+
+Syntax:
+
+```python
+for item in sequence:
+    # some code
+```
+
+An example...
+
+```python
+bands = ['Pearl Jam', 'Faith No More', 'Soundgarden']
+for band in bands:
+    print(band)
+
+# output
+Pearl Jam
+Faith No More
+Soundgarden
+```
+
+With For loops we also have `break` and `continue` reserved words, and even the `else` statement.
+
+We said that we can iterate over a string, right? Let's see that.
+
+```python
+for char in 'Soundgarden':
+    print(char)
+
+# output
+S
+o
+u
+n
+d
+g
+a
+r
+d
+e
+n
+```
+
+Let's say that we can print the first 10 numbers... We don't have to create a list of numbers first, in order to iterate over it. We can do it this way...
+
+```python
+for number in range(10):
+    print(number)
+
+# output
+0
+1
+2
+3
+4
+5
+6
+7
+8
+9
+```
+
+The function `range()` creates a sequence of numbers from 0 (default value) to the number before a specified number, incrementing by 1 (default value).
+
+A quick peak into range examples...
+
+```python
+for number in range(5):
+    print(number)
+
+# output
+0
+1
+2
+3
+4
+
+for number in range(2,5):
+    print(number)
+
+# output
+2
+3
+4
+
+for number in range(2,5,2):
+    print(number)
+2
+4
+```
+
+Just like in slicing, we can reverse a range...
+
+```python
+for number in range(5, 0., -1):
+    print(number)
+
+# output
+5
+4
+3
+2
+1
+```
