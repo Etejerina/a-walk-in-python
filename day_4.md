@@ -541,40 +541,27 @@ The function `range()` creates a sequence of numbers from 0 (default value) to t
 A quick peak into range examples...
 
 ```python
-for number in range(5):
-    print(number)
+print(*range(5))
 
 # output
-0
-1
-2
-3
-4
+0 1 2 3 4
 
-for number in range(2,5):
-    print(number)
+print(*range(2,5))
 
 # output
-2
-3
-4
+2 3 4
 
-for number in range(2,5,2):
-    print(number)
-2
-4
+print(*range(2,5,2))
+2 4
 ```
+
+>Note the '*' before the range() function? Is not a typo! This is used to unpack a sequence
 
 Just like in slicing, we can reverse a range...
 
 ```python
-for number in range(5, 0., -1):
-    print(number)
+print(*range(5, 0, -1))
 
 # output
-5
-4
-3
-2
-1
+5 4 3 2 1
 ```
