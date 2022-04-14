@@ -565,3 +565,70 @@ print(*range(5, 0, -1))
 # output
 5 4 3 2 1
 ```
+
+Now we know about Lists and For loops, we can return to lists comprehension, something that we took a look at [day 3](day_3.md#list-comprehension).
+
+I think we are now tying loose ends, right?
+
+We'ver seen this, for instance...
+
+```python
+even_numbers = [x for x in range(20) if x % 2 == 0]
+print(even_numbers)
+
+# output
+[0, 2, 4, 6, 8, 10, 12, 14, 16, 18]
+```
+
+Here we have, besides a list, a for loop and an if statement.
+
+Putting it into words it would be **"we have x for every x, from 0 to 19 (range(20)), that the modulus is 0"** or to be simplier, **"a list of even numbers betwenn 0 and 19"**. *Let's save for another day if 0 is even, odd or none of the above...*
+
+>Note: rememer that modulus is the remainder of a division, after one number is divided by another.
+
+We'll see that the previous expression is equivalent to this...
+
+```python
+even_numbers = []
+
+for x in range(20):
+    if x % 2 == 0:
+        even_numbers.append(x)
+
+print(even_numbers)
+
+# output
+[0, 2, 4, 6, 8, 10, 12, 14, 16, 18]
+```
+
+What if we want everuy item in that list multiplied by 2?
+
+Let's do it both ways...
+
+```python
+even_numbers = []
+
+for x in range(20):
+    if x % 2 == 0:
+        even_numbers.append(x * 2)
+
+print(even_numbers)
+
+# output
+[0, 4, 8, 12, 16, 20, 24, 28, 32, 36]
+```
+
+So, what do you think we should do to get the same result, using list comprehension?
+Take a minute a think about it...
+
+59... 58... 57... 56... Just kidding!!! :D
+
+```python
+even_numbers = [x * 2 for x in range(20) if x % 2 == 0]
+print(even_numbers)
+
+# output
+[0, 4, 8, 12, 16, 20, 24, 28, 32, 36]
+```
+
+This can be used in loads of scenarios, so keep it on your cheat-sheet!!!
