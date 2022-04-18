@@ -217,12 +217,12 @@ print(<<a_number)
 print(>>a_number)
 
 # output
-2   # en binario 0000 0010
-31  # en binario 0001 1111
-29  # en binario 0001 1101 
--11 # en binario 1111 0101
-2   # en binario 0000 0010
-40  # en binario 0010 1000
+2                   # en binario 0000 0010
+31                  # en binario 0001 1111
+29                  # en binario 0001 1101 
+-11                 # en binario 1111 0101
+2                   # en binario 0000 0010
+40                  # en binario 0010 1000
 ```
 
 ___
@@ -240,6 +240,11 @@ There are two kinds of Control Structures:
 * **Loops**, which purpose is to repeat a statement a certain number of times or while a condition is met.
   * While loops
   * For loops
+* **Exceptions**
+  * Try...Except
+  * Raise
+
+## Conditionals
 
 ### If statement
 
@@ -361,6 +366,8 @@ if a > b and b > c or b == c:
 >Note that we used the `pass` reserved word, to express that this part of the code has no code to execute. This also avoid an error to be raised.
 
 In Python there is not such thing as a Switch/Case, so you'll have to use the complete if statement.
+
+## Loops
 
 ### While Loop
 
@@ -632,3 +639,7 @@ print(even_numbers)
 ```
 
 This can be used in loads of scenarios, so keep it on your cheat-sheet!!!
+
+## Exceptions
+
+### Try...Except
