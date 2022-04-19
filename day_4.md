@@ -643,3 +643,148 @@ This can be used in loads of scenarios, so keep it on your cheat-sheet!!!
 ## Exceptions
 
 ### Try...Except
+
+When Python found a problem in the execution, the interpreter will stop and generates an error.
+
+These are called **Exceptions**.
+
+There are many built-in types of Exceptions, like NameError, ArithmeticError, AttributeError, FloatingPointError, ImportError, ModuleNotFoundError, etc.
+
+Let's see an example.
+
+```python
+print(x)
+print('The code continues...')
+
+Traceback (most recent call last):
+    File "<stdin>", line 1, in <module>
+NameError: name 'x' is not defined
+```
+
+Another....
+
+```python
+print(10 / 0)
+print('The code continues...')
+
+Traceback (most recent call last):
+    File "<stdin>", line 1, in <module>
+ZeroDivisionError: division by zero
+```
+
+So, we might wanty to **catch** that exception in order to avoid the program to stop exectution.
+
+We can do this, using **Try...Excepti** statement.
+
+```python
+try:
+    print(10 / 0)
+except:
+    print('An exception occurred')
+
+print('The code continues...')
+
+# output
+An exception occurred
+The code continues...
+```
+
+This way, the exception is catched, an error is showned but the code keeps runing. The idea is to include the block of code that can fail, in the try statement.
+
+As many different errors can occur, we can catch different types of exceptions. For example:
+
+```python
+x = 0
+
+try:
+    print(10 / y)
+except ZeroDivisionError:
+    print('You can not divide by zero')
+except NameError:
+    print('x is not defined')
+except:
+    print('An exception occurred')
+
+# output
+You can not divide by zero
+```
+
+But what if we comment the first line? Let's see...
+
+```python
+# x = 0
+
+try:
+    print(10 / x)
+except ZeroDivisionError:
+    print('You can not divide by zero')
+except NameError:
+    print('x is not defined')
+except:
+    print('An exception occurred')
+
+# output
+x is not defined
+```
+
+We can see, that we see different messages, depending the type of exception that is raised.
+
+>Keep in mind that we need to order the exceptions from most to least specific, otherwise the first one will raise and then the code will continue after the Try...Except statement.
+
+We have also an **else** block, that lets you execute a code if there is no error.
+
+```python
+x = 1
+
+try:
+    print(10 / x)
+except:
+    print('An exception occurred')
+else:
+    print('There was no error')
+
+print('The code continues...')
+
+# output
+There was no error
+The code continues...
+```
+
+The difference wityh the last line, is that this line will always be exzecuted.
+
+There is also a **finally** block, that lets you execute a code, no matter the result the try block.
+
+It's most commonly used to close connections or free resources in an ordered fashion.
+
+```python
+x = 1
+
+try:
+    print(10 / x)
+except:
+    print('An exception occurred')
+else:
+    print('There was no error')
+finally:
+    print('The code continues...')
+
+# output
+There was no error
+The code continues...
+```
+
+We can also create a custom exception and raise it. This is used to raise an exception and stop the execution on the code.
+
+```python
+X = 0
+
+if x == 0:
+    raise Exception('We don`t want the value of x to be zero!')
+
+# output
+Traceback (most recent call last):
+    File "<stdin>", line 2, in <module>
+Exception: We don`t want the value of x to be zero!
+```
+
+We can see the last line of the exception, with the description we have created.
