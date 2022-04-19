@@ -12,6 +12,8 @@ A **function** is a series of statements wich returns some value to a caller. It
 
 > A parameter is a variable in a method definition. When a method is called, the arguments are the data you pass into the method's parameters.
 
+Having said that, in Python functions signature, are called arguments, or *args* for short.
+
 Functions use the reserved word *def*, as follows.
 
 ```python
