@@ -132,3 +132,129 @@ The first number is 2
 >Note that **kwargs works the same as *args buy instead of accepting positional arguments, it accepts keyword arguments such as those from a dictionary (i.e. a dictionary of arguments)
 
 In this case we use the unpacking operator '\*\*', that will take all keyword arguments given in the input and **pack** them all into a dictionary.
+
+In a function, we can alwyas set a **default value** for a parameter.
+
+For example...
+
+```python
+def im_from(country = 'Argentina'):
+    print(f'I am from {country}')
+
+im_from('Canada')
+im_from()
+
+# output
+I am from Canada
+I am from Argentina
+```
+
+> Note that in the second call to the function, we are not passing an argument to the function, so it's printing the default value on the function definition. When we pass the argument, the function behaves as always.
+
+One more very nice thing ¡ about functions in Python for me is, that you can return more than one value.
+
+We said that we have void functions that doesn't retunr a value, and functions that does return a value... or more!
+
+Let's see an example of that.
+
+```python
+def sum_and_square(a_number, another_number):
+    sum_total = a_number + another_number
+    square = a_number ** 2
+    return sum_total, square
+
+print(sum_and_square(5, 2))
+
+# output
+(7, 25)
+```
+
+> Note that the returned value is tuple with two values, the sum of he values and the first number squared.
+
+Just like any tuple we can unpack it.
+
+```python
+def sum_and_square(a_number, another_number):
+    sum_total = a_number + another_number
+    square = a_number ** 2
+    return sum_total, square
+
+addition, squared = sum_and_square(5, 2)
+print(addition)
+print(squared)
+
+# output
+7
+25
+```
+
+### Recursion
+
+What is recursion?
+
+Recursion is a mathematical and programming concept in wich a function calls itself.
+It can be dangerous because we need to define a base case in wich the function reach of stopping point.
+
+For example, in a countdown we start on a certain number, it substracts 1,and call it self. Every time it calls itself, the call of the function pass the result as an argument. But we need to stop when the result is 0. If not, we are trapped in an infinite loop.
+
+Let's see...
+
+```python
+def recursive_substraction(number):
+    if number > 0:
+        print(number)    
+        number -= 1
+        recursive_substraction(number)
+    
+    return 'Done!'
+
+print(recursive_substraction(10))
+
+# output
+10
+9
+8
+7
+6
+5
+4
+3
+2
+1
+Done!
+```
+
+This exmple is pretty silly. I bet most of you realized that you could have done it wuth a simple for loop.
+You're right!
+
+Let's go with something more difficult... What about a factorial function?
+
+```python
+def factorial(number):
+    return_value = 1
+    for i in range(2, number + 1):
+        return_value *= i
+
+    return return_value
+
+print(factorial(6))
+
+# output
+720
+```
+
+Ok! This is not recursion... I know!
+So, hands on!
+
+```python
+def factorial(number):
+    return 1 if number <= 1 else number * factorial(number - 1)
+
+print(factorial(6))
+
+# output
+720
+```
+
+One of the advantages is that the code looks cleaner, and easier. On the other hand, sometimes recursions are more complicate to follow, and are more expensive in terms of memory usage.
+If we follow the execution of the code we can se why.
