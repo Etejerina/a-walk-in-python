@@ -324,3 +324,5 @@ print(n_times(10, lambda n : 3 * n))
 ```
 
 In this case we are passing to 'n_times', a value and a lambda function. Again it doesn't make much sense, but is an example.
+
+More about [lambdas here](https://realpython.com/python-lambda/).
