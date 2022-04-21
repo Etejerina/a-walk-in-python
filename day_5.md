@@ -257,4 +257,70 @@ print(factorial(6))
 ```
 
 One of the advantages is that the code looks cleaner, and easier. On the other hand, sometimes recursions are more complicate to follow, and are more expensive in terms of memory usage.
-If we follow the execution of the code we can se why.
+If we follow the execution of the code we could understand why.
+
+## Lambdas
+
+A lambda function is a small anonimous function. It can have multiple parameters, but only one expression.
+
+Syntax:
+
+```python
+lamba arguments : expression
+```
+
+For example:
+
+```python
+square_lambda = lambda a : a ** 2 # or print((lambda a : a ** 2)(5))
+
+print(square_lambda(5))
+
+# output
+25
+```
+
+Python doesn't encourage using immediately invoked lambda expressions like in the exmaple. It simply results from a lambda expression being callable, unlike the body of a normal function.
+
+```python
+print((lambda a : a ** 2)(5))
+
+# output
+25
+```
+
+Lambda functions are frequently used with higher-order functions.
+
+Higher-order functions are functions that takes one or more functions as arguments or return one or more functions.
+
+Let's see 2 examples...
+
+```python
+def n_times(times):
+    return lambda n : n * times
+
+doubler = n_times(2)
+tripler = n_times(3)
+
+print(doubler(10))
+print(tripler(10))
+
+# output
+20
+30
+```
+
+Here we are returning a lambda function. This way we can re use it in order to create another.
+
+```python
+n_times = lambda n, func: func(n)
+
+print(n_times(10, lambda n : 2 * n))
+print(n_times(10, lambda n : 3 * n))
+
+# output
+20
+30
+```
+
+In this case we are passing to 'n_times', a value and a lambda function. Again it doesn't make much sense, but is an example.
