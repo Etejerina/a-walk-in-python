@@ -326,3 +326,197 @@ print(n_times(10, lambda n : 3 * n))
 In this case we are passing to 'n_times', a value and a lambda function. Again it doesn't make much sense, but is an example.
 
 More about [lambdas here](https://realpython.com/python-lambda/).
+
+## Iterators and Generators
+
+### Iterators
+
+An iterator is an object that contains a countable number of values and can be iterated upon.
+
+In Pyhton these objects have both methods, \_\_iter__() and \_\_next__().
+
+As we saw, lists, tuples, sets and disctionaries (*and even strings*) are iterable objects, wich you can get an iterator from.
+
+These have the iter() method wqich is used to get an iterator.
+
+```python
+a_list = ['Ezequiel', 'Javier', 'Emilio', 'Nicolas']
+an_iter = iter(a_list)
+
+print(next(an_iter))
+print(next(an_iter))
+print(next(an_iter))
+print(next(an_iter))
+
+# output
+Ezequiel
+Javier
+Emilio
+Nicolas
+```
+
+> Note that in between these *print* lines, we can do another thing, print something else, call a function or whatever we want, and the result of the next on that iterator, would be the next item on the iterable.
+
+Of course we can loop through an iterable too as we saw previously.
+
+Later, when we learn about Classes, we0ll see how toi create an Iterator Class.
+
+### Generators
+
+A Generator or generator function is a kind of function that creates a lazy iterartor. These are objects that you can loop over like a *list*. However, unlike lists, lazy iterators do not store their contents in memory.
+
+Let's see something first...
+
+```python
+a_list = list(range(10))
+print(*a_list, end=" ")
+
+# output
+0 1 2 3 4 5 6 7 8 9
+```
+
+Another way to do this...
+
+```python
+for n in range(10):
+    print(n, end=" ")
+
+# output
+0 1 2 3 4 5 6 7 8 9
+```
+
+Now, what if want to create a list from 0 to infinite?
+We could do the same as above, but we0ll have an unstopable (not really) loop of increasing numbers, with no possibility to do anything while the code is executing, not to mention, the enormous amount of memory the the list will occupy.
+
+So, using a generator function we have a much better alternative!
+
+```python
+def infinite_sequence():
+    number = 0
+    while True:
+        yield number
+        number += 1
+```
+
+> Note that we are just emulating the range built-in method. In a moment you will see why...
+
+Now we have that function that looks pretty much like a regular function, except for the yield statement. The *yield* will return the value in the statement, and wait to continue the execution, but it needs to be done with the *next()* method, otherwise would behave as a regular function.
+
+Let's continue...
+
+```python
+for i in infinite_sequence():
+    print(i, end = " ")
+
+# output
+0 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 21 22 23 24 25 26 27 28 29
+30 31 32 33 34
+[...]
+1251235 1251236 1251237 1251238 1251239 1251240 1251241
+KeyboardInterrupt
+Traceback (most recent call last):
+  File "<stdin>", line 2, in <module>
+```
+
+As we said above, we have iterate the function with a for loop and we are in the excat same scenario as before, but if we do this...
+
+```python
+a_generator = infinite_sequence()
+next(a_generator)
+next(a_generator)
+next(a_generator)
+next(a_generator)
+
+# ouput
+0
+1
+2
+3
+```
+
+And everytime we call the next method of the generator, we'll have the next value.
+
+As we always say, this is a dumb example.
+But what if we want the first 50000 items of the fibonacci sequence, to do some batch processing?
+
+Option 1:
+
+```python
+def fibonacci(n):
+    a = b = 1
+    result = []
+    for i in range(n):
+        result.append(a)
+        a, b = b, a + b
+    return result
+
+fibonacci(50000)
+```
+
+We can create a list like this and process tha data on the list. But this way we are going to have a huge list, occupying a lot of memory.
+
+Option 2:
+
+```python
+def fibonacci(n):
+    a = b = 1
+    result = []
+    for i in range(n):
+        '''
+        block of code to process
+        '''
+        result.append(processed_data)
+        a, b = b, a + b
+    return result
+
+fibonacci(50000)
+```
+
+This time, we already have the porcessed data, but again, a hiuge list, occupying loads of memory.
+
+Option 3:
+
+```python
+def fibonacci(from, count):
+    a = b = from
+    result = []
+    for i in range(count):
+        result.append(a)
+        a, b = b, a + b
+    return result
+
+total = 50000
+from  = 1
+count = 50
+for n in range(count / to):
+    print(fibonacci(from, count))
+    from += count
+    to += coutn
+    # or whatever we need to do...
+```
+
+Here we have to loops, and have to keep track of the variables, wich in a complicated context can lead to a large number of mistakes and bugs.
+
+Best option:
+
+```python
+def fibonacci(n, amount):
+    a = b = 1
+    result = []
+    for i in range(n):
+        result.append(a)
+        if len(result) == amount:
+            yield result
+            result = []
+        a, b = b, a + b
+
+gen = fibonacci(50000, 50)
+print(next(gen))
+print(next(gen))
+# ...
+print(next(gen))
+```
+
+This way we don't have to keep track on wich batch in coming next or any other thing. We just call the next method the times we need, even inside a loop.
+
+What we are doing is to avoid using a callback, and use a generator and the *yield* reserved word.
