@@ -520,3 +520,27 @@ print(next(gen))
 This way we don't have to keep track on wich batch in coming next or any other thing. We just call the next method the times we need, even inside a loop.
 
 What we are doing is to avoid using a callback, and use a generator and the *yield* reserved word.
+
+### Generator expressions
+
+Similar to the lambda functions which create anonymous functions, generator expressions create anonymous generator functions.
+
+The syntax for generator expression is similar to that of a list comprehension in Python. But the square brackets are replaced with round parentheses.
+
+Let's see an example...
+
+```python
+a_list = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
+squared = (x**2 for x in a_list)
+
+print(next(squared))
+print(next(squared))
+print(next(squared))
+print(next(squared))
+
+# output
+1
+4
+9
+16
+```

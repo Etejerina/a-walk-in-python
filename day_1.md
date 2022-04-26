@@ -147,6 +147,8 @@ virtualenv <environment_name>
 Once this is done we can activate/deactivate with
 
 * On Windows run `<environment_name>\Scripts\activate.bat`  (*`deactivate.bat` to deactivate the environment*).
+* On Windows using PowerShell, run `<environment_name>\Scripts\activate.ps1`  (*just `deactivate` to deactivate the environment*).
+* On Windows using Git Bash run `<environment_name>\Scripts\activate`  (*`deactivate` to deactivate the environment*).
 * On Linux run `source <environment_name>/bin/activate`     (*`deactivate` to deactivate the environment*)
 
 ### Syntax
