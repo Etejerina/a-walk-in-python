@@ -12,16 +12,47 @@
 # print(n_times(10, lambda n : 2 * n))
 # print(n_times(10, lambda n : 3 * n))
 
-def fibonacci(n, amount):
-    a = b = 1
-    result = []
-    for i in range(n):
-        result.append(a)
-        if len(result) == amount:
-            yield result
-            result = []
-        a, b = b, a + b
+# def fibonacci(n, amount):
+#     a = b = 1
+#     result = []
+#     for i in range(n):
+#         result.append(a)
+#         if len(result) == amount:
+#             yield result
+#             result = []
+#         a, b = b, a + b
 
-gen = fibonacci(50000, 50)
-print(next(gen))
-print(next(gen))
+# gen = fibonacci(50000, 50)
+# print(next(gen))
+# print(next(gen))
+
+
+# def wrapper_function(func):
+    
+#     def inner_function():
+#         print('Printing before function!')
+#         func()
+#         print('Printing after function!')
+
+#     return inner_function()
+
+# def a_function():
+#     print('I`m the function!')
+
+# wrapping = wrapper_function(a_function)
+
+
+def wrapper_function(func):
+
+    def inner_function():
+        print('Printing before function!')
+        func()
+        print('Printing after function!')
+
+    return inner_function
+ 
+@wrapper_function
+def a_function():
+    print('I`m the function')
+ 
+a_function()

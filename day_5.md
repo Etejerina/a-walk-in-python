@@ -327,6 +327,63 @@ In this case we are passing to 'n_times', a value and a lambda function. Again i
 
 More about [lambdas here](https://realpython.com/python-lambda/).
 
+### Wrapper Functions
+
+We have talked about high-order functions. Another way to see this particular case, is a function wrapping another one...
+
+```python
+def wrapper_function(func):
+
+    def inner_function():
+        print('Printing before function!')
+        func()
+        print('Printing after function!')
+
+    return inner_function()
+
+def a_function():
+    print('I`m the function!')
+
+wrapping = wrapper_function(a_function)
+
+# output
+Printing before function!
+I`m the function!
+Printing after function!
+```
+
+This a call a Wrapper Function. Or one way to write a wrapper function or just **wrapper**...
+
+This is used to modify the behavior of a function.
+
+Another way to use a wrapper is with decorators. Decorators, allow us to do the same thing as the last example, but in a simplier way.
+
+Let's see that...
+
+```python
+def wrapper_function(func):
+
+    def inner_function():
+        print('Printing before function!')
+        func()
+        print('Printing after function!')
+        
+    return inner_function
+ 
+@wrapper_function
+def a_function():
+    print('I`m the function')
+ 
+a_function()
+
+# output
+Printing before function!
+I`m the function!
+Printing after function!
+```
+
+ > Note that every time we call 'a_function()', the execution of that, will we wrapped with the wrapper_function.
+
 ## Iterators and Generators
 
 ### Iterators
