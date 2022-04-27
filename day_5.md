@@ -382,7 +382,7 @@ I`m the function!
 Printing after function!
 ```
 
- > Note that every time we call 'a_function()', the execution of that, will we wrapped with the wrapper_function.
+ > Note that every time we call 'a_function', the execution of that, will we wrapped with the 'wrapper_function'.
 
 ## Iterators and Generators
 
