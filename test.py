@@ -42,17 +42,33 @@
 # wrapping = wrapper_function(a_function)
 
 
-def wrapper_function(func):
+# def wrapper_function(func):
 
-    def inner_function():
-        print('Printing before function!')
-        func()
-        print('Printing after function!')
+#     def inner_function():
+#         print('Printing before function!')
+#         func()
+#         print('Printing after function!')
 
-    return inner_function
+#     return inner_function
  
-@wrapper_function
-def a_function():
-    print('I`m the function')
+# @wrapper_function
+# def a_function():
+#     print('I`m the function')
  
-a_function()
+# a_function()
+
+class Person:
+    '''
+    This is a person class and have name in it.
+    '''
+
+    def __init__(self, name):
+        self.name = name
+
+    def say_hi(self):
+        print(f'Hello, my name is {self.name}')
+
+
+a_person = Person('Nicolas')
+print(a_person.__doc__)
+a_person.say_hi()
