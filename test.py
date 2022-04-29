@@ -57,26 +57,33 @@
  
 # a_function()
 
-class Person:
+class Father:
     '''
     This is a person class and have name in it.
     '''
 
-    def __init__(self, name):
-        self.name = name
+    def __init__(self):
+        print(f'Fathers last name')
 
-    def say_hi(self):
-        print(f'Hello, my name is {self.name}')
 
-class Son(Person):
-    "This is a child class from Person"
+class Mother:
+    '''
+    This is a person class and have name in it.
+    '''
+
+    def __init__(self):
+        print(f'Mothers last name')
+
+
+class Son(Father, Mother):
+    "This is a child class from Mother and Father"
     isSon = True
 
-    def say_hi(self):
-        print(f'Hello, I am a Son and my name is {self.name}')
+    def __init__(self):
+        super().__init__()
+        print(f'I am a Son and I have both last names')
 
 
-my_father = Person('Pedro')
-my_father.say_hi()
-me = Son('Yo')
-me.say_hi()
+me = Son()
+print(Son.mro())
+print(Son.__mro__)

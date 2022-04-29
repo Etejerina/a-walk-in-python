@@ -195,3 +195,139 @@ Hello, I am a Son and my name is Ezequiel
 ```
 
 We can override all the methods from the parent class, including \_\_init__(), and all the other built-in, or dunder (preceded and succeeded by double underscores), methods.
+
+We can also use methods from the parent class and add them some other actions.
+
+### Python super()
+
+The super function returns a temporary object of the parent class (superclass) that allows access to all of its methods to its child class.
+
+Let's see it in action.
+
+```python
+class Person:
+    '''
+    This is a person class and have name in it.
+    '''
+
+    def __init__(self, name):
+        self.name = name
+
+    def say_hi(self):
+        print(f'Hello, my name is {self.name}')
+
+
+class Son(Person):
+    "This is a child class from Person"
+    isSon = True
+
+    def say_hi(self):
+        super().say_hi() # or Person.say_hi(self)
+        print(f'I am a Son!')
+
+
+my_father = Person('Pedro')
+my_father.say_hi()
+me = Son('Ezequiel')
+me.say_hi()
+
+# output
+Hello, my name is Pedro
+Hello, my name is Ezequiel # this in on the Son class, calling say_hi() from the parent class.
+I am a Son
+```
+
+In Python we call inherit from more than one class. Tha child class will get all the methods and attributes from all the parent classes.
+
+Let's see an example.
+
+```python
+class Father:
+    '''
+    This is a person class and have name in it.
+    '''
+
+    def __init__(self):
+        print(f'Fathers last name')
+
+
+class Mother:
+    '''
+    This is a person class and have name in it.
+    '''
+
+    def __init__(self):
+        print(f'Mothers last name')
+
+
+class Son(Father, Mother):
+    "This is a child class from Mother and Father"
+    isSon = True
+
+    def __init__(self):
+        Father.__init__(self)
+        Mother.__init__(self)
+        print(f'I am a Son and I have both last names')
+
+
+me = Son()
+
+# output
+Fathers last name
+Mothers last name
+I am a Son and I have both last names
+```
+
+Here, in the child class, we are calling explicitly both parent classes init methods. Now, if we use the super function, Python will check, it will check first the method in the first parent class. If the method doesn't exists, i'll check the second parent class and so on (if there were more parent classes). This is called Method Resolution Order (**MRO**).
+
+Let's see an example first.
+
+```python
+class Father:
+    '''
+    This is a person class and have name in it.
+    '''
+
+    def __init__(self):
+        print(f'Fathers last name')
+
+
+class Mother:
+    '''
+    This is a person class and have name in it.
+    '''
+
+    def __init__(self):
+        print(f'Mothers last name')
+
+
+class Son(Father, Mother):
+    "This is a child class from Mother and Father"
+    isSon = True
+
+    def __init__(self):
+        super().__init__(self)
+        print(f'I am a Son and I have both last names')
+
+
+me = Son()
+
+# output
+Fathers last name
+I am a Son and I have both last names
+```
+
+### Method Resolution Order (**MRO**)
+
+To keep it simple, it is the order in which a method is searched for in a classes hierarchy, as we saw above.
+
+if we call that function with the last example, this is what will happen:
+
+```python
+print(Son.mro()) # or print(Son.__mro__)
+
+# output
+(<class '__main__.Son'>, <class '__main__.Father'>, <class '__main__.Mother'>, <class 'object'>)
+```
+
+There are far more complex scenarios, but you get the idea.
