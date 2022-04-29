@@ -68,7 +68,15 @@ class Person:
     def say_hi(self):
         print(f'Hello, my name is {self.name}')
 
+class Son(Person):
+    "This is a child class from Person"
+    isSon = True
 
-a_person = Person('Nicolas')
-print(a_person.__doc__)
-a_person.say_hi()
+    def say_hi(self):
+        print(f'Hello, I am a Son and my name is {self.name}')
+
+
+my_father = Person('Pedro')
+my_father.say_hi()
+me = Son('Yo')
+me.say_hi()

@@ -12,7 +12,7 @@ An object is simply a collection of data (variables) and methods (functions) tha
 
 We an think of a **Class** as a prototype or blueprint of something.
 
-Classes are dinamic as they are created at runtime, and can be modified further after creation.
+Classes are dynamic as they are created at runtime, and can be modified further after creation.
 
 Classes are, by convention, named using Camel Case (camelCase). This is naming the class with words, without using spaces or underscores and starting every word with a capitalize letter.
 
@@ -59,7 +59,7 @@ Maybe is too much for our first time... Let's review that!
 
 We have a Person class to begin with... It has an attribute *name* and a method *say_hi*.
 
-So in the exmaple **eze** is an instance of the Person class, right? Well, I'm (almost) a Person... haha
+So in the example **eze** is an instance of the Person class, right? Well, I'm (almost) a Person... haha
 
 So, if we print **Person.name** we can see the output is the name attribute with the value 'Ezequiel'.
 
@@ -120,3 +120,78 @@ This is a person class and have name in it. Now we can pass it to the constructo
 ```
 
 > Note: with the special attribute '\_\_doc__'  we can see the docstring of that class.
+
+### inheritance
+
+*Inheritance* enable us to define a class that takes all the functionalities and attributes from a parent class and allows us to add more.
+
+It refers to defining a new class with little or no modification to an existing class. The new class is called derived (or child) class and the one from which it inherits is called the base (or parent) class.
+
+For example:
+
+```python
+class Person:
+    '''
+    This is a person class and have name in it.
+    '''
+
+    def __init__(self, name):
+        self.name = name
+
+    def say_hi(self):
+        print(f'Hello, my name is {self.name}')
+
+
+class Son(Person):
+    "This is a child class from Person"
+    isSon = True
+
+
+my_father = Person('Pedro')
+my_father.say_hi()
+me = Son('Ezequiel')
+me.say_hi()
+print(me.isSon)
+
+# output
+Hello, my name is Pedro
+Hello, my name is Ezequiel
+True
+```
+
+We can see that the child class has the *say_hi()* method, inherited from the parent class Person. So we only add, in this case, one attribute (*isSon*).
+
+We can also override a parent class method, like this.
+
+```python
+class Person:
+    '''
+    This is a person class and have name in it.
+    '''
+
+    def __init__(self, name):
+        self.name = name
+
+    def say_hi(self):
+        print(f'Hello, my name is {self.name}')
+
+
+class Son(Person):
+    "This is a child class from Person"
+    isSon = True
+
+    def say_hi(self):
+        print(f'Hello, I am a Son and my name is {self.name}')
+
+
+my_father = Person('Pedro')
+my_father.say_hi()
+me = Son('Ezequiel')
+me.say_hi()
+
+# output
+Hello, my name is Pedro
+Hello, I am a Son and my name is Ezequiel
+```
+
+We can override all the methods from the parent class, including \_\_init__(), and all the other built-in, or dunder (preceded and succeeded by double underscores), methods.

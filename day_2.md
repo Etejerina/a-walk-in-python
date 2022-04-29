@@ -6,7 +6,7 @@
   * [What are Variables?](./day_2.md#what-are-variables)
   * [Constants](./day_2.md#constants)
   * [Global Variables](./day_2.md#global-variables)
-  * [Multiple assigment and unpacking](./day_2.md#multiple-assigment-and-unpacking)
+  * [Multiple assignment and unpacking](./day_2.md#multiple-assignment-and-unpacking)
 * Data Types
   * [Built-in Data Types](day_2.md#data-types)
 
@@ -26,7 +26,7 @@ b = 1
 c = True
 ```
 
-As we said before, Python is dinamically typed, so the interpreter assumes the type from the type of the value assigned to that variable name. You can even change the type after they have been set.
+As we said before, Python is dynamically typed, so the interpreter assumes the type from the type of the value assigned to that variable name. You can even change the type after they have been set.
 
 ```python
 a = "Hello world!"
@@ -137,7 +137,7 @@ print('My name is ' + name)
 My name is Jose
 ```
 
-## Multiple assigment and unpacking
+## Multiple assignment and unpacking
 
 You can also assign multiple variables, like this...
 

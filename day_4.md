@@ -28,7 +28,7 @@ These are used to perform common mathematical operations.
 | Operator | Name
 |---|---|
 | + | addition
-| - | substraction
+| - | subtraction
 | * | multiplication
 | / | division
 | % | modulus
@@ -183,7 +183,7 @@ These are use to check if an element (or sequence of elements) are contained in 
 | not in | Returns True if a sequence with the specified value is not present in the object
 
 ```python
-original_bands = ['Faith No More', 'Soudgarden']
+original_bands = ['Faith No More', 'Soundgarden']
 print('Bush' in original_bands)
 print('ABBA' not in original_bands)
 
@@ -229,7 +229,7 @@ ___
 
 Now that we now about data types, variables and operators, we might need a lot of things in order to put all that to work.
 
-One of those 'things' are **Control Structures**, wich are used to modify the flow of execution of a certain code.
+One of those 'things' are **Control Structures**, which are used to modify the flow of execution of a certain code.
 
 ## Control Structures
 
@@ -250,7 +250,7 @@ There are two kinds of Control Structures:
 
 The If statement is used to execute a bunch of code, or another, depending on the evaluation of a condition.
 
-Sintax:
+Syntax:
 
 ```python
 if condition:
@@ -269,7 +269,7 @@ if a_number > other_number:
 a_number is bigger than other_number
 ```
 
-As we see `a_number > other_number` ois the condition in the example. This can be everything that evañluates as a Boolean value `True` or `False`, or even a `truthy` or `falsy` value.
+As we see `a_number > other_number` ois the condition in the example. This can be everything that evaluates as a Boolean value `True` or `False`, or even a `truthy` or `falsy` value.
 
 ```python
 if False:
@@ -282,11 +282,11 @@ if False:
 Here we see that the condition is not met, or in this case is False, so the code indented under the if statement is not executed.
 
 We might need to do one thing if true, and another if false.
-For that we have `If...else` statementes.
+For that we have `If...else` statements.
 
 ### If...else statement
 
-Sintax:
+Syntax:
 
 ```python
 if condition:
@@ -313,7 +313,7 @@ Ok, let's move on...
 There is another way to write this code and that way is using one liners, ternary operators, or Conditional Expressions.
 
 ```python
-if True: print('This is True') # if statemente
+if True: print('This is True') # if statement
 
 print('This is True') if True else print('This is False') # if...else statement
 ```
@@ -328,7 +328,7 @@ Here is the syntax:
 
 ```python
 if first_condition:
-    # some conde
+    # some code
 elif second_condition:
     # some other code
 else:
@@ -371,7 +371,7 @@ In Python there is not such thing as a Switch/Case, so you'll have to use the co
 
 ### While Loop
 
-The While loop is used to perform an acrion, or a bunch of code, as long as a condition is true.
+The While loop is used to perform an action, or a bunch of code, as long as a condition is true.
 
 Syntax:
 
@@ -451,7 +451,7 @@ while a_number < 10:
 
 In order to complete the While loop syntax, we should include the `else` statement.
 
-This will be excuted when the condition is not met.
+This will be executed when the condition is not met.
 
 Let's take a look at it...
 
@@ -577,7 +577,7 @@ Now we know about Lists and For loops, we can return to lists comprehension, som
 
 I think we are now tying loose ends, right?
 
-We'ver seen this, for instance...
+We've seen this, for instance...
 
 ```python
 even_numbers = [x for x in range(20) if x % 2 == 0]
@@ -589,9 +589,9 @@ print(even_numbers)
 
 Here we have, besides a list, a for loop and an if statement.
 
-Putting it into words it would be **"we have x for every x, from 0 to 19 (range(20)), that the modulus is 0"** or to be simplier, **"a list of even numbers betwenn 0 and 19"**. *Let's save for another day if 0 is even, odd or none of the above...*
+Putting it into words it would be **"we have x for every x, from 0 to 19 (range(20)), that the modulus is 0"** or to be simpler, **"a list of even numbers between 0 and 19"**. *Let's save for another day if 0 is even, odd or none of the above...*
 
->Note: rememer that modulus is the remainder of a division, after one number is divided by another.
+>Note: remember that modulus is the remainder of a division, after one number is divided by another.
 
 We'll see that the previous expression is equivalent to this...
 
@@ -608,7 +608,7 @@ print(even_numbers)
 [0, 2, 4, 6, 8, 10, 12, 14, 16, 18]
 ```
 
-What if we want everuy item in that list multiplied by 2?
+What if we want every item in that list multiplied by 2?
 
 Let's do it both ways...
 
@@ -672,9 +672,9 @@ Traceback (most recent call last):
 ZeroDivisionError: division by zero
 ```
 
-So, we might wanty to **catch** that exception in order to avoid the program to stop exectution.
+So, we might want to **catch** that exception in order to avoid the program to stop execution.
 
-We can do this, using **Try...Excepti** statement.
+We can do this, using **Try...Except** statement.
 
 ```python
 try:
@@ -689,7 +689,7 @@ An exception occurred
 The code continues...
 ```
 
-This way, the exception is catched, an error is showned but the code keeps runing. The idea is to include the block of code that can fail, in the try statement.
+This way, the exception is caught, an error is showed but the code keeps running. The idea is to include the block of code that can fail, in the try statement.
 
 As many different errors can occur, we can catch different types of exceptions. For example:
 
@@ -750,7 +750,7 @@ There was no error
 The code continues...
 ```
 
-The difference wityh the last line, is that this line will always be exzecuted.
+The difference with the last line, is that this line will always be executed.
 
 There is also a **finally** block, that lets you execute a code, no matter the result the try block.
 

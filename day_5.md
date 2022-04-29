@@ -8,7 +8,7 @@
 
 ___
 
-A **function** is a series of statements wich returns some value to a caller. It can also be passed zero or more arguments, wich may be used in the execution of this block of code, or body of the function.
+A **function** is a series of statements which returns some value to a caller. It can also be passed zero or more arguments, which may be used in the execution of this block of code, or body of the function.
 
 > A parameter is a variable in a method definition. When a method is called, the arguments are the data you pass into the method's parameters.
 
@@ -46,11 +46,11 @@ It's very important that the amount of arguments you pass to a function, are the
 
 ```python
 def say_hi(name, lastname):
-    print(f'Hi! My name is {name} {lastanme}')
+    print(f'Hi! My name is {name} {lastname}')
 
 say_hi('Eze')
 
-# ooutput
+# output
 Traceback (most recent call last):
   File "<stdin>", line 1, in <module>
 TypeError: say_hi() missing 1 required positional argument: 'lastname'
@@ -70,7 +70,7 @@ Traceback (most recent call last):
 TypeError: say_hi() takes 1 positional argument but 2 were given
  ```
 
->Note that the function hasn't a return statement. These are called void functions. Are functions that do something that doesn't require returnung a value.
+>Note that the function hasn't a return statement. These are called void functions. Are functions that do something that doesn't require returning a value.
 
 As we said before, in the function definition, in parentheses, we have the parameters, that can be zero or many.
 
@@ -108,7 +108,7 @@ Another way to pass arguments, are keyword arguments, or kwargs for short. These
 This way the order of the arguments does not matter.
 
 ```python
-def a_function(number1, mumber2, number3):
+def a_function(number1, number2, number3):
     print(f'The first number is {number1}')
 
 a_function(number3 = 23, number1 = 2, number2 = 125)
@@ -117,7 +117,7 @@ a_function(number3 = 23, number1 = 2, number2 = 125)
 The first number is 2
 ```
 
-We also have **Arbitrery Keyword Arguments**. This way the function will receive a dictionary of arguments, and can access the items accordingly.
+We also have **Arbitrary Keyword Arguments**. This way the function will receive a dictionary of arguments, and can access the items accordingly.
 
 ```python
 def a_function(**numbers):
@@ -133,7 +133,7 @@ The first number is 2
 
 In this case we use the unpacking operator '\*\*', that will take all keyword arguments given in the input and **pack** them all into a dictionary.
 
-In a function, we can alwyas set a **default value** for a parameter.
+In a function, we can always set a **default value** for a parameter.
 
 For example...
 
@@ -153,7 +153,7 @@ I am from Argentina
 
 One more very nice thing ¡ about functions in Python for me is, that you can return more than one value.
 
-We said that we have void functions that doesn't retunr a value, and functions that does return a value... or more!
+We said that we have void functions that doesn't return a value, and functions that does return a value... or more!
 
 Let's see an example of that.
 
@@ -192,23 +192,23 @@ print(squared)
 
 What is recursion?
 
-Recursion is a mathematical and programming concept in wich a function calls itself.
-It can be dangerous because we need to define a base case in wich the function reach of stopping point.
+Recursion is a mathematical and programming concept in which a function calls itself.
+It can be dangerous because we need to define a base case in which the function reach of stopping point.
 
-For example, in a countdown we start on a certain number, it substracts 1,and call it self. Every time it calls itself, the call of the function pass the result as an argument. But we need to stop when the result is 0. If not, we are trapped in an infinite loop.
+For example, in a countdown we start on a certain number, it subtracts 1,and call it self. Every time it calls itself, the call of the function pass the result as an argument. But we need to stop when the result is 0. If not, we are trapped in an infinite loop.
 
 Let's see...
 
 ```python
-def recursive_substraction(number):
+def recursive_subtraction(number):
     if number > 0:
         print(number)    
         number -= 1
-        recursive_substraction(number)
+        recursive_subtraction(number)
     
     return 'Done!'
 
-print(recursive_substraction(10))
+print(recursive_subtraction(10))
 
 # output
 10
@@ -224,7 +224,7 @@ print(recursive_substraction(10))
 Done!
 ```
 
-This exmple is pretty silly. I bet most of you realized that you could have done it wuth a simple for loop.
+This example is pretty silly. I bet most of you realized that you could have done it with a simple for loop.
 You're right!
 
 Let's go with something more difficult... What about a factorial function?
@@ -261,7 +261,7 @@ If we follow the execution of the code we could understand why.
 
 ## Lambdas
 
-A lambda function is a small anonimous function. It can have multiple parameters, but only one expression.
+A lambda function is a small anonymous function. It can have multiple parameters, but only one expression.
 
 Syntax:
 
@@ -280,7 +280,7 @@ print(square_lambda(5))
 25
 ```
 
-Python doesn't encourage using immediately invoked lambda expressions like in the exmaple. It simply results from a lambda expression being callable, unlike the body of a normal function.
+Python doesn't encourage using immediately invoked lambda expressions like in the example. It simply results from a lambda expression being callable, unlike the body of a normal function.
 
 ```python
 print((lambda a : a ** 2)(5))
@@ -356,7 +356,7 @@ This a call a Wrapper Function. Or one way to write a wrapper function or just *
 
 This is used to modify the behavior of a function.
 
-Another way to use a wrapper is with decorators. Decorators, allow us to do the same thing as the last example, but in a simplier way.
+Another way to use a wrapper is with decorators. Decorators, allow us to do the same thing as the last example, but in a simpler way.
 
 Let's see that...
 
@@ -390,11 +390,11 @@ Printing after function!
 
 An iterator is an object that contains a countable number of values and can be iterated upon.
 
-In Pyhton these objects have both methods, \_\_iter__() and \_\_next__().
+In Python these objects have both methods, \_\_iter__() and \_\_next__().
 
-As we saw, lists, tuples, sets and disctionaries (*and even strings*) are iterable objects, wich you can get an iterator from.
+As we saw, lists, tuples, sets and dictionaries (*and even strings*) are iterable objects, which you can get an iterator from.
 
-These have the iter() method wqich is used to get an iterator.
+These have the iter() method which is used to get an iterator.
 
 ```python
 a_list = ['Ezequiel', 'Javier', 'Emilio', 'Nicolas']
@@ -420,7 +420,7 @@ Later, when we learn about Classes, we0ll see how toi create an Iterator Class.
 
 ### Generators
 
-A Generator or generator function is a kind of function that creates a lazy iterartor. These are objects that you can loop over like a *list*. However, unlike lists, lazy iterators do not store their contents in memory.
+A Generator or generator function is a kind of function that creates a lazy iterator. These are objects that you can loop over like a *list*. However, unlike lists, lazy iterators do not store their contents in memory.
 
 Let's see something first...
 
@@ -443,7 +443,7 @@ for n in range(10):
 ```
 
 Now, what if want to create a list from 0 to infinite?
-We could do the same as above, but we0ll have an unstopable (not really) loop of increasing numbers, with no possibility to do anything while the code is executing, not to mention, the enormous amount of memory the the list will occupy.
+We could do the same as above, but we0ll have an unstoppable (not really) loop of increasing numbers, with no possibility to do anything while the code is executing, not to mention, the enormous amount of memory the the list will occupy.
 
 So, using a generator function we have a much better alternative!
 
@@ -475,7 +475,7 @@ Traceback (most recent call last):
   File "<stdin>", line 2, in <module>
 ```
 
-As we said above, we have iterate the function with a for loop and we are in the excat same scenario as before, but if we do this...
+As we said above, we have iterate the function with a for loop and we are in the exact same scenario as before, but if we do this...
 
 ```python
 a_generator = infinite_sequence()
@@ -484,14 +484,14 @@ next(a_generator)
 next(a_generator)
 next(a_generator)
 
-# ouput
+# output
 0
 1
 2
 3
 ```
 
-And everytime we call the next method of the generator, we'll have the next value.
+And every time we call the next method of the generator, we'll have the next value.
 
 As we always say, this is a dumb example.
 But what if we want the first 50000 items of the fibonacci sequence, to do some batch processing?
@@ -529,7 +529,7 @@ def fibonacci(n):
 fibonacci(50000)
 ```
 
-This time, we already have the porcessed data, but again, a hiuge list, occupying loads of memory.
+This time, we already have the processed data, but again, a huge list, occupying loads of memory.
 
 Option 3:
 
@@ -548,11 +548,11 @@ count = 50
 for n in range(count / to):
     print(fibonacci(from, count))
     from += count
-    to += coutn
+    to += count
     # or whatever we need to do...
 ```
 
-Here we have to loops, and have to keep track of the variables, wich in a complicated context can lead to a large number of mistakes and bugs.
+Here we have to loops, and have to keep track of the variables, which in a complicated context can lead to a large number of mistakes and bugs.
 
 Best option:
 
@@ -574,7 +574,7 @@ print(next(gen))
 print(next(gen))
 ```
 
-This way we don't have to keep track on wich batch in coming next or any other thing. We just call the next method the times we need, even inside a loop.
+This way we don't have to keep track on which batch in coming next or any other thing. We just call the next method the times we need, even inside a loop.
 
 What we are doing is to avoid using a callback, and use a generator and the *yield* reserved word.
 

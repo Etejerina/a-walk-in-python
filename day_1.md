@@ -42,7 +42,7 @@ It is a programming language with strong abstraction from the details of the com
 
 ### Cross-platform
 
-Refers to a language that is supportes in multiple platforms, such as Windows, Linux, Mac, Raspberry Pi, etc.
+Refers to a language that is supports in multiple platforms, such as Windows, Linux, Mac, Raspberry Pi, etc.
 
 ### Multi-paradigm
 
@@ -60,7 +60,7 @@ Python is an easy to learn language since it has a simple syntax similar to the 
 
 There are many more advantages, but these two qualities were the most important for me, since like many of us, we are self-taught developers.
 
-Having both an easy to learn and a very rich language, that can be suplemented with lots of libraries, are the things that makes Python a very powerful one.
+Having both an easy to learn and a very rich language, that can be supplemented with lots of libraries, are the things that makes Python a very powerful one.
 
 ## Clarifying
 

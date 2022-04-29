@@ -20,7 +20,7 @@ greeting = 'Hello World!'
 print(greeting)
 
 #output
-Hello Wolrd!
+Hello World!
 ```
 
 There is a way to assign a multiline string to a variable by using three quotes. You can do that this way:
@@ -107,7 +107,7 @@ Keeping in mind what we saw, we can extract or return a part of the string (or a
 This is called ***slicing***.
 
 Let's say that I want to print parts (or substrings) of the greeting variable.
-We will have to use this sintax:
+We will have to use this syntax:
 
 {var_name}[{start}:{end}:{step}]
 
@@ -180,7 +180,7 @@ So, we have a list of methods that returns a **modified copy** of the string, li
 
 You can see the complete list [here](https://www.w3schools.com/python/python_ref_string.asp).
 
-For examnple:
+For example:
 
 ```python
 greeting = 'Hello cruel World!'
@@ -497,7 +497,7 @@ There are more options to change a range of items. You can read about them [here
 The way to join two lists, is this...
 
 ```python
-first_list = ['Peral Jam', 'guitar']
+first_list = ['Perl Jam', 'guitar']
 second_list = [10, True]
 a_list = first_list + second_list
 
@@ -548,7 +548,7 @@ guitar
 As many of us saw when we were children, there is more than one way to create a set, or in this case a list. By extension and by comprehension.
 We have covered the first one. Now let's see the second.
 
-Here is the sintax:
+Here is the syntax:
 
 ```python
 newlist = [expression for item in iterable if condition == True]
@@ -684,7 +684,7 @@ print(a_set)
 
 >Note that over and over we have the same result, or the same set if you will.
 
-Let's ytry to add an immutable item to the set.
+Let's try to add an immutable item to the set.
 
 ```python
 a_set = {'Pearl jam', 'guitar', 10, True}
@@ -761,7 +761,7 @@ print(a_dict['band'])
 Pearl Jam
 ```
 
-Seeing how you can access a dicts item, I think you could guess why dicts don't allow duplicate keys. Just to state the obvious, if there were two equal keys, how could Python realize wich one you want to access?
+Seeing how you can access a dicts item, I think you could guess why dicts don't allow duplicate keys. Just to state the obvious, if there were two equal keys, how could Python realize which one you want to access?
 
 There is another way to access a dicts item, that can be better to use in some scenarios, and is using the *get* method.
 
@@ -777,7 +777,7 @@ print(a_dict.get('band'))
 Pearl Jam
 ```
 
-What's the difference??? Well, using the *get* method, if you try to access an item wich key doesn't exists, the returned value will be None, instead of an Exception.
+What's the difference??? Well, using the *get* method, if you try to access an item which key doesn't exists, the returned value will be None, instead of an Exception.
 
 ```python
 print(a_dict['drummer'])
@@ -808,7 +808,7 @@ print(a_dict)
 }
 ```
 
-In order to add an item to a dict, you can use the same sintax you use to change an item.
+In order to add an item to a dict, you can use the same syntax you use to change an item.
 
 ```python
 a_dict['singer'] = 'Eddie Vedder' # or a_dict.update({'singer': 'Eddie Vedder'})
@@ -824,7 +824,7 @@ print(a_dict)
 }
 ```
 
-There are alse two important methods in order to know a dicts content.
+There are also two important methods in order to know a dicts content.
 One is *keys* and the other is *values*.
 
 Let's see...
