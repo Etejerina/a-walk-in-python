@@ -57,33 +57,46 @@
  
 # a_function()
 
-class Father:
+# class Father:
+#     '''
+#     This is a person class and have name in it.
+#     '''
+
+#     def __repr__(self):
+#         return 'This is a the Father class'
+
+# class Mother:
+#     '''
+#     This is a person class and have name in it.
+#     '''
+
+#     def __init__(self):
+#         print(f'Mothers last name')
+
+
+# class Son(Father, Mother):
+#     "This is a child class from Mother and Father"
+#     isSon = True
+
+#     def __init__(self):
+#         super().__init__()
+#         print(f'I am a Son and I have both last names')
+
+# somebody = Father()
+# print(Son)
+
+class Person:
     '''
     This is a person class and have name in it.
     '''
 
-    def __init__(self):
-        print(f'Fathers last name')
+    def __init__(self, name):
+        self.name = name
 
+    # def __repr__(self):
+    #     return f'I am of class Person and my name is {self.name}'
 
-class Mother:
-    '''
-    This is a person class and have name in it.
-    '''
-
-    def __init__(self):
-        print(f'Mothers last name')
-
-
-class Son(Father, Mother):
-    "This is a child class from Mother and Father"
-    isSon = True
-
-    def __init__(self):
-        super().__init__()
-        print(f'I am a Son and I have both last names')
-
-
-me = Son()
-print(Son.mro())
-print(Son.__mro__)
+me = Person('Ezequiel')
+another_guy = Person('Nicolas')
+print(me)
+print(another_guy)

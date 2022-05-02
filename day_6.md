@@ -237,7 +237,7 @@ Hello, my name is Ezequiel # this in on the Son class, calling say_hi() from the
 I am a Son
 ```
 
-In Python we call inherit from more than one class. Tha child class will get all the methods and attributes from all the parent classes.
+In Python we call inherit from more than one class. The child class will get all the methods and attributes from all the parent classes.
 
 Let's see an example.
 
@@ -331,3 +331,85 @@ print(Son.mro()) # or print(Son.__mro__)
 ```
 
 There are far more complex scenarios, but you get the idea.
+
+### Dunder Methods
+
+Dunder Methods are the special methods that start and end with the double underscores. Dunder methods are not meant to be invoked directly by you, but the invocation happens internally from the class on a certain action.
+
+For example, when you add two numbers using the + operator, internally, the \_\_add__() method will be called.
+
+We can use the dir() function to see the number of dunder methods inherited by a class, but not only dunder methods but all methods.
+
+Let's see an example with the classed defined above...
+
+```python
+print(dir(Father))
+
+# output
+['__class__', '__delattr__', '__dict__', '__dir__', '__doc__', '__eq__', '__format__', '__ge__', '__getattribute__', '__gt__', '__hash__', '__init__', '__init_subclass__', '__le__', '__lt__', '__module__', '__ne__', '__new__', '__reduce__', '__reduce_ex__', '__repr__', '__setattr__', '__sizeof__', '__str__', '__subclasshook__', '__weakref__']
+```
+
+As we know, everything is a class in Python, so we can run this...
+
+```python
+print(dir(int))
+
+# output
+['__abs__', '__add__', '__and__', '__bool__', '__ceil__', '__class__', '__delattr__', '__dir__', '__divmod__', '__doc__', '__eq__', '__float__', '__floor__', '__floordiv__', '__format__', '__ge__', '__getattribute__', '__getnewargs__', '__gt__', '__hash__', '__index__', '__init__', '__init_subclass__', '__int__', '__invert__', '__le__', '__lshift__', '__lt__', '__mod__', '__mul__', '__ne__', '__neg__', '__new__', '__or__', '__pos__', '__pow__', '__radd__', '__rand__', '__rdivmod__', '__reduce__', '__reduce_ex__', '__repr__', '__rfloordiv__', '__rlshift__', '__rmod__', '__rmul__', '__ror__', '__round__', '__rpow__', '__rrshift__', '__rshift__', '__rsub__', '__rtruediv__', '__rxor__', '__setattr__', '__sizeof__', '__str__', '__sub__', '__subclasshook__', '__truediv__', '__trunc__', '__xor__', 'as_integer_ratio', 'bit_length', 'conjugate', 'denominator', 'from_bytes', 'imag', 'numerator', 'real', 'to_bytes']
+```
+
+Another example:
+
+```python
+print(dir(Son))
+
+# output
+['__class__', '__delattr__', '__dict__', '__dir__', '__doc__', '__eq__', '__format__', '__ge__', '__getattribute__', '__gt__', '__hash__', '__init__', '__init_subclass__', '__le__', '__lt__', '__module__', '__ne__', '__new__', '__reduce__', '__reduce_ex__', '__repr__', '__setattr__', '__sizeof__', '__str__', '__subclasshook__', '__weakref__', 'isSon']
+```
+
+> Note at the end of the list, we can see the "isSon" method we have created!
+
+We have also said that, if needed, we can override these methods. Actually, this is what many libraries do.
+
+```python
+class Person:
+    '''
+    This is a person class and have name in it.
+    '''
+
+    def __init__(self, name):
+        self.name = name
+
+me = Person('Ezequiel')
+another_guy = Person('Nicolas')
+print(me)
+print(another_guy
+
+# output
+<__main__.Person object at 0x000001F95E1DDFD0>
+<__main__.Person object at 0x000001F95E1DDD60>
+```
+
+In this output we can't tell which is which, so let's do something to get a more interesting output.
+
+```python
+class Person:
+    '''
+    This is a person class and have name in it.
+    '''
+
+    def __init__(self, name):
+        self.name = name
+
+    def __repr__(self):
+        return f'I am of class Person and my name is {self.name}'
+
+me = Person('Ezequiel')
+another_guy = Person('Nicolas')
+print(me)
+print(another_guy)
+
+# output
+I am of class Person and my name is Ezequiel
+I am of class Person and my name is Nicolas
+``
