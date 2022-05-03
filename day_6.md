@@ -14,7 +14,7 @@ We an think of a **Class** as a prototype or blueprint of something.
 
 Classes are dynamic as they are created at runtime, and can be modified further after creation.
 
-Classes are, by convention, named using Camel Case (camelCase). This is naming the class with words, without using spaces or underscores and starting every word with a capitalize letter.
+Classes are, by convention, named using Pascal Case (PascalCase). This is naming the class with words, without using spaces or underscores and starting every word with a capitalize letter.
 
 Syntax:
 
@@ -93,14 +93,14 @@ eze.say_hi()
 Hello, my name is Nicolas
 ```
 
-Let's suppose that we don't want the instance to have a default name... we want to to create a persons instance and set a name. For that we are going to need a constructor.
+Let's suppose that we don't want the instance to have a default name... we want to to create a persons instance and set a name. For that we are going to need a special method.
 
-For that we'll need to use the built-in **\_\_init__()** function, which is always executed when the class is being initiated.
+For that we'll need to use the built-in **\_\_init__()** special method, which is always executed when the class is being initiated.
 
 ```python
 class Person:
     '''
-    This is a person class and have name in it. Now we can pass it to the constructor!.
+    This is a person class and have name in it. Now we can pass it to the __init__() special method!.
     '''
 
     def __init__(self, name):
@@ -116,7 +116,7 @@ print(a_person.__doc__)
 
 # output
 Hello, my name is Nicolas
-This is a person class and have name in it. Now we can pass it to the constructor!.
+This is a person class and have name in it. Now we can pass it to the __init__() special method !.
 ```
 
 > Note: with the special attribute '\_\_doc__'  we can see the docstring of that class.
