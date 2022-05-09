@@ -1,6 +1,6 @@
 # [A walk in Python](/README.md)
 
-## Day 5
+## Day 6
 
 * Classes / Objects
 

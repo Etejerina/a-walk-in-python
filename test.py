@@ -85,18 +85,23 @@
 # somebody = Father()
 # print(Son)
 
-class Person:
-    '''
-    This is a person class and have name in it.
-    '''
+# class Person:
+#     '''
+#     This is a person class and have name in it.
+#     '''
 
-    def __init__(self, name):
-        self.name = name
+#     def __init__(self, name):
+#         self.name = name
 
-    # def __repr__(self):
-    #     return f'I am of class Person and my name is {self.name}'
+#     # def __repr__(self):
+#     #     return f'I am of class Person and my name is {self.name}'
 
-me = Person('Ezequiel')
-another_guy = Person('Nicolas')
-print(me)
-print(another_guy)
+# me = Person('Ezequiel')
+# another_guy = Person('Nicolas')
+# print(me)
+# print(another_guy)
+
+from myModule import a_function, my_name
+
+a_function()
+print(my_name)
