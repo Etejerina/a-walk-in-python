@@ -2,8 +2,8 @@
 
 ## Day 7
 
-* Modules
-* Regular Packages
+* [Modules](day_7.md#modules)
+* [Regular Packages](day_7.md#regular-packages)
 
 ## **Modules**
 

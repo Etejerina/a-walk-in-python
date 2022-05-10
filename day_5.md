@@ -2,7 +2,14 @@
 
 ## Day 5
 
-* Functions
+* [Functions](day_5.md#functions)
+  * [Recursion](day_5.md#recursion)
+* [Lambdas](day_5.md#lambdas)
+* [Wrapper Functions](day_5.md#wrapper-functions)
+* [Iterators and Generators](day_5.md#iterators-and-generators)
+  * [Iterators](day_5.md#iterators)
+  * [Generators](day_5.md#generators)
+  * [Generator expressions](day_5.md#generator-expressions)
 
 ## **Functions**
 
@@ -327,7 +334,7 @@ In this case we are passing to 'n_times', a value and a lambda function. Again i
 
 More about [lambdas here](https://realpython.com/python-lambda/).
 
-### Wrapper Functions
+## Wrapper Functions
 
 We have talked about high-order functions. Another way to see this particular case, is a function wrapping another one...
 
@@ -601,3 +608,9 @@ print(next(squared))
 9
 16
 ```
+
+___
+
+[Go to Day 6](day_6.md)
+
+___

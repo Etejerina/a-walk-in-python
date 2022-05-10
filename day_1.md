@@ -13,7 +13,7 @@
   * [IDE (VS Code)](https://code.visualstudio.com/)
   * [Pip](day_1.md#pip)
   * [Virtual Environments](day_1.md#virtual-environments)
-  * [Syntax](day_1.md@syntax)
+  * [Syntax](day_1.md#syntax)
 
 ## **Introduction**
 

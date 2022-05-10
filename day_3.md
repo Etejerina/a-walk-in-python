@@ -3,7 +3,14 @@
 ## Day 3
 
 * Data Types
-  * [Built-in Data Types](day_2.md#data-types)
+  * [Strings](day_3.md#strings)
+  * [Numeric Types](day_3.md#numeric-types)
+  * [Booleans](day_3.md#booleans)
+* [Collections](day_3.md#collections)
+  * [Lists](day_3.md#lists)
+  * [Tuples](day_3.md#tuples)
+  * [Sets](day_3.md#sets)
+  * [Dictionaries](day_3.md#dictionaries)
 
 ## **Data Types**
 
@@ -101,7 +108,7 @@ print(len(greeting))
 12
 ```
 
-## Slicing strings
+### Slicing strings
 
 Keeping in mind what we saw, we can extract or return a part of the string (or a list for that matter...)
 This is called ***slicing***.
@@ -270,7 +277,7 @@ Numeric types in general are pretty much self explanatory.
 
 That's why I will show you some examples.
 
-## Integers
+### Integers
 
 ```python
 a = 0
@@ -283,7 +290,7 @@ print(type(a)) # or b or c with the same output
 <class 'int'>
 ```
 
-## Floats
+### Floats
 
 ```python
 a = 1.25
@@ -839,3 +846,9 @@ dict_values(['Pearl Jam', 'guitar', 10, True])
 ```
 
 By the way, [here](https://www.w3schools.com/python/python_dictionaries_methods.asp) is the list of dicts methods, which are many and pretty self explanatory.
+
+___
+
+[Go to Day 4](day_4.md)
+
+___

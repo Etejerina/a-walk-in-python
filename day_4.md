@@ -3,7 +3,19 @@
 ## Day 4
 
 * Operators
-  * [Built-in Data Types](day_2.md#data-types)
+  * [Arithmetic operators](day_4#arithmetic-operators)
+  * [Assignment operators](day_4#assignment-operators)
+  * [Comparison operators](day_4.md#comparison-operators)
+  * [Logical operators](day_4.md#logical-operators)
+  * [Identity operators](day_4.md#identity-operators)
+  * [Membership operators](day_4.md#membership-operators)
+  * [Bitwise operators](day_4.md#bitwise-operators)
+* [Control Structures](day_4.md#control-structures)
+  * [Conditionals](day_4.md#conditionals)
+  * [Loops](day_4.md#loops)
+    * [While Loop](day_4.md#while-loop)
+    * [For Loop](day_4.md#for-loop)
+  * [Exceptions](day_4.md#exceptions)
 
 ## **Operators**
 
@@ -788,3 +800,9 @@ Exception: We don`t want the value of x to be zero!
 ```
 
 We can see the last line of the exception, with the description we have created.
+
+___
+
+[Go to Day 5](day_5.md)
+
+___

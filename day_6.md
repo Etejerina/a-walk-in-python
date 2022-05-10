@@ -2,7 +2,11 @@
 
 ## Day 6
 
-* Classes / Objects
+* [Classes / Objects](day_6.md#classes--objects)
+* [Inheritance](day_6.md#inheritance)
+  * [Python super()](day_6.md#python-super)
+* [Method Resolution Order (MRO)](day_6.md#method-resolution-order-mro)
+* [Dunder Methods](day_6.md#dunder-methods)
 
 ## **Classes / Objects**
 
@@ -121,7 +125,7 @@ This is a person class and have name in it. Now we can pass it to the __init__()
 
 > Note: with the special attribute '\_\_doc__'  we can see the docstring of that class.
 
-### inheritance
+## Inheritance
 
 *Inheritance* enable us to define a class that takes all the functionalities and attributes from a parent class and allows us to add more.
 
@@ -317,7 +321,7 @@ Fathers last name
 I am a Son and I have both last names
 ```
 
-### Method Resolution Order (**MRO**)
+## Method Resolution Order (**MRO**)
 
 To keep it simple, it is the order in which a method is searched for in a classes hierarchy, as we saw above.
 
@@ -332,7 +336,7 @@ print(Son.mro()) # or print(Son.__mro__)
 
 There are far more complex scenarios, but you get the idea.
 
-### Dunder Methods
+## Dunder Methods
 
 Dunder Methods are the special methods that start and end with the double underscores. Dunder methods are not meant to be invoked directly by you, but the invocation happens internally from the class on a certain action.
 
@@ -412,4 +416,10 @@ print(another_guy)
 # output
 I am of class Person and my name is Ezequiel
 I am of class Person and my name is Nicolas
-``
+```
+
+___
+
+[Go to Day 7](day_7.md)
+
+___

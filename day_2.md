@@ -186,7 +186,7 @@ World
 
 ___
 
-## Data Types
+## **Data Types**
 
 ## Built-in Data Types
 
@@ -265,3 +265,9 @@ print(type(c))
 1
 <class 'str'>
 ```
+
+___
+
+[Go to Day 3](day_3.md)
+
+___
