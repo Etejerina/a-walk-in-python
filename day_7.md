@@ -219,7 +219,7 @@ def a_function(an_int: int) -> Union[int, str]:
     return 1 # or return '1'
 ```
 
-From Python 3.10 on, we can replace *Union[type, type]* with *type | type*, and we don't have to import *Union*
+From **Python 3.10** on, we can replace *Union[type, type]* with *type | type*, and we don't have to import *Union*
 
 ```python
 def a_function(an_int: int) -> int | str:
