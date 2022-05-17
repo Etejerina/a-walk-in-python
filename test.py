@@ -101,7 +101,12 @@
 # print(me)
 # print(another_guy)
 
-from myModule import a_function, my_name
+# from myModule import a_function, my_name
 
-a_function()
-print(my_name)
+# a_function()
+# print(my_name)
+
+number = int | float
+
+def a_function() -> number:
+    return 1

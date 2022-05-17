@@ -4,6 +4,7 @@
 
 * [Modules](day_7.md#modules)
 * [Regular Packages](day_7.md#regular-packages)
+* [Type Hinting](day_7.md#type-hinting)
 
 ## **Modules**
 
@@ -173,3 +174,68 @@ modules.an_int_function()
 modules.a_string_function()
 modules.a_bool_function()
 ```
+
+## Type hinting
+
+From Python 3.5 on, there is way to "define" the type of a value within your Python code.
+
+**This is just a hint. The application will run with no warnings nor errors!!!**
+
+Let's see how can we add type information to a function. We can do it over parameters and return values.
+
+```python
+def a_function(a_string_param: str, number_param: int) -> bool:
+    # some code here
+    return True
+```
+
+This means that the function will receive a string, a number and it will return a boolean value.
+
+We can use all kind of types. With int, float, str and bool we can do it without importing any library.
+
+In order to add typing for dictionaries, tuples, lists, sets we have to import those types from the typing class.
+
+```python
+from typing import List
+
+a_list: List = [1, 2, 3, 4]
+```
+
+We can use the None type if we have a void function.
+
+```python
+def a_function(a_string: str) -> None:
+    print(f'This is a string - {a_string}')
+```
+
+Maybe we have a function returning two or more different type of values. In this case we can use Union.
+
+These will identify the return value with either of the two types of value.
+
+```python
+from typing import Union
+
+def a_function(an_int: int) -> Union[int, str]:
+    return 1 # or return '1'
+```
+
+From Python 3.10 on, we can replace *Union[type, type]* with *type | type*, and we don't have to import *Union*
+
+```python
+def a_function(an_int: int) -> int | str:
+    return 1 # or return '1'
+```
+
+We can also use an alias.
+Let's see that in an example.
+
+```python
+number = int | float
+
+def a_function() -> number:
+    return 1.5
+```
+
+> In this case we are creating the type number as an alias of the union of int and float types.
+
+There is much more on type hinting still in development, so maybe we will an update on this.
