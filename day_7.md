@@ -238,4 +238,4 @@ def a_function() -> number:
 
 > In this case we are creating the type number as an alias of the union of int and float types.
 
-There is much more on type hinting still in development, so maybe we will an update on this.
+There is much more on type hinting still in development, so maybe we will an update on this. [Here](https://docs.python.org/3/library/typing.html) we have a lot of info on this subject.
