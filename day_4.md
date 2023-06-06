@@ -379,6 +379,77 @@ if a > b and b > c or b == c:
 
 In Python there is not such thing as a Switch/Case, so you'll have to use the complete if statement.
 
+**Wait!**
+
+In Python 3.10 we have Switch/Case statement, but it's called Match/Case
+Let's see some examples.
+
+In the past we could have done this:
+
+```python
+http_code = "418"
+
+if http_code == "418":
+    print("OK")
+    do_something()
+elif http_code == "404":
+    print("Not Found")
+    do_something()
+elif http_code == "418"
+    print("I'm a teapot")
+    do_something()
+else:
+    print("Code not found")
+    do_something_else()
+```
+
+Now, we can do this with Match/Case. so let's...
+
+```python
+http_code = "418"
+
+match http_code:
+    case "418":
+        print("OK")
+        do_something()
+    case "404":
+        print("Not Found")
+        do_something()
+    case "418":
+        print("I'm a teapot")
+        do_something()
+    case _:
+        print("Code not found")
+        do_something_else()
+```
+
+It is pretty much the same, but some people find it more neat to use it this way... I mean, they must have add Match/Case statement for some reason! :D
+
+Note in the last case of the statement the use of '_'.
+
+Not only for this notation. '_' kind of means "something else".
+
+The following peace of code, is used to get only the first element of the tuple, disregarding the second element.
+
+```python
+first, _ = ("first_string","second_string")
+```
+
+This piece of code is for the purpose of ignoring everything but the first element, since whe are not assigning the second element.
+
+Another use case is this...
+
+```python
+match x:
+    case host, port:
+        print('http mode')
+    case host, port, mode:
+        print(f'{ mode } mode')
+```
+
+In this case, if mode is **None**, the output will be 'http mode'.
+This show us how to use Match/Case to check the type and structure of our subject.
+
 ## Loops
 
 ### While Loop
