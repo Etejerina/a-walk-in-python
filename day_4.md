@@ -379,9 +379,9 @@ if a > b and b > c or b == c:
 
 In Python there is not such thing as a Switch/Case, so you'll have to use the complete if statement.
 
-**Wait!**
+**Wait!** (Update)
 
-In Python 3.10 we have Switch/Case statement, but it's called Match/Case
+In Python 3.10+ we have Switch/Case statement, but it's called Match/Case
 Let's see some examples.
 
 In the past we could have done this:
