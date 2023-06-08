@@ -21,7 +21,7 @@ Hopefully it could make your path easier and find it interesting at least.
   * [IDE (VS Code)](https://code.visualstudio.com/)
   * [Pip](day_1.md#pip)
   * [Virtual Environments](day_1.md#virtual-environments)
-  * [Syntax](day_1.md@syntax)
+  * [Syntax](day_1.md#syntax)
   
 [DAY 2](./day_2.md)
 
