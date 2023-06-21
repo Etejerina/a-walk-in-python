@@ -106,7 +106,15 @@
 # a_function()
 # print(my_name)
 
-number = int | float
+# number = int | float
 
-def a_function() -> number:
-    return 1
+# def a_function() -> number:
+#     return 1
+
+
+a_number = 1
+while a_number < 10:
+    print(a_number)
+    a_number += 1
+else:
+    print('No longer less than 10...')

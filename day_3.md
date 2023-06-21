@@ -320,6 +320,12 @@ print(c)
 -877000000000.0
 ```
 
+There is something on how floats are interpreted in Python that can be a litle tricky.
+
+See [Floats and decimals](floats.md)
+
+### Complex
+
 Complex are part of the numbers too.
 
 These numbers are written with a "j" as the imaginary part:
