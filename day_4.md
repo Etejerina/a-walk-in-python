@@ -483,7 +483,7 @@ while a_number < 10:
 9
 ```
 
->Note that we need to inclement `a_number`, otherwise the loop will continue for ever.
+>Note that we need to increment `a_number`, otherwise the loop will continue for ever.
 
 We have two reserved words that we can use inside a While loop. These are `break` and `continue`.
 
