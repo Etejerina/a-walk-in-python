@@ -19,7 +19,7 @@ A **function** is a series of statements which returns some value to a caller. I
 
 > A parameter is a variable in a method definition. When a method is called, the arguments are the data you pass into the method's parameters.
 
-Having said that, in Python function definitions, are called arguments, or *args* for short.
+Having said that, this values in Python function definitions, are called arguments, or *args* for short.
 
 Functions use the reserved word *def*, as follows.
 
@@ -81,7 +81,78 @@ TypeError: say_hi() takes 1 positional argument but 2 were given
 
 As we said before, in the function definition, in parentheses, we have the parameters, that can be zero or many.
 
-Also we can have what is called Arbitrary Arguments (\*args). The use of these is to avoid enumerate many positional arguments, and just use the unpacking operator '*', in particular when we don't how how many arguments where are receiving.
+By this point, we should add that in Python, arguments are not passed by Value, or by Reference, But by Assignment!!! ＼(｀0´)／
+
+This means that the values, or the values of the variables, passed as arguments, are assigned to a variable, which scope is inside that function.
+
+Breath.. breath... think... don't get crazy!!!
+
+The best practice in this case when calling a function, is returning values and reassigning like in this example.
+
+ ```python
+def increment(an_int):
+    return an_int + 1
+
+an_int = 1
+an_int = increment(an_int)
+print(an_int)
+
+# output
+2
+ ```
+
+But, object attributes have their own place in Python’s assignment strategy. Python’s language reference for assignment statements states that if the target is an object’s attribute that **supports assignment**, then the object will be asked to perform the assignment on that attribute. 
+
+If you pass the object as an argument to a function, then its attributes can be modified in place.
+
+Like this...
+
+ ```python
+# For the purpose of this example, let's use SimpleNamespace.
+from types import SimpleNamespace
+# SimpleNamespace allows us to set arbitrary attributes.
+# It is an explicit, handy replacement for "class X: pass".
+
+inst = SimpleNamespace()
+
+def increment(instance):
+    instance.an_int + 1
+
+inst.an_int = 1
+increment(inst)
+print(inst.an_int)
+
+# output
+2
+ ```
+
+In the same way we can use Dictionaries and Lists.
+
+[Here](https://realpython.com/python-pass-by-reference/) is a pos on Real Python, explaining all this things, and why technically this is possible.
+
+I'm not pretending to explain something you can read in this article very clearly.
+
+I can give you some examples though...
+
+```python
+full_name = {
+    'name': 'Pepe',
+    'lastname': 'Grillo'
+}
+
+def change_name(full_name):
+    full_name['name'] = 'Ezequiel'
+
+change_name(full_name)
+print(full_name)
+
+#output
+{'name': 'Ezequiel', 'lastname': 'Grillo'}
+```
+
+Going back to simplier things, let's talk about those arguments.
+
+We can have what is called Arbitrary Arguments (\*args). The use of these is to avoid enumerate many positional arguments, and just use the unpacking operator '*', in particular when we don't how how many arguments where are receiving.
 
 Let's see some examples
 
