@@ -101,7 +101,7 @@ print(an_int)
 2
  ```
 
-But, object attributes have their own place in Python’s assignment strategy. Python’s language reference for assignment statements states that if the target is an object’s attribute that **supports assignment**, then the object will be asked to perform the assignment on that attribute. 
+But, object attributes have their own place in Python’s assignment strategy. Python’s language reference for assignment statements states that if the target is an object’s attribute that **supports assignment**, then the object will be asked to perform the assignment on that attribute.
 
 If you pass the object as an argument to a function, then its attributes can be modified in place.
 
