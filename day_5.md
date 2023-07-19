@@ -494,7 +494,7 @@ Nicolas
 
 Of course we can loop through an iterable too as we saw previously.
 
-Later, when we learn about Classes, we0ll see how toi create an Iterator Class.
+Later, when we learn about Classes, we'll see how to create an Iterator Class.
 
 ### Generators
 
