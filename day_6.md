@@ -97,7 +97,7 @@ eze.say_hi()
 Hello, my name is Nicolas
 ```
 
-Let's suppose that we don't want the instance to have a default name... we want to to create a persons instance and set a name. For that we are going to need a special method.
+Let's suppose that we don't want the instance to have a default name... we want to create a persons instance and set a name. For that we are going to need a special method.
 
 For that we'll need to use the built-in **\_\_init__()** special method, which is always executed when the class is being initiated.
 

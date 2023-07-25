@@ -612,25 +612,28 @@ This time, we already have the processed data, but again, a huge list, occupying
 Option 3:
 
 ```python
-def fibonacci(from, count):
-    a = b = from
+def fibonacci(_from, previous, count):
+    b = _from
+    a = previous
     result = []
     for i in range(count):
         result.append(a)
         a, b = b, a + b
     return result
 
-total = 50000
-from  = 1
+total = 100
+_from  = 1
+previous = _from
 count = 50
-for n in range(count / to):
-    print(fibonacci(from, count))
-    from += count
-    to += count
+for n in range(_from, total, count):
+    result = fibonacci(_from, previous, n + count)
+    print(result)
+    _from = result[-1]
+    previous = result[-2]
     # or whatever we need to do...
 ```
 
-Here we have to loops, and have to keep track of the variables, which in a complicated context can lead to a large number of mistakes and bugs.
+Here we have two loops, and have to keep track of the variables, which in a complicated context can lead to a large number of mistakes and bugs (actually, there is one..).
 
 Best option:
 
