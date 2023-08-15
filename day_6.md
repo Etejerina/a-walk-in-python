@@ -336,6 +336,85 @@ print(Son.mro()) # or print(Son.__mro__)
 
 There are far more complex scenarios, but you get the idea.
 
+## Encapsulation
+
+Encapsulation is a mechanism for restricting direct access to some of an object's or class components.
+
+Also refers to a language construct that facilitates the bundling of data with the methods (or other functions) operating on those data.
+
+In Python, encapsulation can be achieved by using private variables and public methods/functions (members), without a prefix.
+
+Also, we have to differentiate **protected** from **private** and, as a bunch of things in Python, there are conventions.
+
+* **protected** members are prefixed with '`_`' and can be accessed from outside the class (but should NOT!)
+* **private** members are prefixed with '`__`' (doble underscore)
+
+Let's see an example or protected members:
+
+```python
+class ClassA:
+    def __init__(self):
+  
+        # Protected member
+        self._a = 2
+
+an_instance = ClassA()
+
+print("Accessing protected member: ", an_instance._a)
+
+#output
+Accessing protected member:  2
+```
+
+Now let's see an example or private members:
+
+```python
+class ClassB:
+    def __init__(self):
+  
+        # Protected member
+        self.__a = 2
+
+an_instance = ClassB()
+
+print("Accessing private member: ", an_instance.__a)
+
+#output
+Traceback (most recent call last):
+  File "c:\a-walk-in-python\test.py", line 182, in <module>
+    print("Accessing private member: ", an_instance.__a)
+AttributeError: 'ClassB' object has no attribute '__a'
+```
+
+In order to use encapsulation properly, this is how we sphould proceed.
+
+```python
+class Person():
+  def __init__(self, nombre):
+    self.nombre = nombre
+    self.__password = "estoEsUnaPass"
+    
+  @property
+  def password(self):
+    return self.__password
+  
+  @password.setter
+  def password(self, password):
+    self.__password = password
+    
+
+yo = Person("Eze")
+print(yo.password)
+yo.password = "otra"
+print(yo.password)
+
+#output
+estoEsUnaPass
+otra
+```
+
+> Note: There is no point on using the setter in this example, but we can use that to validate data, before this private attribute gets setted.
+
 ## Dunder Methods
 
 Dunder Methods are the special methods that start and end with the double underscores. Dunder methods are not meant to be invoked directly by you, but the invocation happens internally from the class on a certain action.

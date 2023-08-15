@@ -175,6 +175,78 @@ modules.a_string_function()
 modules.a_bool_function()
 ```
 
+## The '\_\_name__' dunder variable
+
+When a .py file is imported as a module, Python sets the special dunder variable '\_\_name__' to the name of the module.
+However, if a file is run as a standalone script, '\_\_name__' is (creatively) set to the string '\_\_main__'.
+
+Using this fact, you can discern which is the case at run-time and alter behavior accordingly:
+
+```python
+# module1.py
+
+def foo(arg):
+    print(arg)
+
+if (__name__ == '__main__'):
+    print('Executing as standalone script')
+    foo('This should be something interesting...')
+
+```
+
+If we run this as a script with "python module1.py" we get this output:
+
+```python
+#output
+Executing as standalone script
+This should be something interesting...
+```
+
+But if we import this as a module, we don't get output, until we use the function 'foo()'.
+
+> Note: this way we can use this module standalone and as a module, without having to modify or comment something, on the file.
+
+Another ineteresting thing, is that we cannot import a module twice. I mean, we can import it more then once, but the interpreter will load it once.
+
+```python
+# module1.py
+a_string = 'This should be something interesting...'
+print(a_string)
+```
+
+```python
+>>> import module1
+This should be something interesting...
+>>> import module1
+>>> import module1
+>>> import module1
+>>> module1.a_string
+'This should be something interesting...'
+
+```
+
+> Note: the print statement is not executed on teh second, third and fourth imports.
+
+### The 'dir()' function
+
+The built-in function dir() returns a list of defined names in a namespace.
+It takes at least one argument, the object whose attributes you want to know about:
+
+```python
+print(dir()) # show all variables and functions currently defined
+
+# output
+['__annotations__', '__builtins__', '__doc__', '__loader__', '__name__', '__package__', '__spec__']
+```
+
+Afetr importing a module (the same from the previous example), we'll see:
+
+```python
+import module1
+print(dir())
+['__annotations__', '__builtins__', '__doc__', '__loader__', '__name__', '__package__', '__spec__', 'a_string']
+```
+
 ## Type hinting
 
 From Python 3.5 on, there is way to "define" the type of a value within your Python code.
