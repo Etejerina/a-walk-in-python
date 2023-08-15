@@ -125,6 +125,30 @@ This is a person class and have name in it. Now we can pass it to the __init__()
 
 > Note: with the special attribute '\_\_doc__'  we can see the docstring of that class.
 
+We **can** add attributes dynamically to an instance of a class.
+
+```python
+
+class Person:
+    def __init__(self, name):
+        self.name = name
+
+    def say_hi(self):
+        print(f'Hello, my name is {self.name}')
+
+
+a_person = Person('Nicolas')
+a_person.say_hi()
+print(a_person.name)
+a_person.lastname = 'Perez'
+print(a_person.lastname)
+
+# output
+Hello, my name is Nicolas
+Nicolas
+Perez
+```
+
 ## Inheritance
 
 *Inheritance* enable us to define a class that takes all the functionalities and attributes from a parent class and allows us to add more.

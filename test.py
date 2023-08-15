@@ -169,14 +169,16 @@
 # print(yo.password)
 # yo.password = "otra"
 # print(yo.password)
+class Person:
+    def __init__(self, name):
+        self.name = name
+
+    def say_hi(self):
+        print(f"Hello, my name is {self.name}")
 
 
-class ClassB:
-    def __init__(self):
-        # Protected member
-        self.__a = 2
-
-
-an_instance = ClassB()
-
-print("Accessing private member: ", an_instance.__a)
+a_person = Person("Nicolas")
+a_person.say_hi()
+print(a_person.name)
+a_person.lastname = "Perez"
+print(a_person.lastname)
