@@ -48,8 +48,8 @@ Hopefully it could make your path easier and find it interesting at least.
 [DAY 4](./day_4.md)
 
 * [Operators](day_4.md#operators)
-  * [Arithmetic operators](day_4#arithmetic-operators)
-  * [Assignment operators](day_4#assignment-operators)
+  * [Arithmetic operators](day_4.md#arithmetic-operators)
+  * [Assignment operators](day_4.md#assignment-operators)
   * [Comparison operators](day_4.md#comparison-operators)
   * [Logical operators](day_4.md#logical-operators)
   * [Identity operators](day_4.md#identity-operators)
