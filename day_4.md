@@ -3,8 +3,8 @@
 ## Day 4
 
 * Operators
-  * [Arithmetic operators](day_4#arithmetic-operators)
-  * [Assignment operators](day_4#assignment-operators)
+  * [Arithmetic operators](day_4.md#arithmetic-operators)
+  * [Assignment operators](day_4.md#assignment-operators)
   * [Comparison operators](day_4.md#comparison-operators)
   * [Logical operators](day_4.md#logical-operators)
   * [Identity operators](day_4.md#identity-operators)
