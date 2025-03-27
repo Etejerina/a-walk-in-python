@@ -158,7 +158,7 @@ World
 Also, you can assign the same value to different variables in one line, like this...
 
 ```python
-x, y, z = 'Ezequiel'
+x, y, z = ['Ezequiel']*3
 print(x)
 print(y)
 print(z)
