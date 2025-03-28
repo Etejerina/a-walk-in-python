@@ -218,8 +218,8 @@ These are use to operate bit by bit, and act on operands as if they were strings
 | >> | Signed right | Shift right by pushing copies of the leftmost bit in from the left, and let the rightmost bits fall off.
 
 ```python
-a_number = 10       # en binario 0000 1010
-another_number = 23 # en binario 0001 0111 
+a_number = 10       # binary: 0000 1010
+another_number = 23 # binary: 0001 0111
 
 print(a_number & another_number)
 print(a_number | another_number)
@@ -229,12 +229,12 @@ print(<<a_number)
 print(>>a_number)
 
 # output
-2                   # en binario 0000 0010
-31                  # en binario 0001 1111
-29                  # en binario 0001 1101 
--11                 # en binario 1111 0101
-2                   # en binario 0000 0010
-40                  # en binario 0010 1000
+2                   # binary: 0000 0010
+31                  # binary: 0001 1111
+29                  # binary: 0001 1101
+-11                 # binary: 1111 0101
+2                   # binary: 0000 0010
+40                  # binary: 0010 1000
 ```
 
 ___
@@ -260,7 +260,7 @@ There are two kinds of Control Structures:
 
 ### If statement
 
-The If statement is used to execute a bunch of code, or another, depending on the evaluation of a condition.
+The `if` statement is used to execute a bunch of code, or another, depending on the evaluation of a condition.
 
 Syntax:
 
@@ -278,10 +278,10 @@ if a_number > other_number:
     print('a_number is greater than other_number')
 
 # output
-a_number is bigger than other_number
+a_number is greater than other_number
 ```
 
-As we see `a_number > other_number` ois the condition in the example. This can be everything that evaluates as a Boolean value `True` or `False`, or even a `truthy` or `falsy` value.
+As we see `a_number > other_number` is the condition in the example. This can be everything that evaluates as a Boolean value `True` or `False`, or even a `truthy` or `falsy` value.
 
 ```python
 if False:
@@ -294,7 +294,7 @@ if False:
 Here we see that the condition is not met, or in this case is False, so the code indented under the if statement is not executed.
 
 We might need to do one thing if true, and another if false.
-For that we have `If...else` statements.
+For that we have `if...else` statements.
 
 ### If...else statement
 
@@ -360,6 +360,8 @@ else:
     print('The number is zero')
 
 print("Positive") if a_number > 0 else print("Negative") if a_number < 0 else print("Zero") # one liner
+
+print(f'The number is {'positive' if a_number > 0 else 'negative' if a_number < 0 else 'zero'}') # another one line solution
 ```
 
 Remember that the `condition` in an if statement, can be as small or extended as we need. This means that can be a simple **boolean**, a condition with two values and a operator, or multiple values and operators.
@@ -423,7 +425,7 @@ match http_code:
         do_something_else()
 ```
 
-It is pretty much the same, but some people find it more neat to use it this way... I mean, they must have add Match/Case statement for some reason! :D
+It is pretty much the same, but some people find it more neat to use it this way... I mean, they must have added Match/Case statement for some reason! :D
 
 Note in the last case of the statement the use of '_'.
 
@@ -440,15 +442,18 @@ This piece of code is for the purpose of ignoring everything but the first eleme
 Another use case is this...
 
 ```python
+# x = ('www.hola.com', 25)          # the output would be: http mode
+# x = ("www.hola.com", 21, "ftp")   # the output would be: ftp mode
+
 match x:
     case host, port:
         print('http mode')
     case host, port, mode:
         print(f'{ mode } mode')
 ```
-
-In this case, if mode is **None**, the output will be 'http mode'.
-This show us how to use Match/Case to check the type and structure of our subject.
+In this case, the unreferenced names (host, port, mode) would become variables if an unpacking operation is able to be performed.
+This show us how to use Match/Case to check the type and structure of our subject. 
+If you want to learn more about the `match` instruction, you can head over [here](https://peps.python.org/pep-0636/) to go into the rabit hole. (don´t come back later saying you were not warned :D)
 
 ## Loops
 
@@ -727,7 +732,7 @@ This can be used in loads of scenarios, so keep it on your cheat-sheet!!!
 
 ### Try...Except
 
-When Python found a problem in the execution, the interpreter will stop and generates an error.
+When Python finds a problem in the execution, the interpreter stops and generates an error.
 
 These are called **Exceptions**.
 
@@ -755,9 +760,9 @@ Traceback (most recent call last):
 ZeroDivisionError: division by zero
 ```
 
-So, we might want to **catch** that exception in order to avoid the program to stop execution.
+So, we might want to **catch** that exception in order to avoid stopping the program's execution.
 
-We can do this, using **Try...Except** statement.
+We can do this, using the **try...except** statement.
 
 ```python
 try:
@@ -772,7 +777,7 @@ An exception occurred
 The code continues...
 ```
 
-This way, the exception is caught, an error is showed but the code keeps running. The idea is to include the block of code that can fail, in the try statement.
+This way, the exception is caught, an error is shown but the code keeps running. The idea is to include the block of code that can fail, in the try statement.
 
 As many different errors can occur, we can catch different types of exceptions. For example:
 
@@ -780,7 +785,7 @@ As many different errors can occur, we can catch different types of exceptions. 
 x = 0
 
 try:
-    print(10 / y)
+    print(10 / x)
 except ZeroDivisionError:
     print('You can not divide by zero')
 except NameError:
@@ -812,7 +817,7 @@ x is not defined
 
 We can see, that we see different messages, depending the type of exception that is raised.
 
->Keep in mind that we need to order the exceptions from most to least specific, otherwise the first one will raise and then the code will continue after the Try...Except statement.
+>Keep in mind that we need to order the exceptions from most to least specific, otherwise the more generic exception block will be executed and the code will never reach the more specific error type.
 
 We have also an **else** block, that lets you execute a code if there is no error.
 
@@ -829,6 +834,7 @@ else:
 print('The code continues...')
 
 # output
+10
 There was no error
 The code continues...
 ```
@@ -855,6 +861,8 @@ finally:
 There was no error
 The code continues...
 ```
+
+More details on finally [here](finally.md)
 
 We can also create a custom exception and raise it. This is used to raise an exception and stop the execution on the code.
 

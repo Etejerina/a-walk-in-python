@@ -1,31 +1,31 @@
-# 0.1 + 0.2 == 0.3 es True o False?
+# 0.1 + 0.2 == 0.3 results in True or False?
 
-Aca es donde se pone raro...
+Here is where it gets weird...
 
-La respuesta a esto es False!!! Aunque si, es contraintuitivo.
+The answer is False!!! Although yes, this is counterintuitive.
 
-Explico por qué:
+Here is why:
 
 ```python
 a = 0.1
 b = 0.2
 c = a + b
 print(c == 3)
-#output
+# output
 False
 
 
 print(c)
 
-#output
+# output
 0.30000000000000004
 
-#solución
+# solution
 round(a + b, 10) == round(.3, 10)
 ```
 
-Recomendación:
-usar la libreria "decimal"
+Recommendation:
+Using the "decimal" library
 
 ```python
 from decimal import Decimal
@@ -33,17 +33,17 @@ a = Decimal('0.1')
 b = Decimal('0.2')
 c = Decimal(a + b)
 print(c == Decimal('0.3'))
-#output
+# output
 True
 
 print(c)
 
-#output
+# output
 Decimal('0.3')
 ```
 
-> las comillas como parametro son porque si no existieran, estariamos casteando a decimal el float, con sus respectivos decimales, como verán en el siguiente articulo.
+> notice the quotes in the parameter, otherwhise the number would be cast to float, with it´s precision issues, as you could see in the following article.
 
-Acá  articulo explicativo
+Go here for a deeper dive on the topic:
 
 <https://www.laac.dev/blog/float-vs-decimal-python/>
