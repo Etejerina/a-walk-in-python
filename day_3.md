@@ -754,7 +754,7 @@ By the way, [here](https://www.w3schools.com/python/python_sets_methods.asp) is 
 ## Dictionaries
 
 Dictionaries are used to store data values in key:value pairs.
-The key name of a dictionary must be always of an immutable type (string, boolean, int, float, complex, tuple, frozenset). If it is a collection (tuple, frozenset), all elements inside must also be immutable.
+The keys in a dictionary must be always of an immutable type (string, boolean, int, float, complex, tuple, frozenset, --if makes sense use some of those types as keys in real life--). If it is a collection (tuple, frozenset), all elements inside must also be immutable.
 
 
 ```python
@@ -854,7 +854,7 @@ dict_values(['Pearl Jam', 'guitar', 10, True])
 
 By the way, [here](https://www.w3schools.com/python/python_dictionaries_methods.asp) is the list of dicts methods, which are many and pretty self explanatory.
 
-More about mutable vs immutable types [here|https://www.pythontutorial.net/advanced-python/python-mutable-and-immutable/]
+More about mutable vs immutable types [here](https://www.pythontutorial.net/advanced-python/python-mutable-and-immutable/)
 ___
 
 [Go to Day 4](day_4.md)

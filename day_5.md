@@ -128,7 +128,7 @@ print(inst.an_int)
 
 In the same way we can use Dictionaries and Lists.
 
-[Here](https://realpython.com/python-pass-by-reference/) is a pos on Real Python, explaining all this things, and why technically this is possible.
+[Here](https://realpython.com/python-pass-by-reference/) is a post on Real Python, explaining all this things, and why technically this is possible.
 
 I'm not pretending to explain something you can read in this article very clearly.
 
@@ -152,7 +152,7 @@ print(full_name)
 
 Going back to simplier things, let's talk about those arguments.
 
-We can have what is called Arbitrary Arguments (\*args). The use of these is to avoid enumerate many positional arguments, and just use the unpacking operator '*', in particular when we don't how how many arguments where are receiving.
+We can have what is called Arbitrary Arguments (\*args). The use of these is to avoid having to enumerate many positional arguments, and just use the unpacking operator '*', in particular when we don't how how many arguments where are receiving.
 
 Let's see some examples
 
@@ -229,9 +229,10 @@ I am from Argentina
 
 > Note that in the second call to the function, we are not passing an argument to the function, so it's printing the default value on the function definition. When we pass the argument, the function behaves as always.
 
-One more very nice thing ¡ about functions in Python for me is, that you can return more than one value.
+One more very nice thing about functions in Python for me is, that you can return more than one value.
 
-We said that we have void functions that doesn't return a value, and functions that does return a value... or more!
+We said that we have void functions that don't return a value, and functions that do return a value... or more!
+Well..., techically if a function has no return statement (or just the keyword *return* and no value to return) it returns None.
 
 Let's see an example of that.
 
@@ -271,9 +272,9 @@ print(squared)
 What is recursion?
 
 Recursion is a mathematical and programming concept in which a function calls itself.
-It can be dangerous because we need to define a base case in which the function reach of stopping point.
+It can be dangerous because we need to define a base case in which the function reaches a stopping point.
 
-For example, in a countdown we start on a certain number, it subtracts 1,and call it self. Every time it calls itself, the call of the function pass the result as an argument. But we need to stop when the result is 0. If not, we are trapped in an infinite loop.
+For example, in a countdown we start on a certain number, it subtracts 1,and calls it self. Every time it calls itself, the call of the function pass the result as an argument. But we need to stop when the result is 0. If not, we are trapped in an infinite loop.
 
 Let's see...
 
@@ -504,7 +505,7 @@ Let's see something first...
 
 ```python
 a_list = list(range(10))
-print(*a_list, end=" ")
+print(*a_list)
 
 # output
 0 1 2 3 4 5 6 7 8 9
@@ -519,9 +520,10 @@ for n in range(10):
 # output
 0 1 2 3 4 5 6 7 8 9
 ```
+> The `end=" "` parameter in the print is there to have keep the results of the multiple calls in the same line
 
 Now, what if want to create a list from 0 to infinite?
-We could do the same as above, but we0ll have an unstoppable (not really) loop of increasing numbers, with no possibility to do anything while the code is executing, not to mention, the enormous amount of memory the the list will occupy.
+We could do the same as above, but we'll have an unstoppable (not really) loop of increasing numbers, with no possibility to do anything while the code is executing, not to mention, the enormous amount of memory such a list would occupy.
 
 So, using a generator function we have a much better alternative!
 
@@ -535,7 +537,7 @@ def infinite_sequence():
 
 > Note that we are just emulating the range built-in method. In a moment you will see why...
 
-Now we have that function that looks pretty much like a regular function, except for the yield statement. The *yield* will return the value in the statement, and wait to continue the execution, but it needs to be done with the *next()* method, otherwise would behave as a regular function.
+Now we have that function that looks pretty much like a regular function, except for the yield statement. The *yield* will return the value in the statement, and wait to continue the execution, but it needs to be done with the *next()* method, otherwise it would behave as a regular function.
 
 Let's continue...
 
