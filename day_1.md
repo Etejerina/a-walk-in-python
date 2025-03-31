@@ -52,7 +52,9 @@ It is a language that can use procedural programming, functional programming and
 
 It is dynamically typed because we don't have to define the type of a variable.
 
-It is also strongly typed because the interpreter keeps track of all variables types.
+However, starting from Python 3.5, **type hinting** was introduced, allowing developers to optionally specify the expected types of variables, function arguments, and return values. This helps improve code readability and enables better static analysis tools.
+
+It is also strongly typed because the interpreter keeps track of all variable types and does not allow implicit type conversions that could lead to unexpected behavior. For example, attempting to add a string and an integer will result in a `TypeError`.
 
 ## Why Python?
 

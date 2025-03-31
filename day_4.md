@@ -38,7 +38,7 @@ We have:
 These are used to perform common mathematical operations.
 
 | Operator | Name
-|---|---|
+|---|---
 | + | addition
 | - | subtraction
 | * | multiplication
@@ -92,7 +92,7 @@ These are used to compare values, or variables with values assigned. The result 
 That's why these are most commonly used on if statements.
 
 | Operator | Name
-|---|---|
+|---|---
 | == | Equal
 | != | Not equal
 | > | Greater than
@@ -123,7 +123,7 @@ True
 These are used to combine conditional statements, or the boolean result of a statement.
 
 | Operator | Description
-|---|---|
+|---|---
 | and | Returns True if both statements are true
 | or | Returns True if one of the statements is true
 | not | Reverse the result, returns False if the result is true
@@ -159,7 +159,7 @@ False
 These are used to check if two values (or variables) are located on the same part of the memory.
 
 | Operator | Description
-|---|---|
+|---|---
 | is |  Returns True if both variables are the same object
 | is not | Returns True if both variables are not the same object
 
@@ -190,7 +190,7 @@ False
 These are use to check if an element (or sequence of elements) are contained in an object.
 
 | Operator | Description
-|---|---|
+|---|---
 | in | Returns True if a sequence with the specified value is present in the object
 | not in | Returns True if a sequence with the specified value is not present in the object
 
@@ -209,7 +209,7 @@ True
 These are use to operate bit by bit, and act on operands as if they were strings of binary digits.
 
 | Operator | Name | Description
-|---|---|---|
+|---|---|---
 | & | AND | Sets each bit to 1 if both bits are 1
 | \| | OR | Sets each bit to 1 if one of two bits is 1
 | ^ | XOR | Sets each bit to 1 if only one of two bits is 1
@@ -451,8 +451,9 @@ match x:
     case host, port, mode:
         print(f'{ mode } mode')
 ```
+
 In this case, the unreferenced names (host, port, mode) would become variables if an unpacking operation is able to be performed.
-This show us how to use Match/Case to check the type and structure of our subject. 
+This show us how to use Match/Case to check the type and structure of our subject.
 If you want to learn more about the `match` instruction, you can head over [here](https://peps.python.org/pep-0636/) to go into the rabit hole. (don´t come back later saying you were not warned :D)
 
 ## Loops

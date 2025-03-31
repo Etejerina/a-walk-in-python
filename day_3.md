@@ -654,7 +654,7 @@ Cool, we can do exactly the same thing with a tuple.
 
 ## Sets
 
-Just like lists and tuples, sets are intended to store multiple values in one variable, with the difference that sets are **unordered, no duplicates allowed and the items must be immutable**.
+Just like lists and tuples, sets are used to store multiple values in a single variable. However, **sets are unordered, do not allow duplicates, and their elements must be immutable**.
 
 ```python
 a_set = {'Pearl jam', 'guitar', 10, True}
@@ -755,7 +755,6 @@ By the way, [here](https://www.w3schools.com/python/python_sets_methods.asp) is 
 
 Dictionaries are used to store data values in key:value pairs.
 The keys in a dictionary must be always of an immutable type (string, boolean, int, float, complex, tuple, frozenset, --if makes sense use some of those types as keys in real life--). If it is a collection (tuple, frozenset), all elements inside must also be immutable.
-
 
 ```python
 a_dict = {

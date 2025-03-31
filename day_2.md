@@ -36,6 +36,20 @@ a = 1
 print(a)
 ```
 
+You must be asking yourself, why we are not using type hinting...
+
+Ok, so when should you use **type hints** in assignments?
+
+* When writing library code or APIs
+* When you want better IDE support
+* When using type checkers like mypy
+* In collaborative projects for clarity
+* When a variable might be unclear in type:
+
+  ```python
+  result: list[str] = []
+  ```
+
 If you want to specify the type of a variable, this can be done using casting.
 
 ```python
@@ -94,7 +108,7 @@ All variables that are created outside of a function in Python are, by default, 
 ```python
 name = 'Ezequiel'
 
-def greeting():
+def greeting() -> None:
     print('Hello ' + name)
 
 print('My name is ' + name)
@@ -110,7 +124,7 @@ However, if a variable with the same name is declared inside the function, this 
 ```python
 name = 'Ezequiel'
 
-def greeting():
+def greeting() -> None:
     name = 'Jose'
     print('Hello ' + name)
 
@@ -127,7 +141,7 @@ There is a way to declare a global variable inside a function though, using the 
 ```python
 name = 'Ezequiel'
 
-def greeting():
+def greeting() -> None:
     global name = 'Jose'
 
 greeting()
@@ -172,7 +186,7 @@ Ezequiel
 There is a way to extract the values of a collection into different variables. This is called **unpacking**
 
 ```python
-words = ['Hello', 'beautiful', 'World']
+words: list[str] = ['Hello', 'beautiful', 'World']
 x, y, z = words
 print(x)
 print(y)
