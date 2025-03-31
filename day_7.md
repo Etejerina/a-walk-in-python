@@ -68,7 +68,7 @@ Hello! I am in a module
 I am a variable
 ```
 
-And why import only what we need from the module...
+And why not import only what we need from the module...
 
 ```python
 from myModule import a_function
@@ -86,7 +86,7 @@ NameError: name 'a_variable' is not defined
 
 >Note: the error is caused by not importing 'a_variable' from the module too.
 
-We could have imported everything, by replacing a_function with '\*'. But this is not a good practice. is rare to need all that is included in a module. So, be careful with *import statements*.
+We could have imported everything, by replacing a_function with '\*'. But this is not a good practice. It is rare to need all that is included in a module. So, be careful with *import statements*.
 
 Let's say that we have more than 20 functions in a module and, for the sake of best practices, we decided to separate them in different files.
 
@@ -225,12 +225,12 @@ This should be something interesting...
 
 ```
 
-> Note: the print statement is not executed on teh second, third and fourth imports.
+> Note: the print statement is not executed on the second, third and fourth imports.
 
 ### The 'dir()' function
 
 The built-in function dir() returns a list of defined names in a namespace.
-It takes at least one argument, the object whose attributes you want to know about:
+It takes at most one argument, the object whose attributes you want to know about:
 
 ```python
 print(dir()) # show all variables and functions currently defined
@@ -253,7 +253,7 @@ From Python 3.5 on, there is way to "define" the type of a value within your Pyt
 
 **This is just a hint. The application will run with no warnings nor errors!!!**
 
-Let's see how can we add type information to a function. We can do it over parameters and return values.
+Let's see how we can add type information to a function. We can do it over parameters and return values.
 
 ```python
 def a_function(a_string_param: str, number_param: int) -> bool:
