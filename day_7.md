@@ -17,7 +17,7 @@ For example:
 ```python
 # myModule.py
 
-def a_function():
+def a_function() -> None:
     print('Hello! I am in a module')
 ```
 
@@ -38,7 +38,7 @@ Maybe we have a variable in our module and you want to use that too. Well, good 
 ```python
 # myModule.py
 
-def a_function():
+def a_function() -> None:
     print('Hello! I am in a module')
 
 a_variable = 'I am a variable'
@@ -185,7 +185,7 @@ Using this fact, you can discern which is the case at run-time and alter behavio
 ```python
 # module1.py
 
-def foo(arg):
+def foo(arg: Any) -> None:
     print(arg)
 
 if (__name__ == '__main__'):

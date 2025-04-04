@@ -24,7 +24,7 @@ Having said that, this values in Python function definitions, are called argumen
 Functions use the reserved word *def*, as follows.
 
 ```python
-def a_function(arguments):
+def a_function(arguments: <arg_type>) -> <return_type>:
     # some code
     return some_value
 ```
@@ -38,7 +38,7 @@ a_function()
 Let's see an example:
 
 ```python
-def say_hi(name):
+def say_hi(name: str) -> None:
     print(f'Hi! My name is {name}')
 
 say_hi('Eze')
@@ -52,7 +52,7 @@ Hi! My name is Pedro
 It's very important that the amount of arguments you pass to a function, are the same amount of parameters on the function definition.
 
 ```python
-def say_hi(name, lastname):
+def say_hi(name: str, lastname: str) -> None:
     print(f'Hi! My name is {name} {lastname}')
 
 say_hi('Eze')
@@ -66,7 +66,7 @@ TypeError: say_hi() missing 1 required positional argument: 'lastname'
  Or the other way around...
 
  ```python
-def say_hi(name):
+def say_hi(name: str) -> None:
     print(f'Hi! My name is {name}')
 
 say_hi('Eze', 'Tejerina')
@@ -90,7 +90,7 @@ Breath.. breath... think... don't get crazy!!!
 The best practice in this case when calling a function, is returning values and reassigning like in this example.
 
  ```python
-def increment(an_int):
+def increment(an_int: int) -> int:
     return an_int + 1
 
 an_int = 1
@@ -115,8 +115,8 @@ from types import SimpleNamespace
 
 inst = SimpleNamespace()
 
-def increment(instance):
-    instance.an_int + 1
+def increment(instance: Any) -> None:
+    instance.an_int += 1
 
 inst.an_int = 1
 increment(inst)
@@ -140,7 +140,7 @@ full_name = {
     'lastname': 'Grillo'
 }
 
-def change_name(full_name):
+def change_name(full_name: dict[str, str]) -> None:
     full_name['name'] = 'Ezequiel'
 
 change_name(full_name)
@@ -159,25 +159,25 @@ Let's see some examples
 ```python
 number_list = [1, 42, 23, 4, 6]
 
-def sum(numbers):
+def my_sum(numbers: list[int]) -> int:
     total = 0
     for number in numbers:
         total += number
     return total
 
-print(sum(number_list))
+print(my_sum(number_list))
 ```
 
 Here we first create a list, and pass it as an argument. Inside the function we iterate that list and make the calculation.
 
 ```python
-def sum(*numbers):
+def my_sum(*numbers: int) -> int:
     total = 0
     for number in numbers:
         total += number
     return total
 
-print(sum(1, 42, 23, 4, 6))
+print(my_sum(1, 42, 23, 4, 6))
 ```
 
 In this second example, we can see we are passing what seems to be comma separated values, but is a tuple. So in the function, we use the unpacking operator '*', that will take all positional arguments given in the input and **pack** them all into a single iterable object.
@@ -186,7 +186,7 @@ Another way to pass arguments, are keyword arguments, or kwargs for short. These
 This way the order of the arguments does not matter.
 
 ```python
-def a_function(number1, number2, number3):
+def a_function(number1: int, number2: int, number3: int) -> None:
     print(f'The first number is {number1}')
 
 a_function(number3 = 23, number1 = 2, number2 = 125)
@@ -198,7 +198,7 @@ The first number is 2
 We also have **Arbitrary Keyword Arguments**. This way the function will receive a dictionary of arguments, and can access the items accordingly.
 
 ```python
-def a_function(**numbers):
+def a_function(**numbers: int) -> None:
     print(f'The first number is {numbers["number1"]}')
 
 a_function(number3 = 23, number1 = 2, number2 = 125)
@@ -216,7 +216,7 @@ In a function, we can always set a **default value** for a parameter.
 For example...
 
 ```python
-def im_from(country = 'Argentina'):
+def im_from(country: str = 'Argentina') -> None:
     print(f'I am from {country}')
 
 im_from('Canada')
@@ -237,7 +237,7 @@ Well..., techically if a function has no return statement (or just the keyword *
 Let's see an example of that.
 
 ```python
-def sum_and_square(a_number, another_number):
+def sum_and_square(a_number: int, another_number: int) -> tuple[int, int]:
     sum_total = a_number + another_number
     square = a_number ** 2
     return sum_total, square
@@ -253,7 +253,7 @@ print(sum_and_square(5, 2))
 Just like any tuple we can unpack it.
 
 ```python
-def sum_and_square(a_number, another_number):
+def sum_and_square(a_number: int, another_number: int) -> tuple[int, int]:
     sum_total = a_number + another_number
     square = a_number ** 2
     return sum_total, square
@@ -279,7 +279,7 @@ For example, in a countdown we start on a certain number, it subtracts 1,and cal
 Let's see...
 
 ```python
-def recursive_subtraction(number):
+def recursive_subtraction(number: int) -> str:
     if number > 0:
         print(number)    
         number -= 1
@@ -309,7 +309,7 @@ You're right!
 Let's go with something more difficult... What about a factorial function?
 
 ```python
-def factorial(number):
+def factorial(number: int) -> int:
     return_value = 1
     for i in range(2, number + 1):
         return_value *= i
@@ -326,7 +326,7 @@ Ok! This is not recursion... I know!
 So, hands on!
 
 ```python
-def factorial(number):
+def factorial(number: int) -> int:
     return 1 if number <= 1 else number * factorial(number - 1)
 
 print(factorial(6))
@@ -368,6 +368,8 @@ print((lambda a : a ** 2)(5))
 25
 ```
 
+> I encourage you to look up type hinting for lambda functions.
+
 Lambda functions are frequently used with higher-order functions.
 
 Higher-order functions are functions that takes one or more functions as arguments or return one or more functions.
@@ -375,7 +377,7 @@ Higher-order functions are functions that takes one or more functions as argumen
 Let's see 2 examples...
 
 ```python
-def n_times(times):
+def n_times(times: int) -> int:
     return lambda n : n * times
 
 doubler = n_times(2)
@@ -411,16 +413,18 @@ More about [lambdas here](https://realpython.com/python-lambda/).
 We have talked about high-order functions. Another way to see this particular case, is a function wrapping another one...
 
 ```python
-def wrapper_function(func):
+from typing import Callable
 
-    def inner_function():
+def wrapper_function(func: Callable[[], None]) -> None:
+
+    def inner_function() -> None:
         print('Printing before function!')
         func()
         print('Printing after function!')
 
     return inner_function()
 
-def a_function():
+def a_function() -> None:
     print('I`m the function!')
 
 wrapping = wrapper_function(a_function)
@@ -440,9 +444,9 @@ Another way to use a wrapper is with decorators. Decorators, allow us to do the 
 Let's see that...
 
 ```python
-def wrapper_function(func):
+def wrapper_function(funcfunc: Callable[[], None]) -> None:
 
-    def inner_function():
+    def inner_function() -> None:
         print('Printing before function!')
         func()
         print('Printing after function!')
@@ -450,7 +454,7 @@ def wrapper_function(func):
     return inner_function
  
 @wrapper_function
-def a_function():
+def a_function() -> None:
     print('I`m the function')
  
 a_function()
@@ -520,6 +524,7 @@ for n in range(10):
 # output
 0 1 2 3 4 5 6 7 8 9
 ```
+
 > The `end=" "` parameter in the print is there to have keep the results of the multiple calls in the same line
 
 Now, what if want to create a list from 0 to infinite?
@@ -528,7 +533,9 @@ We could do the same as above, but we'll have an unstoppable (not really) loop o
 So, using a generator function we have a much better alternative!
 
 ```python
-def infinite_sequence():
+from typing import Generator
+
+def infinite_sequence() -> Generator[int, None, None]:
     number = 0
     while True:
         yield number
@@ -536,6 +543,7 @@ def infinite_sequence():
 ```
 
 > Note that we are just emulating the range built-in method. In a moment you will see why...
+> On another note, check the type hinting on that function and look into it.
 
 Now we have that function that looks pretty much like a regular function, except for the yield statement. The *yield* will return the value in the statement, and wait to continue the execution, but it needs to be done with the *next()* method, otherwise it would behave as a regular function.
 
@@ -579,7 +587,7 @@ But what if we want the first 50000 items of the fibonacci sequence, to do some 
 Option 1:
 
 ```python
-def fibonacci(n):
+def fibonacci(n: int) -> int:
     a = b = 1
     result = []
     for i in range(n):
@@ -595,7 +603,7 @@ We can create a list like this and process tha data on the list. But this way we
 Option 2:
 
 ```python
-def fibonacci(n):
+def fibonacci(n: int) -> list[int]:
     a = b = 1
     result = []
     for i in range(n):
@@ -614,7 +622,7 @@ This time, we already have the processed data, but again, a huge list, occupying
 Option 3:
 
 ```python
-def fibonacci(_from, previous, count):
+def fibonacci(_from: int, previous: int, count: int) -> list[int}:
     b = _from
     a = previous
     result = []
@@ -640,7 +648,9 @@ Here we have two loops, and have to keep track of the variables, which in a comp
 Best option:
 
 ```python
-def fibonacci(n, amount):
+from typing import Generator
+
+def fibonacci(n: int, amount: int) -> Generator[list[int], None, None]:
     a = b = 1
     result = []
     for i in range(n):

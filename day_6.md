@@ -39,9 +39,9 @@ class Person:
     '''
     This is a person class and have name in it.
     '''
-    name = "Ezequiel"
+    name = "Ezequiel"  # Atributo de clase
 
-    def say_hi(self):
+    def say_hi(self) -> None:
         print(f'Hello, my name is {self.name}')
 
 
@@ -85,7 +85,7 @@ class Person:
     '''
     name = "Ezequiel"
 
-    def say_hi(self):
+    def say_hi(self) -> None:
         print(f'Hello, my name is {self.name}')
 
 
@@ -107,10 +107,10 @@ class Person:
     This is a person class and have name in it. Now we can pass it to the __init__() special method!.
     '''
 
-    def __init__(self, name):
+    def __init__(self, name: str) -> None:
         self.name = name
 
-    def say_hi(self):
+    def say_hi(self) -> None:
         print(f'Hello, my name is {self.name}')
 
 
@@ -130,10 +130,10 @@ We **can** add attributes dynamically to an instance of a class.
 ```python
 
 class Person:
-    def __init__(self, name):
+    def __init__(self, name: str) -> None:
         self.name = name
 
-    def say_hi(self):
+    def say_hi(self) -> None:
         print(f'Hello, my name is {self.name}')
 
 
@@ -163,10 +163,10 @@ class Person:
     This is a person class and have name in it.
     '''
 
-    def __init__(self, name):
+    def __init__(self, name: str) -> None:
         self.name = name
 
-    def say_hi(self):
+    def say_hi(self) -> None:
         print(f'Hello, my name is {self.name}')
 
 
@@ -197,10 +197,10 @@ class Person:
     This is a person class and have name in it.
     '''
 
-    def __init__(self, name):
+    def __init__(self, name: str) -> None:
         self.name = name
 
-    def say_hi(self):
+    def say_hi(self) -> None:
         print(f'Hello, my name is {self.name}')
 
 
@@ -208,7 +208,7 @@ class Son(Person):
     "This is a child class from Person"
     isSon = True
 
-    def say_hi(self):
+    def say_hi(self) -> None:
         print(f'Hello, I am a Son and my name is {self.name}')
 
 
@@ -238,10 +238,10 @@ class Person:
     This is a person class and have name in it.
     '''
 
-    def __init__(self, name):
+    def __init__(self, name: str) -> None:
         self.name = name
 
-    def say_hi(self):
+    def say_hi(self) -> None:
         print(f'Hello, my name is {self.name}')
 
 
@@ -249,7 +249,7 @@ class Son(Person):
     "This is a child class from Person"
     isSon = True
 
-    def say_hi(self):
+    def say_hi(self) -> None:
         super().say_hi() # or Person.say_hi(self)
         print(f'I am a Son!')
 
@@ -275,7 +275,7 @@ class Father:
     This is a person class and have name in it.
     '''
 
-    def __init__(self):
+    def __init__(self) -> None:
         print(f'Fathers last name')
 
 
@@ -284,7 +284,7 @@ class Mother:
     This is a person class and have name in it.
     '''
 
-    def __init__(self):
+    def __init__(self) -> None:
         print(f'Mothers last name')
 
 
@@ -292,7 +292,7 @@ class Son(Father, Mother):
     "This is a child class from Mother and Father"
     isSon = True
 
-    def __init__(self):
+    def __init__(self) -> None:
         Father.__init__(self)
         Mother.__init__(self)
         print(f'I am a Son and I have both last names')
@@ -316,7 +316,7 @@ class Father:
     This is a person class and have name in it.
     '''
 
-    def __init__(self):
+    def __init__(self) -> None:
         print(f'Fathers last name')
 
 
@@ -325,7 +325,7 @@ class Mother:
     This is a person class and have name in it.
     '''
 
-    def __init__(self):
+    def __init__(self) -> None:
         print(f'Mothers last name')
 
 
@@ -333,7 +333,7 @@ class Son(Father, Mother):
     "This is a child class from Mother and Father"
     isSon = True
 
-    def __init__(self):
+    def __init__(self) -> None:
         super().__init__(self)
         print(f'I am a Son and I have both last names')
 
@@ -377,7 +377,7 @@ Let's see an example or protected members:
 
 ```python
 class ClassA:
-    def __init__(self):
+    def __init__(self) -> None:
   
         # Protected member
         self._a = 2
@@ -394,7 +394,7 @@ Now let's see an example or private members:
 
 ```python
 class ClassB:
-    def __init__(self):
+    def __init__(self) -> None:
   
         # Protected member
         self.__a = 2
@@ -414,16 +414,16 @@ In order to use encapsulation properly, this is how we sphould proceed.
 
 ```python
 class Person():
-  def __init__(self, nombre):
-    self.nombre = nombre
+  def __init__(self, name: str) -> None:
+    self.name = name
     self.__password = "estoEsUnaPass"
     
   @property
-  def password(self):
+  def password(self) -> None:
     return self.__password
   
   @password.setter
-  def password(self, password):
+  def password(self, password: str) -> None:
     self.__password = password
     
 
@@ -484,13 +484,13 @@ class Person:
     This is a person class and have name in it.
     '''
 
-    def __init__(self, name):
+    def __init__(self, name: str) -> None:
         self.name = name
 
 me = Person('Ezequiel')
 another_guy = Person('Nicolas')
 print(me)
-print(another_guy
+print(another_guy)
 
 # output
 <__main__.Person object at 0x000001F95E1DDFD0>
@@ -505,10 +505,10 @@ class Person:
     This is a person class and have name in it.
     '''
 
-    def __init__(self, name):
+    def __init__(self, name: str) -> None:
         self.name = name
 
-    def __repr__(self):
+    def __repr__(self) -> str:
         return f'I am of class Person and my name is {self.name}'
 
 me = Person('Ezequiel')
