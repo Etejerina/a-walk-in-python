@@ -444,7 +444,9 @@ Another way to use a wrapper is with decorators. Decorators, allow us to do the 
 Let's see that...
 
 ```python
-def wrapper_function(func: Callable[[], None]) -> None:
+from typing import Callable
+
+def wrapper_function(func: Callable[[], None]) -> Callable[[], None]:
 
     def inner_function() -> None:
         print('Printing before function!')
