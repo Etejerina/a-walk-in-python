@@ -18,7 +18,7 @@ We an think of a **Class** as a prototype or blueprint of something.
 
 Classes are dynamic as they are created at runtime, and can be modified further after creation.
 
-Classes are, by convention, named using Pascal Case (PascalCase). This is naming the class with words, without using spaces or underscores and starting every word with a capitalize letter.
+Classes are, by convention, named using Pascal Case (PascalCase). This is naming the class with words, without using spaces or underscores and starting every word with a capitalized letter.
 
 Syntax:
 
@@ -265,7 +265,7 @@ Hello, my name is Ezequiel # this in on the Son class, calling say_hi() from the
 I am a Son
 ```
 
-In Python we call inherit from more than one class. The child class will get all the methods and attributes from all the parent classes.
+In Python we can inherit from more than one class. The child class will get all the methods and attributes from all the parent classes.
 
 Let's see an example.
 
@@ -334,7 +334,7 @@ class Son(Father, Mother):
     isSon = True
 
     def __init__(self) -> None:
-        super().__init__(self)
+        super().__init__()
         print(f'I am a Son and I have both last names')
 
 
@@ -359,6 +359,7 @@ print(Son.mro()) # or print(Son.__mro__)
 ```
 
 There are far more complex scenarios, but you get the idea.
+If you want to go deeper checkout the file [multi_inheritance.md](/multi_inheritance.md)
 
 ## Encapsulation
 
@@ -396,7 +397,7 @@ Now let's see an example or private members:
 class ClassB:
     def __init__(self) -> None:
   
-        # Protected member
+        # Private member
         self.__a = 2
 
 an_instance = ClassB()
@@ -427,14 +428,14 @@ class Person():
     self.__password = password
     
 
-yo = Person("Eze")
-print(yo.password)
-yo.password = "otra"
-print(yo.password)
+me = Person("Eze")
+print(me.password)
+me.password = "other"
+print(me.password)
 
 #output
-estoEsUnaPass
-otra
+th1sIs4Pass
+other
 ```
 
 > Note: There is no point on using the setter in this example, but we can use that to validate data, before this private attribute gets setted.
@@ -443,11 +444,11 @@ otra
 
 Dunder Methods are the special methods that start and end with the double underscores. Dunder methods are not meant to be invoked directly by you, but the invocation happens internally from the class on a certain action.
 
-For example, when you add two numbers using the + operator, internally, the \_\_add__() method will be called.
+For example, when you add two numbers using the `+` operator, internally, the `__add__()` method will be called.
 
 We can use the dir() function to see the number of dunder methods inherited by a class, but not only dunder methods but all methods.
 
-Let's see an example with the classed defined above...
+Let's see an example with the classes defined above...
 
 ```python
 print(dir(Father))
@@ -481,7 +482,7 @@ We have also said that, if needed, we can override these methods. Actually, this
 ```python
 class Person:
     '''
-    This is a person class and have name in it.
+    This is a person class and has an atribute name in it.
     '''
 
     def __init__(self, name: str) -> None:
