@@ -227,26 +227,6 @@ This should be something interesting...
 
 > Note: the print statement is not executed on the second, third and fourth imports.
 
-### The 'dir()' function
-
-The built-in function dir() returns a list of defined names in a namespace.
-It takes at most one argument, the object whose attributes you want to know about:
-
-```python
-print(dir()) # show all variables and functions currently defined
-
-# output
-['__annotations__', '__builtins__', '__doc__', '__loader__', '__name__', '__package__', '__spec__']
-```
-
-Afetr importing a module (the same from the previous example), we'll see:
-
-```python
-import module1
-print(dir())
-['__annotations__', '__builtins__', '__doc__', '__loader__', '__name__', '__package__', '__spec__', 'a_string']
-```
-
 ## Type hinting
 
 From Python 3.5 on, there is way to "define" the type of a value within your Python code.
@@ -309,5 +289,7 @@ def a_function() -> number:
 ```
 
 > In this case we are creating the type number as an alias of the union of int and float types.
+
+[Type Hinting](type_hinting.md)
 
 There is much more on type hinting still in development, so maybe we will an update on this. [Here](https://docs.python.org/3/library/typing.html) we have a lot of info on this subject.
