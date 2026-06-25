@@ -54,8 +54,9 @@ def resolve_local_markdown_path(markdown_path: Path, raw_link: str) -> Path | No
     if parsed.scheme or parsed.netloc or not parsed.path.lower().endswith(".md"):
         return None
 
-    candidate = Path(parsed.path)
-    if candidate.is_absolute():
+    link_path = parsed.path
+    candidate = Path(link_path)
+    if link_path.startswith(("/", "\\")) or candidate.is_absolute():
         candidate = ROOT / str(candidate).lstrip("\\/")
     else:
         candidate = markdown_path.parent / candidate

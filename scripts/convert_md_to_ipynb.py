@@ -31,7 +31,7 @@ def resolve_local_markdown_path(markdown_path: Path, raw_link: str) -> Path | No
 
     link_path = parsed.path
     candidate = Path(link_path)
-    if candidate.is_absolute():
+    if link_path.startswith(("/", "\\")) or candidate.is_absolute():
         candidate = ROOT / str(candidate).lstrip("\\/")
     else:
         candidate = markdown_path.parent / candidate

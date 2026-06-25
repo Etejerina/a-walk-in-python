@@ -159,7 +159,7 @@ Python uses indentation to indicate a block of code. Indentation refers to the s
 
 Where in other programming languages the indentation in code is for readability only, the indentation in Python is very important.
 
-```python
+```text
 if a > 5:
     print("Es mayor a 5")
 ```
