@@ -1,0 +1,553 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Day 5 | A walk in Python</title>
+  <link rel="stylesheet" href="../assets/styles.css">
+</head>
+<body>
+  <header class="topbar">
+    <a class="brand" href="../index.html">A walk in Python</a>
+    <nav>
+      <a href="../index.html#lessons">Lessons</a>
+      <a href="../index.html#how-to-use">How to use</a>
+      <a class="nav-action" href="https://colab.research.google.com/github/Etejerina/a-walk-in-python/blob/codex-course-site-colab/notebooks/day_5.ipynb">Open in Colab</a>
+    </nav>
+  </header>
+  <main class="layout">
+    <aside class="sidebar">
+      <strong>Course</strong>
+      <nav><a href="README.html">Preface</a>
+<a href="day_1.html">Day 1</a>
+<a href="day_2.html">Day 2</a>
+<a href="day_3.html">Day 3</a>
+<a href="day_4.html">Day 4</a>
+<a href="day_5.html">Day 5</a>
+<a href="day_6.html">Day 6</a>
+<a href="day_7.html">Day 7</a>
+<a href="floats.html">0.1 + 0.2 == 0.3 results in True or False?</a>
+<a href="finally.html">Finally</a>
+<a href="docs/index.html">Welcome to GitHub Pages</a>
+<a href="multi_inheritance.html">ChatGPTs answer:</a>
+<a href="type_hinting.html">Chapter: Type hinting in Python</a></nav>
+    </aside>
+    <article class="content">
+      <div class="page-actions">
+        <span>day_5.md</span>
+        <a class="button" href="https://colab.research.google.com/github/Etejerina/a-walk-in-python/blob/codex-course-site-colab/notebooks/day_5.ipynb">Open notebook in Colab</a>
+      </div>
+      <h1 id="a-walk-in-python-readme-md"><a href="/README.md">A walk in Python</a></h1>
+<h2 id="day-5">Day 5</h2>
+<ul>
+<li><a href="day_5.html#functions">Functions</a></li>
+<ul>
+<li><a href="day_5.html#recursion">Recursion</a></li>
+</ul>
+<li><a href="day_5.html#lambdas">Lambdas</a></li>
+<li><a href="day_5.html#wrapper-functions">Wrapper Functions</a></li>
+<li><a href="day_5.html#iterators-and-generators">Iterators and Generators</a></li>
+<ul>
+<li><a href="day_5.html#iterators">Iterators</a></li>
+<li><a href="day_5.html#generators">Generators</a></li>
+<li><a href="day_5.html#generator-expressions">Generator expressions</a></li>
+</ul>
+</ul>
+<h2 id="functions"><strong>Functions</strong></h2>
+<hr>
+<p>A <strong>function</strong> is a series of statements which returns some value to a caller. It can also be passed zero or more arguments, which may be used in the execution of this block of code, or body of the function.</p>
+<blockquote>
+<p>A parameter is a variable in a method definition. When a method is called, the arguments are the data you pass into the method&#x27;s parameters.</p>
+</blockquote>
+<p>Having said that, this values in Python function definitions, are called arguments, or <em>args</em> for short.</p>
+<p>Functions use the reserved word <em>def</em>, as follows.</p>
+<pre><code class="language-python">def a_function(arguments: &lt;arg_type&gt;) -&gt; &lt;return_type&gt;:
+    # some code
+    return some_value</code></pre>
+<p>And the function can be called this way:</p>
+<pre><code class="language-python">a_function()</code></pre>
+<p>Let&#x27;s see an example:</p>
+<pre><code class="language-python">def say_hi(name: str) -&gt; None:
+    print(f&#x27;Hi! My name is {name}&#x27;)
+
+say_hi(&#x27;Eze&#x27;)
+say_hi(&#x27;Pedro&#x27;)
+
+# output
+Hi! My name is Eze
+Hi! My name is Pedro</code></pre>
+<p>It&#x27;s very important that the amount of arguments you pass to a function, are the same amount of parameters on the function definition.</p>
+<pre><code class="language-python">def say_hi(name: str, lastname: str) -&gt; None:
+    print(f&#x27;Hi! My name is {name} {lastname}&#x27;)
+
+say_hi(&#x27;Eze&#x27;)
+
+# output
+Traceback (most recent call last):
+  File &quot;&lt;stdin&gt;&quot;, line 1, in &lt;module&gt;
+TypeError: say_hi() missing 1 required positional argument: &#x27;lastname&#x27;</code></pre>
+<p> Or the other way around...</p>
+<p> ```python</p>
+<p>def say_hi(name: str) -&gt; None:</p>
+<p>    print(f&#x27;Hi! My name is {name}&#x27;)</p>
+<p>say_hi(&#x27;Eze&#x27;, &#x27;Tejerina&#x27;)</p>
+<h1 id="output">output</h1>
+<p>Traceback (most recent call last):</p>
+<p>  File &quot;&lt;stdin&gt;&quot;, line 1, in &lt;module&gt;</p>
+<p>TypeError: say_hi() takes 1 positional argument but 2 were given</p>
+<p> ```</p>
+<blockquote>
+<p>Note that the function hasn&#x27;t a return statement. These are called void functions. Are functions that do something that doesn&#x27;t require returning a value.</p>
+</blockquote>
+<p>As we said before, in the function definition, in parentheses, we have the parameters, that can be zero or many.</p>
+<p>By this point, we should add that in Python, arguments are not passed by Value, or by Reference, But by Assignment!!! ＼(｀0´)／</p>
+<p>This means that the values, or the values of the variables, passed as arguments, are assigned to a variable, which scope is inside that function.</p>
+<p>Breath.. breath... think... don&#x27;t get crazy!!!</p>
+<p>The best practice in this case when calling a function, is returning values and reassigning like in this example.</p>
+<p> ```python</p>
+<p>def increment(an_int: int) -&gt; int:</p>
+<p>    return an_int + 1</p>
+<p>an_int = 1</p>
+<p>an_int = increment(an_int)</p>
+<p>print(an_int)</p>
+<h1 id="output">output</h1>
+<p>2</p>
+<p> ```</p>
+<p>But, object attributes have their own place in Python’s assignment strategy. Python’s language reference for assignment statements states that if the target is an object’s attribute that <strong>supports assignment</strong>, then the object will be asked to perform the assignment on that attribute.</p>
+<p>If you pass the object as an argument to a function, then its attributes can be modified in place.</p>
+<p>Like this...</p>
+<p> ```python</p>
+<h1 id="for-the-purpose-of-this-example-let-s-use-simplenamespace">For the purpose of this example, let&#x27;s use SimpleNamespace.</h1>
+<p>from types import SimpleNamespace</p>
+<h1 id="simplenamespace-allows-us-to-set-arbitrary-attributes">SimpleNamespace allows us to set arbitrary attributes.</h1>
+<h1 id="it-is-an-explicit-handy-replacement-for-class-x-pass">It is an explicit, handy replacement for &quot;class X: pass&quot;.</h1>
+<p>inst = SimpleNamespace()</p>
+<p>def increment(instance: Any) -&gt; None:</p>
+<p>    instance.an_int += 1</p>
+<p>inst.an_int = 1</p>
+<p>increment(inst)</p>
+<p>print(inst.an_int)</p>
+<h1 id="output">output</h1>
+<p>2</p>
+<p> ```</p>
+<p>In the same way we can use Dictionaries and Lists.</p>
+<p><a href="https://realpython.com/python-pass-by-reference/">Here</a> is a post on Real Python, explaining all this things, and why technically this is possible.</p>
+<p>I&#x27;m not pretending to explain something you can read in this article very clearly.</p>
+<p>I can give you some examples though...</p>
+<pre><code class="language-python">full_name = {
+    &#x27;name&#x27;: &#x27;Pepe&#x27;,
+    &#x27;lastname&#x27;: &#x27;Grillo&#x27;
+}
+
+def change_name(full_name: dict[str, str]) -&gt; None:
+    full_name[&#x27;name&#x27;] = &#x27;Ezequiel&#x27;
+
+change_name(full_name)
+print(full_name)
+
+#output
+{&#x27;name&#x27;: &#x27;Ezequiel&#x27;, &#x27;lastname&#x27;: &#x27;Grillo&#x27;}</code></pre>
+<p>Going back to simplier things, let&#x27;s talk about those arguments.</p>
+<p>We can have what is called Arbitrary Arguments (\<em>args). The use of these is to avoid having to enumerate many positional arguments, and just use the unpacking operator &#x27;</em>&#x27;, in particular when we don&#x27;t how how many arguments where are receiving.</p>
+<p>Let&#x27;s see some examples</p>
+<pre><code class="language-python">number_list = [1, 42, 23, 4, 6]
+
+def my_sum(numbers: list[int]) -&gt; int:
+    total = 0
+    for number in numbers:
+        total += number
+    return total
+
+print(my_sum(number_list))</code></pre>
+<p>Here we first create a list, and pass it as an argument. Inside the function we iterate that list and make the calculation.</p>
+<pre><code class="language-python">def my_sum(*numbers: int) -&gt; int:
+    total = 0
+    for number in numbers:
+        total += number
+    return total
+
+print(my_sum(1, 42, 23, 4, 6))</code></pre>
+<p>In this second example, we can see we are passing what seems to be comma separated values, but is a tuple. So in the function, we use the unpacking operator &#x27;*&#x27;, that will take all positional arguments given in the input and <strong>pack</strong> them all into a single iterable object.</p>
+<p>Another way to pass arguments, are keyword arguments, or kwargs for short. These have the &quot;key = value&quot; syntax.</p>
+<p>This way the order of the arguments does not matter.</p>
+<pre><code class="language-python">def a_function(number1: int, number2: int, number3: int) -&gt; None:
+    print(f&#x27;The first number is {number1}&#x27;)
+
+a_function(number3 = 23, number1 = 2, number2 = 125)
+
+# output
+The first number is 2</code></pre>
+<p>We also have <strong>Arbitrary Keyword Arguments</strong>. This way the function will receive a dictionary of arguments, and can access the items accordingly.</p>
+<pre><code class="language-python">def a_function(**numbers: int) -&gt; None:
+    print(f&#x27;The first number is {numbers[&quot;number1&quot;]}&#x27;)
+
+a_function(number3 = 23, number1 = 2, number2 = 125)
+
+# output
+The first number is 2</code></pre>
+<blockquote>
+<p>Note that *<em>kwargs works the same as </em>args buy instead of accepting positional arguments, it accepts keyword arguments such as those from a dictionary (i.e. a dictionary of arguments)</p>
+</blockquote>
+<p>In this case we use the unpacking operator &#x27;\<em>\</em>&#x27;, that will take all keyword arguments given in the input and <strong>pack</strong> them all into a dictionary.</p>
+<p>In a function, we can always set a <strong>default value</strong> for a parameter.</p>
+<p>For example...</p>
+<pre><code class="language-python">def im_from(country: str = &#x27;Argentina&#x27;) -&gt; None:
+    print(f&#x27;I am from {country}&#x27;)
+
+im_from(&#x27;Canada&#x27;)
+im_from()
+
+# output
+I am from Canada
+I am from Argentina</code></pre>
+<blockquote>
+<p>Note that in the second call to the function, we are not passing an argument to the function, so it&#x27;s printing the default value on the function definition. When we pass the argument, the function behaves as always.</p>
+</blockquote>
+<p>One more very nice thing about functions in Python for me is, that you can return more than one value.</p>
+<p>We said that we have void functions that don&#x27;t return a value, and functions that do return a value... or more!</p>
+<p>Well..., techically if a function has no return statement (or just the keyword <em>return</em> and no value to return) it returns None.</p>
+<p>Let&#x27;s see an example of that.</p>
+<pre><code class="language-python">def sum_and_square(a_number: int, another_number: int) -&gt; tuple[int, int]:
+    sum_total = a_number + another_number
+    square = a_number ** 2
+    return sum_total, square
+
+print(sum_and_square(5, 2))
+
+# output
+(7, 25)</code></pre>
+<blockquote>
+<p>Note that the returned value is tuple with two values, the sum of he values and the first number squared.</p>
+</blockquote>
+<p>Just like any tuple we can unpack it.</p>
+<pre><code class="language-python">def sum_and_square(a_number: int, another_number: int) -&gt; tuple[int, int]:
+    sum_total = a_number + another_number
+    square = a_number ** 2
+    return sum_total, square
+
+addition, squared = sum_and_square(5, 2)
+print(addition)
+print(squared)
+
+# output
+7
+25</code></pre>
+<h3 id="recursion">Recursion</h3>
+<p>What is recursion?</p>
+<p>Recursion is a mathematical and programming concept in which a function calls itself.</p>
+<p>It can be dangerous because we need to define a base case in which the function reaches a stopping point.</p>
+<p>For example, in a countdown we start on a certain number, it subtracts 1,and calls it self. Every time it calls itself, the call of the function pass the result as an argument. But we need to stop when the result is 0. If not, we are trapped in an infinite loop.</p>
+<p>Let&#x27;s see...</p>
+<pre><code class="language-python">def recursive_subtraction(number: int) -&gt; str:
+    if number &gt; 0:
+        print(number)    
+        number -= 1
+        recursive_subtraction(number)
+    
+    return &#x27;Done!&#x27;
+
+print(recursive_subtraction(10))
+
+# output
+10
+9
+8
+7
+6
+5
+4
+3
+2
+1
+Done!</code></pre>
+<p>This example is pretty silly. I bet most of you realized that you could have done it with a simple for loop.</p>
+<p>You&#x27;re right!</p>
+<p>Let&#x27;s go with something more difficult... What about a factorial function?</p>
+<pre><code class="language-python">def factorial(number: int) -&gt; int:
+    return_value = 1
+    for i in range(2, number + 1):
+        return_value *= i
+
+    return return_value
+
+print(factorial(6))
+
+# output
+720</code></pre>
+<p>Ok! This is not recursion... I know!</p>
+<p>So, hands on!</p>
+<pre><code class="language-python">def factorial(number: int) -&gt; int:
+    return 1 if number &lt;= 1 else number * factorial(number - 1)
+
+print(factorial(6))
+
+# output
+720</code></pre>
+<p>One of the advantages is that the code looks cleaner, and easier. On the other hand, sometimes recursions are more complicate to follow, and are more expensive in terms of memory usage.</p>
+<p>If we follow the execution of the code we could understand why.</p>
+<h2 id="lambdas">Lambdas</h2>
+<p>A lambda function is a small anonymous function. It can have multiple parameters, but only one expression.</p>
+<p>Syntax:</p>
+<pre><code class="language-python">lamba arguments : expression</code></pre>
+<p>For example:</p>
+<pre><code class="language-python">square_lambda = lambda a : a ** 2 # or print((lambda a : a ** 2)(5))
+
+print(square_lambda(5))
+
+# output
+25</code></pre>
+<p>Python doesn&#x27;t encourage using immediately invoked lambda expressions like in the example. It simply results from a lambda expression being callable, unlike the body of a normal function.</p>
+<pre><code class="language-python">print((lambda a : a ** 2)(5))
+
+# output
+25</code></pre>
+<blockquote>
+<p>I encourage you to look up type hinting for lambda functions.</p>
+</blockquote>
+<p>Lambda functions are frequently used with higher-order functions.</p>
+<p>Higher-order functions are functions that takes one or more functions as arguments or return one or more functions.</p>
+<p>Let&#x27;s see 2 examples...</p>
+<pre><code class="language-python">def n_times(times: int) -&gt; int:
+    return lambda n : n * times
+
+doubler = n_times(2)
+tripler = n_times(3)
+
+print(doubler(10))
+print(tripler(10))
+
+# output
+20
+30</code></pre>
+<p>Here we are returning a lambda function. This way we can re use it in order to create another.</p>
+<pre><code class="language-python">n_times = lambda n, func: func(n)
+
+print(n_times(10, lambda n : 2 * n))
+print(n_times(10, lambda n : 3 * n))
+
+# output
+20
+30</code></pre>
+<p>In this case we are passing to &#x27;n_times&#x27;, a value and a lambda function. Again it doesn&#x27;t make much sense, but is an example.</p>
+<p>More about <a href="https://realpython.com/python-lambda/">lambdas here</a>.</p>
+<h2 id="wrapper-functions">Wrapper Functions</h2>
+<p>We have talked about high-order functions. Another way to see this particular case, is a function wrapping another one...</p>
+<pre><code class="language-python">from typing import Callable
+
+def wrapper_function(func: Callable[[], None]) -&gt; None:
+
+    def inner_function() -&gt; None:
+        print(&#x27;Printing before function!&#x27;)
+        func()
+        print(&#x27;Printing after function!&#x27;)
+
+    return inner_function()
+
+def a_function() -&gt; None:
+    print(&#x27;I`m the function!&#x27;)
+
+wrapping = wrapper_function(a_function)
+
+# output
+Printing before function!
+I`m the function!
+Printing after function!</code></pre>
+<p>This a call a Wrapper Function. Or one way to write a wrapper function or just <strong>wrapper</strong>...</p>
+<p>This is used to modify the behavior of a function.</p>
+<p>Another way to use a wrapper is with decorators. Decorators, allow us to do the same thing as the last example, but in a simpler way.</p>
+<p>Let&#x27;s see that...</p>
+<pre><code class="language-python">from typing import Callable
+
+def wrapper_function(func: Callable[[], None]) -&gt; Callable[[], None]:
+
+    def inner_function() -&gt; None:
+        print(&#x27;Printing before function!&#x27;)
+        func()
+        print(&#x27;Printing after function!&#x27;)
+        
+    return inner_function
+ 
+@wrapper_function
+def a_function() -&gt; None:
+    print(&#x27;I`m the function&#x27;)
+ 
+a_function()
+
+# output
+Printing before function!
+I`m the function!
+Printing after function!</code></pre>
+<p> &gt; Note that every time we call &#x27;a_function&#x27;, the execution of that, will we wrapped with the &#x27;wrapper_function&#x27;.</p>
+<h2 id="iterators-and-generators">Iterators and Generators</h2>
+<h3 id="iterators">Iterators</h3>
+<p>An iterator is an object that contains a countable number of values and can be iterated upon.</p>
+<p>In Python these objects have both methods, \_\_iter__() and \_\_next__().</p>
+<p>As we saw, lists, tuples, sets and dictionaries (<em>and even strings</em>) are iterable objects, which you can get an iterator from.</p>
+<p>These have the iter() method which is used to get an iterator.</p>
+<pre><code class="language-python">a_list = [&#x27;Ezequiel&#x27;, &#x27;Javier&#x27;, &#x27;Emilio&#x27;, &#x27;Nicolas&#x27;]
+an_iter = iter(a_list)
+
+print(next(an_iter))
+print(next(an_iter))
+print(next(an_iter))
+print(next(an_iter))
+
+# output
+Ezequiel
+Javier
+Emilio
+Nicolas</code></pre>
+<blockquote>
+<p>Note that in between these <em>print</em> lines, we can do another thing, print something else, call a function or whatever we want, and the result of the next on that iterator, would be the next item on the iterable.</p>
+</blockquote>
+<p>Of course we can loop through an iterable too as we saw previously.</p>
+<p>Later, when we learn about Classes, we&#x27;ll see how to create an Iterator Class.</p>
+<h3 id="generators">Generators</h3>
+<p>A Generator or generator function is a kind of function that creates a lazy iterator. These are objects that you can loop over like a <em>list</em>. However, unlike lists, lazy iterators do not store their contents in memory.</p>
+<p>Let&#x27;s see something first...</p>
+<pre><code class="language-python">a_list = list(range(10))
+print(*a_list)
+
+# output
+0 1 2 3 4 5 6 7 8 9</code></pre>
+<p>Another way to do this...</p>
+<pre><code class="language-python">for n in range(10):
+    print(n, end=&quot; &quot;)
+
+# output
+0 1 2 3 4 5 6 7 8 9</code></pre>
+<blockquote>
+<p>The <code>end=&quot; &quot;</code> parameter in the print is there to have keep the results of the multiple calls in the same line</p>
+</blockquote>
+<p>Now, what if want to create a list from 0 to infinite?</p>
+<p>We could do the same as above, but we&#x27;ll have an unstoppable (not really) loop of increasing numbers, with no possibility to do anything while the code is executing, not to mention, the enormous amount of memory such a list would occupy.</p>
+<p>So, using a generator function we have a much better alternative!</p>
+<pre><code class="language-python">from typing import Generator
+
+def infinite_sequence() -&gt; Generator[int, None, None]:
+    number = 0
+    while True:
+        yield number
+        number += 1</code></pre>
+<blockquote>
+<p>Note that we are just emulating the range built-in method. In a moment you will see why...</p>
+<p>On another note, check the type hinting on that function and look into it.</p>
+</blockquote>
+<p>Now we have that function that looks pretty much like a regular function, except for the yield statement. The <em>yield</em> will return the value in the statement, and wait to continue the execution, but it needs to be done with the <em>next()</em> method, otherwise it would behave as a regular function.</p>
+<p>Let&#x27;s continue...</p>
+<pre><code class="language-python">for i in infinite_sequence():
+    print(i, end = &quot; &quot;)
+
+# output
+0 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 21 22 23 24 25 26 27 28 29
+30 31 32 33 34
+[...]
+1251235 1251236 1251237 1251238 1251239 1251240 1251241
+KeyboardInterrupt
+Traceback (most recent call last):
+  File &quot;&lt;stdin&gt;&quot;, line 2, in &lt;module&gt;</code></pre>
+<p>As we said above, we have iterate the function with a for loop and we are in the exact same scenario as before, but if we do this...</p>
+<pre><code class="language-python">a_generator = infinite_sequence()
+next(a_generator)
+next(a_generator)
+next(a_generator)
+next(a_generator)
+
+# output
+0
+1
+2
+3</code></pre>
+<p>And every time we call the next method of the generator, we&#x27;ll have the next value.</p>
+<p>As we always say, this is a dumb example.</p>
+<p>But what if we want the first 50000 items of the fibonacci sequence, to do some batch processing?</p>
+<p>Option 1:</p>
+<pre><code class="language-python">def fibonacci(n: int) -&gt; int:
+    a = b = 1
+    result = []
+    for i in range(n):
+        result.append(a)
+        a, b = b, a + b
+    return result
+
+fibonacci(50000)</code></pre>
+<p>We can create a list like this and process tha data on the list. But this way we are going to have a huge list, occupying a lot of memory.</p>
+<p>Option 2:</p>
+<pre><code class="language-python">def fibonacci(n: int) -&gt; list[int]:
+    a = b = 1
+    result = []
+    for i in range(n):
+        &#x27;&#x27;&#x27;
+        block of code to process
+        &#x27;&#x27;&#x27;
+        result.append(processed_data)
+        a, b = b, a + b
+    return result
+
+fibonacci(50000)</code></pre>
+<p>This time, we already have the processed data, but again, a huge list, occupying loads of memory.</p>
+<p>Option 3:</p>
+<pre><code class="language-python">def fibonacci(_from: int, previous: int, count: int) -&gt; list[int}:
+    b = _from
+    a = previous
+    result = []
+    for i in range(count):
+        result.append(a)
+        a, b = b, a + b
+    return result
+
+total = 100
+_from  = 1
+previous = _from
+count = 50
+for n in range(_from, total, count):
+    result = fibonacci(_from, previous, n + count)
+    print(result)
+    _from = result[-1]
+    previous = result[-2]
+    # or whatever we need to do...</code></pre>
+<p>Here we have two loops, and have to keep track of the variables, which in a complicated context can lead to a large number of mistakes and bugs (actually, there is one..).</p>
+<p>Best option:</p>
+<pre><code class="language-python">from typing import Generator
+
+def fibonacci(n: int, amount: int) -&gt; Generator[list[int], None, None]:
+    a = b = 1
+    result = []
+    for i in range(n):
+        result.append(a)
+        if len(result) == amount:
+            yield result
+            result = []
+        a, b = b, a + b
+
+gen = fibonacci(50000, 50)
+print(next(gen))
+print(next(gen))
+# ...
+print(next(gen))</code></pre>
+<p>This way we don&#x27;t have to keep track on which batch in coming next or any other thing. We just call the next method the times we need, even inside a loop.</p>
+<p>What we are doing is to avoid using a callback, and use a generator and the <em>yield</em> reserved word.</p>
+<h3 id="generator-expressions">Generator expressions</h3>
+<p>Similar to the lambda functions which create anonymous functions, generator expressions create anonymous generator functions.</p>
+<p>The syntax for generator expression is similar to that of a list comprehension in Python. But the square brackets are replaced with round parentheses.</p>
+<p>Let&#x27;s see an example...</p>
+<pre><code class="language-python">a_list = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
+squared = (x**2 for x in a_list)
+
+print(next(squared))
+print(next(squared))
+print(next(squared))
+print(next(squared))
+
+# output
+1
+4
+9
+16</code></pre>
+<hr>
+<p><a href="day_6.html">Go to Day 6</a></p>
+<hr>
+    </article>
+  </main>
+</body>
+</html>

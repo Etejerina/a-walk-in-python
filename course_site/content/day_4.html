@@ -1,0 +1,704 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Day 4 | A walk in Python</title>
+  <link rel="stylesheet" href="../assets/styles.css">
+</head>
+<body>
+  <header class="topbar">
+    <a class="brand" href="../index.html">A walk in Python</a>
+    <nav>
+      <a href="../index.html#lessons">Lessons</a>
+      <a href="../index.html#how-to-use">How to use</a>
+      <a class="nav-action" href="https://colab.research.google.com/github/Etejerina/a-walk-in-python/blob/codex-course-site-colab/notebooks/day_4.ipynb">Open in Colab</a>
+    </nav>
+  </header>
+  <main class="layout">
+    <aside class="sidebar">
+      <strong>Course</strong>
+      <nav><a href="README.html">Preface</a>
+<a href="day_1.html">Day 1</a>
+<a href="day_2.html">Day 2</a>
+<a href="day_3.html">Day 3</a>
+<a href="day_4.html">Day 4</a>
+<a href="day_5.html">Day 5</a>
+<a href="day_6.html">Day 6</a>
+<a href="day_7.html">Day 7</a>
+<a href="floats.html">0.1 + 0.2 == 0.3 results in True or False?</a>
+<a href="finally.html">Finally</a>
+<a href="docs/index.html">Welcome to GitHub Pages</a>
+<a href="multi_inheritance.html">ChatGPTs answer:</a>
+<a href="type_hinting.html">Chapter: Type hinting in Python</a></nav>
+    </aside>
+    <article class="content">
+      <div class="page-actions">
+        <span>day_4.md</span>
+        <a class="button" href="https://colab.research.google.com/github/Etejerina/a-walk-in-python/blob/codex-course-site-colab/notebooks/day_4.ipynb">Open notebook in Colab</a>
+      </div>
+      <h1 id="a-walk-in-python-readme-md"><a href="/README.md">A walk in Python</a></h1>
+<h2 id="day-4">Day 4</h2>
+<ul>
+<li>Operators</li>
+<ul>
+<li><a href="day_4.html#arithmetic-operators">Arithmetic operators</a></li>
+<li><a href="day_4.html#assignment-operators">Assignment operators</a></li>
+<li><a href="day_4.html#comparison-operators">Comparison operators</a></li>
+<li><a href="day_4.html#logical-operators">Logical operators</a></li>
+<li><a href="day_4.html#identity-operators">Identity operators</a></li>
+<li><a href="day_4.html#membership-operators">Membership operators</a></li>
+<li><a href="day_4.html#bitwise-operators">Bitwise operators</a></li>
+</ul>
+<li><a href="day_4.html#control-structures">Control Structures</a></li>
+<ul>
+<li><a href="day_4.html#conditionals">Conditionals</a></li>
+<li><a href="day_4.html#loops">Loops</a></li>
+<ul>
+<li><a href="day_4.html#while-loop">While Loop</a></li>
+<li><a href="day_4.html#for-loop">For Loop</a></li>
+</ul>
+<li><a href="day_4.html#exceptions">Exceptions</a></li>
+</ul>
+</ul>
+<h2 id="operators"><strong>Operators</strong></h2>
+<hr>
+<p>In Python, and in general, operators are symbols used to perform arithmetic and logical operations on values and variables.</p>
+<p>We have:</p>
+<ul>
+<li>Arithmetic operators</li>
+<li>Assignment operators</li>
+<li>Comparison operators</li>
+<li>Logical operators</li>
+<li>Identity operators</li>
+<li>Membership operators</li>
+<li>Bitwise operators</li>
+</ul>
+<h2 id="arithmetic-operators">Arithmetic operators</h2>
+<p>These are used to perform common mathematical operations.</p>
+<p>| Operator | Name</p>
+<p>|---|---</p>
+<p>| + | addition</p>
+<p>| - | subtraction</p>
+<p>| * | multiplication</p>
+<p>| / | division</p>
+<p>| % | modulus</p>
+<p>| ** | exponentiation</p>
+<p>| // | floor division</p>
+<pre><code class="language-python">print(1 + 5)
+print(10 - 6)
+print(2 * 8)
+print(8 / 4)
+print(9 % 2)
+print(3 ** 3)
+print(9 // 2)
+
+# output
+6
+4
+16
+2.0
+1
+27
+4</code></pre>
+<h2 id="assignment-operators">Assignment operators</h2>
+<p>These are used to assign values to variables.</p>
+<p>Basically is used the &#x27;=&#x27; operator, but can be combined with other operators.</p>
+<pre><code class="language-python">a = 1
+print(a)
+a += 2 # or a = a + 1
+print(a)
+a **= 2 # or a = a ** 2
+print(a)
+
+# output
+1
+3
+9</code></pre>
+<h2 id="comparison-operators">Comparison operators</h2>
+<p>These are used to compare values, or variables with values assigned. The result (or returned value) of that evaluation is a boolean.</p>
+<p>That&#x27;s why these are most commonly used on if statements.</p>
+<p>| Operator | Name</p>
+<p>|---|---</p>
+<p>| == | Equal</p>
+<p>| != | Not equal</p>
+<p>| &gt; | Greater than</p>
+<p>| &lt; | Less than</p>
+<p>| &gt;= | Greater than or equal than</p>
+<p>| &lt;= | Less than or equal than</p>
+<pre><code class="language-python">print(2 == 2)
+print(2 == 2.0)
+print(&#x27;hola&#x27; == &#x27;Hola&#x27;)
+print(&#x27;Eze&#x27; == &#x27;Eze&#x27;)
+print(2 != 2)
+print(10 &gt; 5)
+# ...and many more
+
+# output
+True
+True
+False
+True
+False
+True</code></pre>
+<h2 id="logical-operators">Logical operators</h2>
+<p>These are used to combine conditional statements, or the boolean result of a statement.</p>
+<p>| Operator | Description</p>
+<p>|---|---</p>
+<p>| and | Returns True if both statements are true</p>
+<p>| or | Returns True if one of the statements is true</p>
+<p>| not | Reverse the result, returns False if the result is true</p>
+<pre><code class="language-python">print(True and False)
+print(True or False)
+print(not True)
+print(2 == 2 and True) # 2 == 2 is True and then True and True is True
+
+# output
+False
+True
+False
+True</code></pre>
+<p>You can also use &#x27;truthy&#x27; or &#x27;falsy&#x27; values here...</p>
+<pre><code class="language-python">print(bool(1 and 3))
+print(bool(1 or 3))
+print(bool(1 and [])) # remember we saw that [] (empty list) is falsy
+
+# output
+True
+True
+False</code></pre>
+<h2 id="identity-operators">Identity operators</h2>
+<p>These are used to check if two values (or variables) are located on the same part of the memory.</p>
+<p>| Operator | Description</p>
+<p>|---|---</p>
+<p>| is |  Returns True if both variables are the same object</p>
+<p>| is not | Returns True if both variables are not the same object</p>
+<pre><code class="language-python">a_number = 1
+another_number = 1
+a_string = &#x27;People&#x27;
+another_string = &#x27;People&#x27;
+a_list = [1, 2]
+another_list = [1, 2]
+
+print(a_number is another_number)
+print(True is not True)
+print(a_string is another_string)
+print(a_list is another_list)
+
+# output
+True
+False
+True
+False </code></pre>
+<blockquote>
+<p>Note that in the last example, we are comparing list that have the same content, but they are different lists. I mean, they are not the same object.</p>
+</blockquote>
+<h2 id="membership-operators">Membership operators</h2>
+<p>These are use to check if an element (or sequence of elements) are contained in an object.</p>
+<p>| Operator | Description</p>
+<p>|---|---</p>
+<p>| in | Returns True if a sequence with the specified value is present in the object</p>
+<p>| not in | Returns True if a sequence with the specified value is not present in the object</p>
+<pre><code class="language-python">original_bands = [&#x27;Faith No More&#x27;, &#x27;Soundgarden&#x27;]
+print(&#x27;Bush&#x27; in original_bands)
+print(&#x27;ABBA&#x27; not in original_bands)
+
+# output
+False
+True</code></pre>
+<h2 id="bitwise-operators">Bitwise operators</h2>
+<p>These are use to operate bit by bit, and act on operands as if they were strings of binary digits.</p>
+<p>| Operator | Name | Description</p>
+<p>|---|---|---</p>
+<p>| &amp; | AND | Sets each bit to 1 if both bits are 1</p>
+<p>| \| | OR | Sets each bit to 1 if one of two bits is 1</p>
+<p>| ^ | XOR | Sets each bit to 1 if only one of two bits is 1</p>
+<p>| ~ | NOT | Inverts all the bits</p>
+<p>| &lt;&lt; | Zero fill left | Shift left by pushing zeros in from the right and let the leftmost bits fall off</p>
+<p>| &gt;&gt; | Signed right | Shift right by pushing copies of the leftmost bit in from the left, and let the rightmost bits fall off.</p>
+<pre><code class="language-python">a_number = 10       # binary: 0000 1010
+another_number = 23 # binary: 0001 0111
+
+print(a_number &amp; another_number)
+print(a_number | another_number)
+print(a_number ^ another_number)
+print(~a_number)
+print(&lt;&lt;a_number)
+print(&gt;&gt;a_number)
+
+# output
+2                   # binary: 0000 0010
+31                  # binary: 0001 1111
+29                  # binary: 0001 1101
+-11                 # binary: 1111 0101
+2                   # binary: 0000 0010
+40                  # binary: 0010 1000</code></pre>
+<hr>
+<p>Now that we now about data types, variables and operators, we might need a lot of things in order to put all that to work.</p>
+<p>One of those &#x27;things&#x27; are <strong>Control Structures</strong>, which are used to modify the flow of execution of a certain code.</p>
+<h2 id="control-structures">Control Structures</h2>
+<p>There are two kinds of Control Structures:</p>
+<ul>
+<li><strong>Conditionals</strong>, used to execute one or more statements if a condition is met.</li>
+<ul>
+<li>If conditional</li>
+</ul>
+<li><strong>Loops</strong>, which purpose is to repeat a statement a certain number of times or while a condition is met.</li>
+<ul>
+<li>While loops</li>
+<li>For loops</li>
+</ul>
+<li><strong>Exceptions</strong></li>
+<ul>
+<li>Try...Except</li>
+<li>Raise</li>
+</ul>
+</ul>
+<h2 id="conditionals">Conditionals</h2>
+<h3 id="if-statement">If statement</h3>
+<p>The <code>if</code> statement is used to execute a bunch of code, or another, depending on the evaluation of a condition.</p>
+<p>Syntax:</p>
+<pre><code class="language-python">if condition:
+    # some code</code></pre>
+<p>Always remember that in Python we relay on indentation in order to define a scope on the code.</p>
+<pre><code class="language-python">a_number = 100
+other_number = 55
+if a_number &gt; other_number:
+    print(&#x27;a_number is greater than other_number&#x27;)
+
+# output
+a_number is greater than other_number</code></pre>
+<p>As we see <code>a_number &gt; other_number</code> is the condition in the example. This can be everything that evaluates as a Boolean value <code>True</code> or <code>False</code>, or even a <code>truthy</code> or <code>falsy</code> value.</p>
+<pre><code class="language-python">if False:
+    print(&#x27;This is True&#x27;)
+
+# output (blank output)
+</code></pre>
+<p>Here we see that the condition is not met, or in this case is False, so the code indented under the if statement is not executed.</p>
+<p>We might need to do one thing if true, and another if false.</p>
+<p>For that we have <code>if...else</code> statements.</p>
+<h3 id="if-else-statement">If...else statement</h3>
+<p>Syntax:</p>
+<pre><code class="language-python">if condition:
+    # some code
+else:
+    # some other code</code></pre>
+<p>Let&#x27;s see an example of that.</p>
+<pre><code class="language-python">if False:
+    print(&#x27;This is True&#x27;)
+else:
+    print(&#x27;This is False&#x27;)
+
+# output
+This is False</code></pre>
+<p>Very straightforward, right?</p>
+<p>Ok, let&#x27;s move on...</p>
+<p>There is another way to write this code and that way is using one liners, ternary operators, or Conditional Expressions.</p>
+<pre><code class="language-python">if True: print(&#x27;This is True&#x27;) # if statement
+
+print(&#x27;This is True&#x27;) if True else print(&#x27;This is False&#x27;) # if...else statement</code></pre>
+<blockquote>
+<p>Note that we used one line instead of four in the last example and it look&#x27;s nicer sometimes. But be careful!!! When the code is longer it might be easier to read in the traditional multiline way.</p>
+</blockquote>
+<h3 id="elif">Elif</h3>
+<p>We also have <code>elif</code> in tha case that we have a few different options in an if statement.</p>
+<p>Here is the syntax:</p>
+<pre><code class="language-python">if first_condition:
+    # some code
+elif second_condition:
+    # some other code
+else:
+    #another piece of code</code></pre>
+<p>Let&#x27;s see an example:</p>
+<pre><code class="language-python">a_number = -10
+
+if a_number &gt; 0:
+    print(&#x27;The number is positive&#x27;)
+elif a_number &lt; 0:
+    print(&#x27;The number is negative&#x27;)
+else:
+    print(&#x27;The number is zero&#x27;)
+
+print(&quot;Positive&quot;) if a_number &gt; 0 else print(&quot;Negative&quot;) if a_number &lt; 0 else print(&quot;Zero&quot;) # one liner
+
+print(f&#x27;The number is {&#x27;positive&#x27; if a_number &gt; 0 else &#x27;negative&#x27; if a_number &lt; 0 else &#x27;zero&#x27;}&#x27;) # another one line solution</code></pre>
+<p>Remember that the <code>condition</code> in an if statement, can be as small or extended as we need. This means that can be a simple <strong>boolean</strong>, a condition with two values and a operator, or multiple values and operators.</p>
+<pre><code class="language-python">if True:
+    pass
+
+if a &gt; b:
+    pass
+
+if a &gt; b and b &gt; c or b == c:
+    pass</code></pre>
+<blockquote>
+<p>Note that we used the <code>pass</code> reserved word, to express that this part of the code has no code to execute. This also avoid an error to be raised.</p>
+</blockquote>
+<p>In Python there is not such thing as a Switch/Case, so you&#x27;ll have to use the complete if statement.</p>
+<p><strong>Wait!</strong> (Update)</p>
+<p>In Python 3.10+ we have Switch/Case statement, but it&#x27;s called Match/Case</p>
+<p>Let&#x27;s see some examples.</p>
+<p>In the past we could have done this:</p>
+<pre><code class="language-python">http_code = &quot;418&quot;
+
+if http_code == &quot;418&quot;:
+    print(&quot;OK&quot;)
+    do_something()
+elif http_code == &quot;404&quot;:
+    print(&quot;Not Found&quot;)
+    do_something()
+elif http_code == &quot;418&quot;
+    print(&quot;I&#x27;m a teapot&quot;)
+    do_something()
+else:
+    print(&quot;Code not found&quot;)
+    do_something_else()</code></pre>
+<p>Now, we can do this with Match/Case. so let&#x27;s...</p>
+<pre><code class="language-python">http_code = &quot;418&quot;
+
+match http_code:
+    case &quot;418&quot;:
+        print(&quot;OK&quot;)
+        do_something()
+    case &quot;404&quot;:
+        print(&quot;Not Found&quot;)
+        do_something()
+    case &quot;418&quot;:
+        print(&quot;I&#x27;m a teapot&quot;)
+        do_something()
+    case _:
+        print(&quot;Code not found&quot;)
+        do_something_else()</code></pre>
+<p>It is pretty much the same, but some people find it more neat to use it this way... I mean, they must have added Match/Case statement for some reason! :D</p>
+<p>Note in the last case of the statement the use of &#x27;_&#x27;.</p>
+<p>Not only for this notation. &#x27;_&#x27; kind of means &quot;something else&quot;.</p>
+<p>The following peace of code, is used to get only the first element of the tuple, disregarding the second element.</p>
+<pre><code class="language-python">first, _ = (&quot;first_string&quot;,&quot;second_string&quot;)</code></pre>
+<p>This piece of code is for the purpose of ignoring everything but the first element, since whe are not assigning the second element.</p>
+<p>Another use case is this...</p>
+<pre><code class="language-python"># x = (&#x27;www.hola.com&#x27;, 25)          # the output would be: http mode
+# x = (&quot;www.hola.com&quot;, 21, &quot;ftp&quot;)   # the output would be: ftp mode
+
+match x:
+    case host, port:
+        print(&#x27;http mode&#x27;)
+    case host, port, mode:
+        print(f&#x27;{ mode } mode&#x27;)</code></pre>
+<p>In this case, the unreferenced names (host, port, mode) would become variables if an unpacking operation is able to be performed.</p>
+<p>This show us how to use Match/Case to check the type and structure of our subject.</p>
+<p>If you want to learn more about the <code>match</code> instruction, you can head over <a href="https://peps.python.org/pep-0636/">here</a> to go into the rabit hole. (don´t come back later saying you were not warned :D)</p>
+<h2 id="loops">Loops</h2>
+<h3 id="while-loop">While Loop</h3>
+<p>The While loop is used to perform an action, or a bunch of code, as long as a condition is true.</p>
+<p>Syntax:</p>
+<pre><code class="language-python">while condition:
+    # some code</code></pre>
+<p>For example...</p>
+<pre><code class="language-python">a_number = 1
+while a_number &lt; 10:
+    print(a_number)
+    a_number += 1
+
+# output
+1
+2
+3
+4
+5
+6
+7
+8
+9</code></pre>
+<blockquote>
+<p>Note that we need to increment <code>a_number</code>, otherwise the loop will continue for ever.</p>
+</blockquote>
+<p>We have two reserved words that we can use inside a While loop. These are <code>break</code> and <code>continue</code>.</p>
+<p>With <code>continue</code> we continue with the next iteration of the look.</p>
+<p>Let&#x27;s see an example.</p>
+<pre><code class="language-python">a_number = 0
+while a_number &lt; 10:
+    a_number += 1
+    if a_number == 5:
+        continue
+    print(a_number)
+
+# output
+1
+2
+3
+4
+6
+7
+8
+9
+10</code></pre>
+<blockquote>
+<p>Note that the <code>5</code>was not printed, as we have the continue statement, that &quot;jumps&quot; to the next iteration.</p>
+</blockquote>
+<p>With <code>break</code> in the other hand, stops the loop, right where it&#x27;s executed.</p>
+<pre><code class="language-python">a_number = 1
+while a_number &lt; 10:
+    if a_number == 5:
+        break
+    print(a_number)
+    a_number += 1
+
+# output
+1
+2
+3
+4</code></pre>
+<blockquote>
+<p>This code doesn&#x27;t make much sense, but let&#x27;s just take this as an example, and something we shouldn&#x27;t do... :D</p>
+</blockquote>
+<p>In order to complete the While loop syntax, we should include the <code>else</code> statement.</p>
+<p>This will be executed when the condition is not met.</p>
+<p>Let&#x27;s take a look at it...</p>
+<pre><code class="language-python">a_number = 1
+while a_number &lt; 10:
+    print(a_number)
+    a_number += 1
+else:
+    print(&#x27;No longer less than 10...&#x27;)
+
+# output
+1
+2
+3
+4
+5
+6
+7
+8
+9
+No longer less than 10...</code></pre>
+<h3 id="for-loop">For Loop</h3>
+<p>The For loop is use to iterate over a sequence. As we saw we know the lists, tuples, sets, dictionaries are sequences... even a string is one.</p>
+<p>So, we can do <em>something</em> with every item of a sequence.</p>
+<p>Syntax:</p>
+<pre><code class="language-python">for item in sequence:
+    # some code</code></pre>
+<p>An example...</p>
+<pre><code class="language-python">bands = [&#x27;Pearl Jam&#x27;, &#x27;Faith No More&#x27;, &#x27;Soundgarden&#x27;]
+for band in bands:
+    print(band)
+
+# output
+Pearl Jam
+Faith No More
+Soundgarden</code></pre>
+<p>With For loops we also have <code>break</code> and <code>continue</code> reserved words, and even the <code>else</code> statement.</p>
+<p>We said that we can iterate over a string, right? Let&#x27;s see that.</p>
+<pre><code class="language-python">for char in &#x27;Soundgarden&#x27;:
+    print(char)
+
+# output
+S
+o
+u
+n
+d
+g
+a
+r
+d
+e
+n</code></pre>
+<p>Let&#x27;s say that we can print the first 10 numbers... We don&#x27;t have to create a list of numbers first, in order to iterate over it. We can do it this way...</p>
+<pre><code class="language-python">for number in range(10):
+    print(number)
+
+# output
+0
+1
+2
+3
+4
+5
+6
+7
+8
+9</code></pre>
+<p>The built-in <code>range()</code> function, creates a sequence of numbers from 0 (default value) to the number before a specified number, incrementing by 1 (default value).</p>
+<p>A quick peak into range examples...</p>
+<pre><code class="language-python">print(*range(5))
+
+# output
+0 1 2 3 4
+
+print(*range(2,5))
+
+# output
+2 3 4
+
+print(*range(2,5,2))
+2 4</code></pre>
+<blockquote>
+<p>Note the &#x27;*&#x27; before the range() function? It&#x27;s not a typo! This is used to unpack a sequence</p>
+</blockquote>
+<p>Just like in slicing, we can reverse a range...</p>
+<pre><code class="language-python">print(*range(5, 0, -1))
+
+# output
+5 4 3 2 1</code></pre>
+<p>Now we know about Lists and For loops, we can return to lists comprehension, something that we took a look at <a href="day_3.html#list-comprehension">day 3</a>.</p>
+<p>I think we are now tying loose ends, right?</p>
+<p>We&#x27;ve seen this, for instance...</p>
+<pre><code class="language-python">even_numbers = [x for x in range(20) if x % 2 == 0]
+print(even_numbers)
+
+# output
+[0, 2, 4, 6, 8, 10, 12, 14, 16, 18]</code></pre>
+<p>Here we have, besides a list, a for loop and an if statement.</p>
+<p>Putting it into words it would be <strong>&quot;we have x for every x, from 0 to 19 (range(20)), that the modulus is 0&quot;</strong> or to be simpler, <strong>&quot;a list of even numbers between 0 and 19&quot;</strong>. <em>Let&#x27;s save for another day if 0 is even, odd or none of the above...</em></p>
+<blockquote>
+<p>Note: remember that modulus is the remainder of a division, after one number is divided by another.</p>
+</blockquote>
+<p>We&#x27;ll see that the previous expression is equivalent to this...</p>
+<pre><code class="language-python">even_numbers = []
+
+for x in range(20):
+    if x % 2 == 0:
+        even_numbers.append(x)
+
+print(even_numbers)
+
+# output
+[0, 2, 4, 6, 8, 10, 12, 14, 16, 18]</code></pre>
+<p>What if we want every item in that list multiplied by 2?</p>
+<p>Let&#x27;s do it both ways...</p>
+<pre><code class="language-python">even_numbers = []
+
+for x in range(20):
+    if x % 2 == 0:
+        even_numbers.append(x * 2)
+
+print(even_numbers)
+
+# output
+[0, 4, 8, 12, 16, 20, 24, 28, 32, 36]</code></pre>
+<p>So, what do you think we should do to get the same result, using list comprehension?</p>
+<p>Take a minute a think about it...</p>
+<p>59... 58... 57... 56... Just kidding!!! :D</p>
+<pre><code class="language-python">even_numbers = [x * 2 for x in range(20) if x % 2 == 0]
+print(even_numbers)
+
+# output
+[0, 4, 8, 12, 16, 20, 24, 28, 32, 36]</code></pre>
+<p>This can be used in loads of scenarios, so keep it on your cheat-sheet!!!</p>
+<h2 id="exceptions">Exceptions</h2>
+<h3 id="try-except">Try...Except</h3>
+<p>When Python finds a problem in the execution, the interpreter stops and generates an error.</p>
+<p>These are called <strong>Exceptions</strong>.</p>
+<p>There are many built-in types of Exceptions, like NameError, ArithmeticError, AttributeError, FloatingPointError, ImportError, ModuleNotFoundError, etc.</p>
+<p>Let&#x27;s see an example.</p>
+<pre><code class="language-python">print(x)
+print(&#x27;The code continues...&#x27;)
+
+Traceback (most recent call last):
+    File &quot;&lt;stdin&gt;&quot;, line 1, in &lt;module&gt;
+NameError: name &#x27;x&#x27; is not defined</code></pre>
+<p>Another....</p>
+<pre><code class="language-python">print(10 / 0)
+print(&#x27;The code continues...&#x27;)
+
+Traceback (most recent call last):
+    File &quot;&lt;stdin&gt;&quot;, line 1, in &lt;module&gt;
+ZeroDivisionError: division by zero</code></pre>
+<p>So, we might want to <strong>catch</strong> that exception in order to avoid stopping the program&#x27;s execution.</p>
+<p>We can do this, using the <strong>try...except</strong> statement.</p>
+<pre><code class="language-python">try:
+    print(10 / 0)
+except:
+    print(&#x27;An exception occurred&#x27;)
+
+print(&#x27;The code continues...&#x27;)
+
+# output
+An exception occurred
+The code continues...</code></pre>
+<p>This way, the exception is caught, an error is shown but the code keeps running. The idea is to include the block of code that can fail, in the try statement.</p>
+<p>As many different errors can occur, we can catch different types of exceptions. For example:</p>
+<pre><code class="language-python">x = 0
+
+try:
+    print(10 / x)
+except ZeroDivisionError:
+    print(&#x27;You can not divide by zero&#x27;)
+except NameError:
+    print(&#x27;x is not defined&#x27;)
+except:
+    print(&#x27;An exception occurred&#x27;)
+
+# output
+You can not divide by zero</code></pre>
+<p>But what if we comment the first line? Let&#x27;s see...</p>
+<pre><code class="language-python"># x = 0
+
+try:
+    print(10 / x)
+except ZeroDivisionError:
+    print(&#x27;You can not divide by zero&#x27;)
+except NameError:
+    print(&#x27;x is not defined&#x27;)
+except:
+    print(&#x27;An exception occurred&#x27;)
+
+# output
+x is not defined</code></pre>
+<p>We can see, that we see different messages, depending the type of exception that is raised.</p>
+<blockquote>
+<p>Keep in mind that we need to order the exceptions from most to least specific, otherwise the more generic exception block will be executed and the code will never reach the more specific error type.</p>
+</blockquote>
+<p>We have also an <strong>else</strong> block, that lets you execute a code if there is no error.</p>
+<pre><code class="language-python">x = 1
+
+try:
+    print(10 / x)
+except:
+    print(&#x27;An exception occurred&#x27;)
+else:
+    print(&#x27;There was no error&#x27;)
+
+print(&#x27;The code continues...&#x27;)
+
+# output
+10
+There was no error
+The code continues...</code></pre>
+<p>The difference with the last line, is that this line will always be executed.</p>
+<p>There is also a <strong>finally</strong> block, that lets you execute a code, no matter the result the try block.</p>
+<p>It&#x27;s most commonly used to close connections or free resources in an ordered fashion.</p>
+<pre><code class="language-python">x = 1
+
+try:
+    print(10 / x)
+except:
+    print(&#x27;An exception occurred&#x27;)
+else:
+    print(&#x27;There was no error&#x27;)
+finally:
+    print(&#x27;The code continues...&#x27;)
+
+# output
+There was no error
+The code continues...</code></pre>
+<p>More details on finally <a href="finally.html">here</a></p>
+<p>We can also create a custom exception and raise it. This is used to raise an exception and stop the execution on the code.</p>
+<pre><code class="language-python">X = 0
+
+if x == 0:
+    raise Exception(&#x27;We don`t want the value of x to be zero!&#x27;)
+
+# output
+Traceback (most recent call last):
+    File &quot;&lt;stdin&gt;&quot;, line 2, in &lt;module&gt;
+Exception: We don`t want the value of x to be zero!</code></pre>
+<p>We can see the last line of the exception, with the description we have created.</p>
+<hr>
+<p><a href="day_5.html">Go to Day 5</a></p>
+<hr>
+    </article>
+  </main>
+</body>
+</html>

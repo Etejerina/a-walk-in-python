@@ -1,0 +1,679 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Day 3 | A walk in Python</title>
+  <link rel="stylesheet" href="../assets/styles.css">
+</head>
+<body>
+  <header class="topbar">
+    <a class="brand" href="../index.html">A walk in Python</a>
+    <nav>
+      <a href="../index.html#lessons">Lessons</a>
+      <a href="../index.html#how-to-use">How to use</a>
+      <a class="nav-action" href="https://colab.research.google.com/github/Etejerina/a-walk-in-python/blob/codex-course-site-colab/notebooks/day_3.ipynb">Open in Colab</a>
+    </nav>
+  </header>
+  <main class="layout">
+    <aside class="sidebar">
+      <strong>Course</strong>
+      <nav><a href="README.html">Preface</a>
+<a href="day_1.html">Day 1</a>
+<a href="day_2.html">Day 2</a>
+<a href="day_3.html">Day 3</a>
+<a href="day_4.html">Day 4</a>
+<a href="day_5.html">Day 5</a>
+<a href="day_6.html">Day 6</a>
+<a href="day_7.html">Day 7</a>
+<a href="floats.html">0.1 + 0.2 == 0.3 results in True or False?</a>
+<a href="finally.html">Finally</a>
+<a href="docs/index.html">Welcome to GitHub Pages</a>
+<a href="multi_inheritance.html">ChatGPTs answer:</a>
+<a href="type_hinting.html">Chapter: Type hinting in Python</a></nav>
+    </aside>
+    <article class="content">
+      <div class="page-actions">
+        <span>day_3.md</span>
+        <a class="button" href="https://colab.research.google.com/github/Etejerina/a-walk-in-python/blob/codex-course-site-colab/notebooks/day_3.ipynb">Open notebook in Colab</a>
+      </div>
+      <h1 id="a-walk-in-python-readme-md"><a href="/README.md">A walk in Python</a></h1>
+<h2 id="day-3">Day 3</h2>
+<ul>
+<li>Data Types</li>
+<ul>
+<li><a href="day_3.html#strings">Strings</a></li>
+<li><a href="day_3.html#numeric-types">Numeric Types</a></li>
+<li><a href="day_3.html#booleans">Booleans</a></li>
+</ul>
+<li><a href="day_3.html#collections">Collections</a></li>
+<ul>
+<li><a href="day_3.html#lists">Lists</a></li>
+<li><a href="day_3.html#tuples">Tuples</a></li>
+<li><a href="day_3.html#sets">Sets</a></li>
+<li><a href="day_3.html#dictionaries">Dictionaries</a></li>
+</ul>
+</ul>
+<h2 id="data-types"><strong>Data Types</strong></h2>
+<hr>
+<p>Let&#x27;s dive in Python Data Types!!!!</p>
+<h2 id="strings">Strings</h2>
+<p>A string is assignable to a variable like any other type of value. You can do that this way:</p>
+<pre><code class="language-python">greeting = &#x27;Hello World!&#x27;
+print(greeting)
+
+#output
+Hello World!</code></pre>
+<p>There is a way to assign a multiline string to a variable by using three quotes. You can do that this way:</p>
+<pre><code class="language-python">blacks_chorus = &quot;&quot;&quot;And now my bitter hands
+Chafe beneath the clouds
+Of what was everything
+Oh the pictures have
+All been washed in black
+Tattooed everything&quot;&quot;&quot;
+
+print(blacks_chorus)
+
+#output
+
+And now my bitter hands
+Chafe beneath the clouds
+Of what was everything
+Oh the pictures have
+All been washed in black
+Tattooed everything</code></pre>
+<blockquote>
+<p>Note that the line breaks are in the same place that in the code.</p>
+</blockquote>
+<p>As we said Strings are a list of characters, but there is not a type Char in Python. This would be a string with length equal to 1.</p>
+<p>As Strings are list of characters, we can access them by their position:</p>
+<pre><code class="language-python">greeting = &#x27;Hello World!&#x27;
+print(greeting[1])
+
+#output
+e</code></pre>
+<p>We can also iterate through them:</p>
+<pre><code class="language-python">greeting = &#x27;Hello World!&#x27;
+for c in greeting:
+  print(c)
+
+#output
+H
+e
+l
+l
+o
+ 
+W
+o
+r
+l
+d
+!</code></pre>
+<p>Or apply operators...</p>
+<pre><code class="language-python">greeting = &#x27;Hello World!&#x27;
+print(&#x27;Hello&#x27; in greeting)
+
+#output
+True</code></pre>
+<p>Or check the length of a string:</p>
+<pre><code class="language-python">greeting = &#x27;Hello World!&#x27;
+print(len(greeting))
+
+#output
+12</code></pre>
+<h3 id="slicing-strings">Slicing strings</h3>
+<p>Keeping in mind what we saw, we can extract or return a part of the string (or a list for that matter...)</p>
+<p>This is called <strong><em>slicing</em></strong>.</p>
+<p>Let&#x27;s say that I want to print parts (or substrings) of the greeting variable.</p>
+<p>We will have to use this syntax:</p>
+<p>{var_name}[{start}:{end}:{step}]</p>
+<ul>
+<li>start by default is 0, the start of the string.</li>
+</ul>
+<ul>
+<li>end by default is the length of the string.</li>
+</ul>
+<ul>
+<li>step by default is 1.</li>
+</ul>
+<p>We can use positive and negative indexes.</p>
+<p>Positives count from the start and negative count form the end of the string.</p>
+<pre><code class="language-python">greeting = &#x27;Hello cruel World!&#x27;
+print(greeting[0:5]) # or print(greeting[:5])
+
+#output
+Hello
+
+print(greeting[12:18]) # or print(greeting[12:])
+
+#output
+World!
+
+print(greeting[6:11]) 
+
+#output
+cruel
+
+print(greeting[0:-7]) # or print(greeting[:-7]) using negative index
+
+#output
+Hello cruel</code></pre>
+<p>In the case of the step parameter, it indicates the increment between each index for slicing.</p>
+<pre><code class="language-python">greeting = &#x27;Hello cruel World!&#x27;
+print(greeting[::]) # or print(greeting[0:18:1])
+
+#output
+Hello cruel World!
+
+print(greeting[::2]) # or print(greeting[0:18:2])
+
+#output
+HloculWrd
+
+print(greeting[::-1]) # or print(greeting[0:18:-1]) using negative index on step
+
+#output
+!dlroW leurc olleH
+
+print(greeting[10:6:-1]) 
+
+#output
+leurc
+
+print(greeting[::-2]) # or print(greeting[0:18:-2])
+
+#output
+!lo er le</code></pre>
+<p><strong>Remember!!!! Strings are immutable!!!</strong></p>
+<p>So, we have a list of methods that returns a <strong>modified copy</strong> of the string, like <em>upper</em>, <em>lower</em>, <em>strip</em>, <em>replace</em>, etc.</p>
+<p>You can see the complete list <a href="https://www.w3schools.com/python/python_ref_string.asp">here</a>.</p>
+<p>For example:</p>
+<pre><code class="language-python">greeting = &#x27;Hello cruel World!&#x27;
+print(greeting.upper())
+
+# output
+HELLO CRUEL WORLD!
+
+print(greeting.replace(&#x27;H&#x27;, &#x27;J&#x27;))
+
+# output
+Jello cruel World!</code></pre>
+<p>Another thing you can do with strings is to concatenate them. You can concatenate two or more strings, but if you try to concatenate a string with something else, you will get a TypeError.</p>
+<p>For example:</p>
+<pre><code class="language-python">txt_1 = &#x27;World!&#x27;
+txt_0 = &#x27;Hello &#x27; 
+print(txt_0 + txt_1)
+
+# output
+Hello World!
+
+age = 46
+txt = &#x27;My age is &#x27; 
+print(txt + age)
+
+# output
+Traceback (most recent call last):
+  File &quot;&lt;stdin&gt;&quot;, line 1, in &lt;module&gt;
+TypeError: can only concatenate str (not &quot;int&quot;) to str</code></pre>
+<p>We can see age&#x27;s type is int, right?</p>
+<p>So we can do various things. Let&#x27;s see...</p>
+<pre><code class="language-python">age = 46
+txt = &#x27;My age is &#x27; 
+print(txt + str(age))
+
+# output
+My age is 46
+
+txt = &#x27;My age is {}&#x27; 
+print(txt.format(age))
+
+# output
+My age is 46
+
+name = &#x27;Ezequiel&#x27;
+txt = &#x27;My age is {} and my name is {}&#x27; 
+print(txt.format(age, name))
+
+# output
+My age is 46 and my name is Ezequiel
+
+txt = &#x27;My age is {1} and my name is {0}&#x27; 
+print(txt.format(name, age))
+
+# output
+My age is 46 and my name is Ezequiel</code></pre>
+<p>Another way to do the exact same thing is with f-Strings:</p>
+<pre><code class="language-python">age = 46
+print(f&#x27;My age is {age}&#x27;)
+
+# output
+My age is 46
+
+name = &#x27;Ezequiel&#x27;
+print(f&#x27;My age is {age} and my name is {name}&#x27;)
+
+# output
+My age is 46 and my name is Ezequiel</code></pre>
+<h2 id="numeric-types">Numeric Types</h2>
+<p>Numeric types in general are pretty much self explanatory.</p>
+<p>That&#x27;s why I will show you some examples.</p>
+<h3 id="integers">Integers</h3>
+<pre><code class="language-python">a = 0
+b = 121651351
+c = -63546010
+
+print(type(a)) # or b or c with the same output
+
+# output
+&lt;class &#x27;int&#x27;&gt;</code></pre>
+<h3 id="floats">Floats</h3>
+<pre><code class="language-python">a = 1.25
+b = 1.0
+c = -53.785
+
+print(type(a)) # or b or c with the same output
+
+# output
+&lt;class &#x27;float&#x27;&gt;</code></pre>
+<p>Floats can also be scientific numbers with an &quot;e&quot; to indicate the power of 10. For example:</p>
+<pre><code class="language-python">a = 35e3
+b = 12E4
+c = -87.7e10
+
+print(a) 
+print(b) 
+print(c) 
+
+# output
+35000.0
+120000.0
+-877000000000.0</code></pre>
+<p>There is something on how floats are interpreted in Python that can be a litle tricky.</p>
+<p>See <a href="floats.html">Floats and decimals</a></p>
+<h3 id="complex">Complex</h3>
+<p>Complex are part of the numbers too.</p>
+<p>These numbers are written with a &quot;j&quot; as the imaginary part:</p>
+<pre><code class="language-python">a = 3+5j
+b = 5j
+c = -5j
+
+print(type(a)) # or b or c with the same output
+
+# output
+&lt;class &#x27;complex&#x27;&gt;</code></pre>
+<p>Floats, ints and complex numbers can be casted using <em>int()</em>, <em>float()</em> or <em>complex()</em>.</p>
+<p><strong>But!!!!</strong> Complex cannot be casted to other types.</p>
+<h2 id="booleans">Booleans</h2>
+<p>As you might know, boolean values are one of two... True and False</p>
+<p>Boolean types are used to evaluate expressions. So, if we compare to values, using a logical operator, we get a boolean response.</p>
+<p>Let&#x27;s see that with an example</p>
+<pre><code class="language-python">print(1 &lt; 10)
+print(1 == 10)
+print(1 &gt; 10)
+
+# output
+True
+False
+False</code></pre>
+<p>&#x27;If&#x27; statements use booleans to continue with one part of the code or the other but we&#x27;ll see that later...</p>
+<p>But at this point I feel the need to introduce <strong>Truthy</strong> and <strong>Falsy</strong> values.</p>
+<p>These are non-boolean values that can count, or be evaluated, as True or False.</p>
+<p>We can see that, when we try to cast some values...</p>
+<pre><code class="language-python">print(bool(15))
+True
+print(bool(-15))
+True
+print(bool(0))
+False
+print(bool(&#x27;Hi!&#x27;))
+True
+print(bool(&#x27;&#x27;))
+False
+</code></pre>
+<p>We can see on the examples that some values are Truthy and some are Falsy.</p>
+<p>In general terms values that are 0 or empty strings, empty sets or empty lists, are Falsy.</p>
+<p>Falsy Values</p>
+<p>Sequences and Collections:</p>
+<ul>
+<li>Empty lists: []</li>
+<li>Empty tuples: ()</li>
+<li>Empty dictionaries: {}</li>
+<li>Empty sets: set()</li>
+<li>Empty strings: &quot;&quot;</li>
+<li>Empty ranges: range(0)</li>
+</ul>
+<p>Numbers</p>
+<ul>
+<li>Zero of any numeric type.</li>
+<ul>
+<li>Integer: 0</li>
+<li>Float: 0.0</li>
+<li>Complex: 0j</li>
+</ul>
+</ul>
+<p>Constants</p>
+<ul>
+<li>None</li>
+<li>False</li>
+</ul>
+<hr>
+<h2 id="collections">Collections</h2>
+<p>There are 4 types of collections in Python:</p>
+<ul>
+<li>Lists</li>
+<ul>
+<li>ordered</li>
+<li>mutable</li>
+<li>allows duplicates</li>
+</ul>
+<li>Tuples</li>
+<ul>
+<li>ordered</li>
+<li>immutable</li>
+<li>allows duplicates</li>
+</ul>
+<li>Sets</li>
+<ul>
+<li>unordered</li>
+<li>mutable (<em>but elements must be of an immutable type</em>)</li>
+<li>no duplicates</li>
+</ul>
+<li>Dictionaries</li>
+<ul>
+<li>ordered (<em>in python &lt;3.6 are unordered</em>)</li>
+<li>mutable</li>
+<li>no duplicates <strong>keys</strong></li>
+</ul>
+</ul>
+<h2 id="lists">Lists</h2>
+<p>When you need to store multiple values on one variable, maybe you&#x27;ll use a <strong>List</strong>.</p>
+<p>Lists are ordered, mutable, and allow repeated items. Keep in mind that Python is zero based, this means that indexes start at 0.</p>
+<pre><code class="language-python">one_list = [&#x27;Pearl jam&#x27;, &#x27;guitar&#x27;, 10, True]</code></pre>
+<p>As we see up here, we can store different types of values.</p>
+<p>Just as strings (we said that a string is kinda like a character list) we can get one item, get the length of the list, and many other things</p>
+<pre><code class="language-python">one_list = [&#x27;Pearl jam&#x27;, &#x27;guitar&#x27;, 10, True]
+print(one_list[1]) # using index
+
+# output
+guitar
+
+print(one_list[-2]) # using negative index
+
+# output
+10
+
+print(one_list[1:3]) # using slicing
+
+# output
+[&#x27;guitar&#x27;, 10]
+
+print(len(one_list)) # length
+
+# output
+4</code></pre>
+<p>Another way to create a list is using the list constructor.</p>
+<pre><code class="language-python">a_list = list((&#x27;Pearl jam&#x27;, &#x27;guitar&#x27;, 10, True))</code></pre>
+<p>Using this constructor is also the way to cast, for example, a tuple to a list.</p>
+<pre><code class="language-python">a_tuple = (&#x27;Pearl jam&#x27;, &#x27;guitar&#x27;, 10, True)
+a_list = list(a_tuple)</code></pre>
+<p>You can change a value on the list this way...</p>
+<pre><code class="language-python">a_list = [&#x27;Pearl jam&#x27;, &#x27;guitar&#x27;, 10, True]
+a_list[1] = &#x27;bass&#x27;
+print(a_list)
+
+# output
+[&#x27;Pearl jam&#x27;, &#x27;bass&#x27;, 10, True]</code></pre>
+<p>And also, you can change a range of items</p>
+<pre><code class="language-python">a_list = [&#x27;Pearl jam&#x27;, &#x27;guitar&#x27;, 10, True]
+a_list[1:3] = [&#x27;bass&#x27;, 23]
+print(a_list)
+
+# output
+[&#x27;Pearl jam&#x27;, &#x27;bass&#x27;, 23, True]</code></pre>
+<p>There are more options to change a range of items. You can read about them <a href="https://www.w3schools.com/python/python_lists_change.asp">here</a>.</p>
+<p>The way to join two lists, is this...</p>
+<pre><code class="language-python">first_list = [&#x27;Perl Jam&#x27;, &#x27;guitar&#x27;]
+second_list = [10, True]
+a_list = first_list + second_list
+
+# output
+[&#x27;Pearl jam&#x27;, &#x27;guitar&#x27;, 10, True]</code></pre>
+<p>By the way, <a href="https://www.w3schools.com/python/python_lists_methods.asp">here</a> is the list of lists methods, which are many and pretty self explanatory.</p>
+<p>As we saw yesterday, we con <em>unpack</em> a list. Let&#x27;s see some examples of it.</p>
+<pre><code class="language-python">a_list = [&#x27;Pearl jam&#x27;, &#x27;guitar&#x27;, 10, True]
+first, second, third, fourth = a_list
+
+print(first)
+print(second)
+print(third)
+print(fourth)
+
+# output
+Pearl jam
+guitar
+10
+True</code></pre>
+<p>or we can do this...</p>
+<pre><code class="language-python">a_list = [&#x27;Pearl jam&#x27;, &#x27;guitar&#x27;, 10, True]
+first, second, *third = a_list
+
+print(first)
+print(second)
+print(third)
+
+# output
+Pearl jam
+guitar
+[10, True]</code></pre>
+<blockquote>
+<p>Note that with the &#x27;*&#x27; we can unpack the final items in one variable, creating a list.</p>
+</blockquote>
+<h3 id="list-comprehension">List Comprehension</h3>
+<p>As many of us saw when we were children, there is more than one way to create a set, or in this case a list. By extension and by comprehension.</p>
+<p>We have covered the first one. Now let&#x27;s see the second.</p>
+<p>Here is the syntax:</p>
+<pre><code class="language-python">newlist = [expression for item in iterable if condition == True]</code></pre>
+<p>And an example:</p>
+<pre><code class="language-python">even_numbers = [x for x in range(20) if x % 2 == 0]
+print(even_numbers)
+
+# output
+[0, 2, 4, 6, 8, 10, 12, 14, 16, 18]</code></pre>
+<p>I know, we haven&#x27;t seen loops and operators yet, but we will... Be patient! :D</p>
+<p>So bare with me... we&#x27;ll circle back to this.</p>
+<h2 id="tuples">Tuples</h2>
+<p>Just like lists, tuples are intended to store multiple values in one variable, with the difference that tuples are <strong>immutable</strong>. This means that cannot be changed.</p>
+<pre><code class="language-python">a_tuple = (&#x27;Pearl jam&#x27;, &#x27;guitar&#x27;, 10, True)
+another_tuple = &#x27;Alice in chains&#x27;, &#x27;guitar&#x27;, 90, False
+ ```
+
+&gt;Note than () can be omitted, but not the commas.
+Try getting the type of both these variables and see what happens...
+
+Actually, to create a tuple with one element we need to do it this way:
+</code></pre>
+<p>a_tuple = (&#x27;Pearl jam&#x27;,)</p>
+<p>another_tuple = &#x27;Alice in chains&#x27;,</p>
+<p> ```</p>
+<p><em>Note: the comma at the end of the tuple. It&#x27;s not a typo!!!</em>.</p>
+<p>Like with lists, we can use a constructor to create a tuple.</p>
+<pre><code class="language-python">a_tuple = tuple((&#x27;Pearl jam&#x27;, &#x27;guitar&#x27;, 10, True)) </code></pre>
+<p>We can access a tuples item, just like with lists, using an index, negative index, a range, etc.</p>
+<pre><code class="language-python">a_tuple = (&#x27;Pearl jam&#x27;, &#x27;guitar&#x27;, 10, True)
+print(a_tuple[1]) # using index
+
+# output
+guitar</code></pre>
+<p>Now, what happens if we try to change an item of a tuple? Right, we can&#x27;t!!!</p>
+<p>We said before that tuples are immutable. Let&#x27;s see what happens...</p>
+<pre><code class="language-python">a_tuple = (&#x27;Pearl jam&#x27;, &#x27;guitar&#x27;, 10, True)
+a_tuple[1] = &#x27;bass&#x27;
+
+# output
+Traceback (most recent call last):
+  File &quot;&lt;stdin&gt;&quot;, line 1, in &lt;module&gt;
+TypeError: &#x27;tuple&#x27; object does not support item assignment</code></pre>
+<p>We have to keep in mind that for some reason, we chose to create a tuple and not a list.</p>
+<p>Having said that, if you need to change an item of a tuple, we have to cast it to a list and then the cast it back to a tuple.</p>
+<pre><code class="language-python">a_tuple = (&#x27;Pearl jam&#x27;, &#x27;guitar&#x27;, 10, True)
+a_list = list(a_tuple)
+a_list[1] = &#x27;bass&#x27;
+a_tuple = tuple(a_list)</code></pre>
+<p>I&#x27;d recommend to thing thoroughly about which type of data we need in our code. We can do the same workaround in order to remove an item.</p>
+<p>We can join two tuples using the &#x27;+&#x27; operator, just like we can do with lists.</p>
+<p><a href="https://www.w3schools.com/python/python_tuples_methods.asp">Here</a> is the list of tuples methods, which are many and pretty self explanatory.</p>
+<p>Do you remember how to <strong>unpack</strong> a List?</p>
+<p>Cool, we can do exactly the same thing with a tuple.</p>
+<h2 id="sets">Sets</h2>
+<p>Just like lists and tuples, sets are used to store multiple values in a single variable. However, <strong>sets are unordered, do not allow duplicates, and their elements must be immutable</strong>.</p>
+<pre><code class="language-python">a_set = {&#x27;Pearl jam&#x27;, &#x27;guitar&#x27;, 10, True}
+print(a_set)
+
+# output
+{&#x27;guitar&#x27;, True, 10, &#x27;Pearl jam&#x27;}
+ ```
+
+There we can see why we said that sets are unordered. The main thing is that multiple items in the same variable.
+
+As sets are unordered group of items, we can **NOT** access them by index.
+You can use the operator &#x27;in&#x27; to see if an item is contained in the set, like this:
+</code></pre>
+<p>a_set = {&#x27;Pearl jam&#x27;, &#x27;guitar&#x27;, 10, True}</p>
+<p>print(&#x27;guitar&#x27; in a_set)</p>
+<h1 id="output">output</h1>
+<p>True</p>
+<pre><code class="language-">
+Because of the same thing, you can&#x27;t change an item of a set. But you have methods to remove and add a new one.
+
+Another characteristic is that sets don&#x27;t allow duplicates.
+</code></pre>
+<p>a_set = {&#x27;Pearl jam&#x27;, &#x27;guitar&#x27;, 10, True, &#x27;guitar&#x27;}</p>
+<p>print(a_set)</p>
+<h1 id="output">output</h1>
+<p>{&#x27;guitar&#x27;, True, 10, &#x27;Pearl jam&#x27;}</p>
+<p>a_set.add(10)</p>
+<p>print(a_set)</p>
+<h1 id="output">output</h1>
+<p>{&#x27;guitar&#x27;, 10, True, &#x27;Pearl jam&#x27;}</p>
+<pre><code class="language-">
+&gt;Note that over and over we have the same result, or the same set if you will.
+
+Let&#x27;s try to add an immutable item to the set.
+</code></pre>
+<p>a_set = {&#x27;Pearl jam&#x27;, &#x27;guitar&#x27;, 10, True}</p>
+<p>a_set.add([&#x27;Eddie&#x27;, &#x27;Mike&#x27;])</p>
+<h1 id="output">output</h1>
+<p>Traceback (most recent call last):</p>
+<p>  File &quot;&lt;stdin&gt;&quot;, line 1, in &lt;module&gt;</p>
+<p>TypeError: unhashable type: &#x27;list&#x27;</p>
+<pre><code class="language-">
+That&#x27;s because, as was mentioned, sets only admit immutable item. Of course a list, is not an immutable item.
+
+Another way to create a set is using the set constructor.
+</code></pre>
+<p>a_set = set((&#x27;Pearl jam&#x27;, &#x27;guitar&#x27;, 10, True))</p>
+<pre><code class="language-">
+Using this constructor is also the way to cast, for example, a tuple to a set.
+</code></pre>
+<p>a_tuple = (&#x27;Pearl jam&#x27;, &#x27;guitar&#x27;, 10, True)</p>
+<p>a_set = set(a_set)</p>
+<pre><code class="language-">
+This might be used, for example, to eliminate repeated items on a list, instead of iterating the list, and checking if the item is already on the list.
+Let&#x27;s see that.
+</code></pre>
+<p>a_list = [&#x27;Pearl jam&#x27;, &#x27;guitar&#x27;, 10, True, &#x27;guitar&#x27;]</p>
+<p>a_list = list(set(a_list))</p>
+<pre><code class="language-">
+In the case of the set, we can&#x27;t use &#x27;+&#x27;, to join to sets. But there are a few ways to do that.
+</code></pre>
+<p>a_set = {&#x27;Pearl jam&#x27;, &#x27;guitar&#x27;}</p>
+<p>another_set = {10, True}</p>
+<p>print(a_set.union(another_set))</p>
+<h1 id="output">output</h1>
+<p>{&#x27;guitar&#x27;, True, 10, &#x27;Pearl jam&#x27;}</p>
+<p>print(a_set.update(another_set))</p>
+<h1 id="output">output</h1>
+<p>{&#x27;guitar&#x27;, True, 10, &#x27;Pearl jam&#x27;}</p>
+<pre><code class="language-">
+By the way, [here](https://www.w3schools.com/python/python_sets_methods.asp) is the list of sets methods, which are many and pretty self explanatory.
+
+## Dictionaries
+
+Dictionaries are used to store data values in key:value pairs.
+The keys in a dictionary must be always of an immutable type (string, boolean, int, float, complex, tuple, frozenset, --if makes sense use some of those types as keys in real life--). If it is a collection (tuple, frozenset), all elements inside must also be immutable.
+</code></pre>
+<p>a_dict = {</p>
+<p>  &#x27;band&#x27;: &#x27;Pearl Jam&#x27;,</p>
+<p>  &#x27;instrument&#x27;: &#x27;guitar&#x27;,</p>
+<p>  &#x27;album&#x27;: 10,</p>
+<p>  &#x27;best_band&#x27;: True</p>
+<p>}</p>
+<pre><code class="language-">
+We can access a dictionaries item, using the key name between brackets.
+</code></pre>
+<p>print(a_dict[&#x27;band&#x27;])</p>
+<h1 id="output">output</h1>
+<p>Pearl Jam</p>
+<pre><code class="language-">
+Seeing how you can access a dicts item, I think you could guess why dicts don&#x27;t allow duplicate keys. Just to state the obvious, if there were two equal keys, how could Python realize which one you want to access?
+
+There is another way to access a dicts item, that can be better to use in some scenarios, and is using the *get* method.
+</code></pre>
+<p>print(a_dict[&#x27;band&#x27;])</p>
+<h1 id="output">output</h1>
+<p>Pearl Jam</p>
+<p>print(a_dict.get(&#x27;band&#x27;))</p>
+<h1 id="output">output</h1>
+<p>Pearl Jam</p>
+<pre><code class="language-">
+What&#x27;s the difference??? Well, using the *get* method, if you try to access an item which key doesn&#x27;t exists, the returned value will be None, instead of an Exception.
+</code></pre>
+<p>print(a_dict[&#x27;drummer&#x27;])</p>
+<h1 id="output">output</h1>
+<p>Traceback (most recent call last):</p>
+<p>  File &quot;&lt;stdin&gt;&quot;, line 1, in &lt;module&gt;</p>
+<p>KeyError: &#x27;drummer&#x27;</p>
+<p>print(a_dict.get(&#x27;drummer&#x27;))</p>
+<h1 id="output">output</h1>
+<p>None</p>
+<pre><code class="language-">
+As easy as you can access an item, you can change an item.
+</code></pre>
+<p>a_dict[&#x27;instrument&#x27;] = &#x27;bass&#x27; # or a_dict.update({&#x27;instrument&#x27;: &#x27;bass&#x27;})</p>
+<p>print(a_dict)</p>
+<h1 id="output">output</h1>
+<p>{</p>
+<p>  &#x27;band&#x27;: &#x27;Pearl Jam&#x27;,</p>
+<p>  &#x27;instrument&#x27;: &#x27;bass&#x27;,</p>
+<p>  &#x27;album&#x27;: 10,</p>
+<p>  &#x27;best_band&#x27;: True</p>
+<p>}</p>
+<pre><code class="language-">
+In order to add an item to a dict, you can use the same syntax you use to change an item.
+</code></pre>
+<p>a_dict[&#x27;singer&#x27;] = &#x27;Eddie Vedder&#x27; # or a_dict.update({&#x27;singer&#x27;: &#x27;Eddie Vedder&#x27;})</p>
+<p>print(a_dict)</p>
+<h1 id="output">output</h1>
+<p>{</p>
+<p>  &#x27;band&#x27;: &#x27;Pearl Jam&#x27;,</p>
+<p>  &#x27;instrument&#x27;: &#x27;guitar&#x27;,</p>
+<p>  &#x27;album&#x27;: 10,</p>
+<p>  &#x27;best_band&#x27;: True,</p>
+<p>  &#x27;singer&#x27;: &#x27;Eddie Vedder&#x27;</p>
+<p>}</p>
+<pre><code class="language-">
+There are also two important methods in order to know a dicts content.
+One is *keys* and the other is *values*.
+
+Let&#x27;s see...
+</code></pre>
+<p>print(a_dict.keys())</p>
+<p>print(a_dict.values())</p>
+<h1 id="output">output</h1>
+<p>dict_keys([&#x27;band&#x27;, &#x27;instrument&#x27;, &#x27;album&#x27;, &#x27;best_band&#x27;])</p>
+<p>dict_values([&#x27;Pearl Jam&#x27;, &#x27;guitar&#x27;, 10, True])</p>
+    </article>
+  </main>
+</body>
+</html>

@@ -1,0 +1,248 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Day 7 | A walk in Python</title>
+  <link rel="stylesheet" href="../assets/styles.css">
+</head>
+<body>
+  <header class="topbar">
+    <a class="brand" href="../index.html">A walk in Python</a>
+    <nav>
+      <a href="../index.html#lessons">Lessons</a>
+      <a href="../index.html#how-to-use">How to use</a>
+      <a class="nav-action" href="https://colab.research.google.com/github/Etejerina/a-walk-in-python/blob/codex-course-site-colab/notebooks/day_7.ipynb">Open in Colab</a>
+    </nav>
+  </header>
+  <main class="layout">
+    <aside class="sidebar">
+      <strong>Course</strong>
+      <nav><a href="README.html">Preface</a>
+<a href="day_1.html">Day 1</a>
+<a href="day_2.html">Day 2</a>
+<a href="day_3.html">Day 3</a>
+<a href="day_4.html">Day 4</a>
+<a href="day_5.html">Day 5</a>
+<a href="day_6.html">Day 6</a>
+<a href="day_7.html">Day 7</a>
+<a href="floats.html">0.1 + 0.2 == 0.3 results in True or False?</a>
+<a href="finally.html">Finally</a>
+<a href="docs/index.html">Welcome to GitHub Pages</a>
+<a href="multi_inheritance.html">ChatGPTs answer:</a>
+<a href="type_hinting.html">Chapter: Type hinting in Python</a></nav>
+    </aside>
+    <article class="content">
+      <div class="page-actions">
+        <span>day_7.md</span>
+        <a class="button" href="https://colab.research.google.com/github/Etejerina/a-walk-in-python/blob/codex-course-site-colab/notebooks/day_7.ipynb">Open notebook in Colab</a>
+      </div>
+      <h1 id="a-walk-in-python-readme-md"><a href="/README.md">A walk in Python</a></h1>
+<h2 id="day-7">Day 7</h2>
+<ul>
+<li><a href="day_7.html#modules">Modules</a></li>
+<li><a href="day_7.html#regular-packages">Regular Packages</a></li>
+<li><a href="day_7.html#type-hinting">Type Hinting</a></li>
+</ul>
+<h2 id="modules"><strong>Modules</strong></h2>
+<hr>
+<p>A Python module is nothing more than a single python file, with some functionalities that can be reused at some point.</p>
+<p>For example:</p>
+<pre><code class="language-python"># myModule.py
+
+def a_function() -&gt; None:
+    print(&#x27;Hello! I am in a module&#x27;)</code></pre>
+<p>The idea is that a can use this function in some other module of my application.</p>
+<p>That way, we can reuse a functionality over and over.</p>
+<pre><code class="language-python">import myModule
+
+myModule.a_function()
+
+# output
+Hello! I am in a module</code></pre>
+<p>Maybe we have a variable in our module and you want to use that too. Well, good news! You can do it! (Sorry Nike... :D)</p>
+<pre><code class="language-python"># myModule.py
+
+def a_function() -&gt; None:
+    print(&#x27;Hello! I am in a module&#x27;)
+
+a_variable = &#x27;I am a variable&#x27;</code></pre>
+<pre><code class="language-python">import myModule
+
+myModule.a_function()
+print(myModule.a_variable)
+
+# output
+Hello! I am in a module
+I am a variable</code></pre>
+<p>We can also rename a module when importing...</p>
+<pre><code class="language-python">import myModule as new_name
+
+new_name.a_function()
+print(new_name.a_variable)
+
+# output
+Hello! I am in a module
+I am a variable</code></pre>
+<p>And why not import only what we need from the module...</p>
+<pre><code class="language-python">from myModule import a_function
+
+a_function()
+print(a_variable)
+
+# output
+Hello! I am in a module
+Traceback (most recent call last):
+  File &quot;c:\a-walk-in-python\test.py&quot;, line 107, in &lt;module&gt;
+    print(a_variable)
+NameError: name &#x27;a_variable&#x27; is not defined</code></pre>
+<blockquote>
+<p>Note: the error is caused by not importing &#x27;a_variable&#x27; from the module too.</p>
+</blockquote>
+<p>We could have imported everything, by replacing a_function with &#x27;\<em>&#x27;. But this is not a good practice. It is rare to need all that is included in a module. So, be careful with </em>import statements*.</p>
+<p>Let&#x27;s say that we have more than 20 functions in a module and, for the sake of best practices, we decided to separate them in different files.</p>
+<h2 id="regular-packages">Regular Packages</h2>
+<p>That way we are going to have three files:</p>
+<ul>
+<li>int_module.py with a function called &#x27;an_int_function()&#x27;</li>
+<li>string_module.py with a function called &#x27;a_string_function()&#x27;</li>
+<li>bool_module.py with a function called &#x27;a_bool_function()&#x27;</li>
+</ul>
+<pre><code class="language-text">project
+│-- int_module.py
+│-- string_module.py
+│-- bool_module.py
+│-- test.py</code></pre>
+<p>We can import them separately.</p>
+<pre><code class="language-python"># test.py
+import int_module
+import string_module
+import bool_module
+
+int_module.an_int_function()
+string_module.a_string_function()
+bool_module.a_bool_function()</code></pre>
+<p>That&#x27;s more appropriate, but still not good enough, right?</p>
+<p>Ok, now can move the modules to a new folder and get to a new file structure.</p>
+<p>And now is where the <strong>\_\_init__.py</strong> file comes into play.</p>
+<p>This file helps Python Interpreter to know this folder contains usable modules.</p>
+<p>This file can be empty.</p>
+<pre><code class="language-text">project 
+└───modules
+│   │-- __init__.py
+│   │-- int_module.py
+│   │-- string_module.py
+│   │-- bool_module.py
+│   │   ...
+│   
+│-- test.py</code></pre>
+<pre><code class="language-python"># test.py
+import modules.int_module
+import modules.string_module
+import modules.bool_module
+
+modules.int_module.an_int_function()
+modules.string_module.a_string_function()
+modules.bool_module.a_bool_function()</code></pre>
+<p>That&#x27;s better but still a little verbose.</p>
+<p>Actually, when a regular package is imported, this <strong>\_\_init__.py</strong> file is implicitly executed, and the objects it defines are bound to names in the package’s namespace.</p>
+<p>So we can import the modules in the <strong>\_\_init__.py</strong> file. That way we&#x27;ll have a much more easy to read files and structure.</p>
+<pre><code class="language-python"># __init__.py
+from .int_module import an_int_function
+from .string_module import a_string_function
+from .bool_module import a_bool_function</code></pre>
+<blockquote>
+<p>Note that the . before the module name is necessary as of Python 3 since it is more strict regarding <a href="https://peps.python.org/pep-0404/#imports">relative imports</a>.</p>
+</blockquote>
+<pre><code class="language-python"># test.py
+import modules
+
+modules.an_int_function()
+modules.a_string_function()
+modules.a_bool_function()</code></pre>
+<h2 id="the-name-dunder-variable">The &#x27;\_\_name__&#x27; dunder variable</h2>
+<p>When a .py file is imported as a module, Python sets the special dunder variable &#x27;\_\_name__&#x27; to the name of the module.</p>
+<p>However, if a file is run as a standalone script, &#x27;\_\_name__&#x27; is (creatively) set to the string &#x27;\_\_main__&#x27;.</p>
+<p>Using this fact, you can discern which is the case at run-time and alter behavior accordingly:</p>
+<pre><code class="language-python"># module1.py
+
+def foo(arg: Any) -&gt; None:
+    print(arg)
+
+if (__name__ == &#x27;__main__&#x27;):
+    print(&#x27;Executing as standalone script&#x27;)
+    foo(&#x27;This should be something interesting...&#x27;)
+</code></pre>
+<p>If we run this as a script with &quot;python module1.py&quot; we get this output:</p>
+<pre><code class="language-python">#output
+Executing as standalone script
+This should be something interesting...</code></pre>
+<p>But if we import this as a module, we don&#x27;t get output, until we use the function &#x27;foo()&#x27;.</p>
+<blockquote>
+<p>Note: this way we can use this module standalone and as a module, without having to modify or comment something, on the file.</p>
+</blockquote>
+<p>Another ineteresting thing, is that we cannot import a module twice. I mean, we can import it more then once, but the interpreter will load it once.</p>
+<pre><code class="language-python"># module1.py
+a_string = &#x27;This should be something interesting...&#x27;
+print(a_string)</code></pre>
+<pre><code class="language-python">&gt;&gt;&gt; import module1
+This should be something interesting...
+&gt;&gt;&gt; import module1
+&gt;&gt;&gt; import module1
+&gt;&gt;&gt; import module1
+&gt;&gt;&gt; module1.a_string
+&#x27;This should be something interesting...&#x27;
+</code></pre>
+<blockquote>
+<p>Note: the print statement is not executed on the second, third and fourth imports.</p>
+</blockquote>
+<h3 id="the-dir-function">The &#x27;dir()&#x27; function</h3>
+<p>The built-in function dir() returns a list of defined names in a namespace.</p>
+<p>It takes at most one argument, the object whose attributes you want to know about:</p>
+<pre><code class="language-python">print(dir()) # show all variables and functions currently defined
+
+# output
+[&#x27;__annotations__&#x27;, &#x27;__builtins__&#x27;, &#x27;__doc__&#x27;, &#x27;__loader__&#x27;, &#x27;__name__&#x27;, &#x27;__package__&#x27;, &#x27;__spec__&#x27;]</code></pre>
+<p>Afetr importing a module (the same from the previous example), we&#x27;ll see:</p>
+<pre><code class="language-python">import module1
+print(dir())
+[&#x27;__annotations__&#x27;, &#x27;__builtins__&#x27;, &#x27;__doc__&#x27;, &#x27;__loader__&#x27;, &#x27;__name__&#x27;, &#x27;__package__&#x27;, &#x27;__spec__&#x27;, &#x27;a_string&#x27;]</code></pre>
+<h2 id="type-hinting">Type hinting</h2>
+<p>From Python 3.5 on, there is way to &quot;define&quot; the type of a value within your Python code.</p>
+<p><strong>This is just a hint. The application will run with no warnings nor errors!!!</strong></p>
+<p>Let&#x27;s see how we can add type information to a function. We can do it over parameters and return values.</p>
+<pre><code class="language-python">def a_function(a_string_param: str, number_param: int) -&gt; bool:
+    # some code here
+    return True</code></pre>
+<p>This means that the function will receive a string, a number and it will return a boolean value.</p>
+<p>We can use all kind of types. With int, float, str and bool we can do it without importing any library.</p>
+<p>In order to add typing for dictionaries, tuples, lists, sets we have to import those types from the typing class.</p>
+<pre><code class="language-python">from typing import List
+
+a_list: List = [1, 2, 3, 4]</code></pre>
+<p>We can use the None type if we have a void function.</p>
+<pre><code class="language-python">def a_function(a_string: str) -&gt; None:
+    print(f&#x27;This is a string - {a_string}&#x27;)</code></pre>
+<p>Maybe we have a function returning two or more different type of values. In this case we can use Union.</p>
+<p>These will identify the return value with either of the two types of value.</p>
+<pre><code class="language-python">from typing import Union
+
+def a_function(an_int: int) -&gt; Union[int, str]:
+    return 1 # or return &#x27;1&#x27;</code></pre>
+<p>From <strong>Python 3.10</strong> on, we can replace <em>Union[type, type]</em> with <em>type | type</em>, and we don&#x27;t have to import <em>Union</em></p>
+<pre><code class="language-python">def a_function(an_int: int) -&gt; int | str:
+    return 1 # or return &#x27;1&#x27;</code></pre>
+<p>We can also use an alias.</p>
+<p>Let&#x27;s see that in an example.</p>
+<pre><code class="language-python">number = int | float
+
+def a_function() -&gt; number:
+    return 1.5</code></pre>
+<blockquote>
+<p>In this case we are creating the type number as an alias of the union of int and float types.</p>
+</blockquote>
+<p>There is much more on type hinting still in development, so maybe we will an update on this. <a href="https://docs.python.org/3/library/typing.html">Here</a> we have a lot of info on this subject.</p>
+    </article>
+  </main>
+</body>
+</html>

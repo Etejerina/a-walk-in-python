@@ -1,0 +1,153 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Day 1 | A walk in Python</title>
+  <link rel="stylesheet" href="../assets/styles.css">
+</head>
+<body>
+  <header class="topbar">
+    <a class="brand" href="../index.html">A walk in Python</a>
+    <nav>
+      <a href="../index.html#lessons">Lessons</a>
+      <a href="../index.html#how-to-use">How to use</a>
+      <a class="nav-action" href="https://colab.research.google.com/github/Etejerina/a-walk-in-python/blob/codex-course-site-colab/notebooks/day_1.ipynb">Open in Colab</a>
+    </nav>
+  </header>
+  <main class="layout">
+    <aside class="sidebar">
+      <strong>Course</strong>
+      <nav><a href="README.html">Preface</a>
+<a href="day_1.html">Day 1</a>
+<a href="day_2.html">Day 2</a>
+<a href="day_3.html">Day 3</a>
+<a href="day_4.html">Day 4</a>
+<a href="day_5.html">Day 5</a>
+<a href="day_6.html">Day 6</a>
+<a href="day_7.html">Day 7</a>
+<a href="floats.html">0.1 + 0.2 == 0.3 results in True or False?</a>
+<a href="finally.html">Finally</a>
+<a href="docs/index.html">Welcome to GitHub Pages</a>
+<a href="multi_inheritance.html">ChatGPTs answer:</a>
+<a href="type_hinting.html">Chapter: Type hinting in Python</a></nav>
+    </aside>
+    <article class="content">
+      <div class="page-actions">
+        <span>day_1.md</span>
+        <a class="button" href="https://colab.research.google.com/github/Etejerina/a-walk-in-python/blob/codex-course-site-colab/notebooks/day_1.ipynb">Open notebook in Colab</a>
+      </div>
+      <h1 id="a-walk-in-python-readme-md"><a href="/README.md">A walk in Python</a></h1>
+<h2 id="day-1">Day 1</h2>
+<ul>
+<li>Introduction to Python</li>
+<ul>
+<li><a href="day_1.html#what-is-python">What is Python?</a></li>
+<li><a href="day_1.html#why-python">Why Python?</a></li>
+<li><a href="day_1.html#clarifying">Clarifying</a></li>
+<li><a href="day_1.html#the-zen-of-python">The <em>Zen</em> of Python</a></li>
+<li><a href="day_1.html#peps">PEP&#x27;s</a></li>
+</ul>
+<li><a href="day_1.html#staring-with-python">Starting with Python</a></li>
+<ul>
+<li><a href="https://www.python.org/downloads/">Installing Python</a></li>
+<li><a href="https://code.visualstudio.com/">IDE (VS Code)</a></li>
+<li><a href="day_1.html#pip">Pip</a></li>
+<li><a href="day_1.html#virtual-environments">Virtual Environments</a></li>
+<li><a href="day_1.html#syntax">Syntax</a></li>
+</ul>
+</ul>
+<h2 id="introduction"><strong>Introduction</strong></h2>
+<hr>
+<h2 id="what-is-python">What is Python</h2>
+<p>Python is a popular programming language. It was created by Guido van Rossum, and released in 1991.</p>
+<p>There are two versions of Python, <em>Python 2</em> and <em>Python 3</em>. The latter is the one we are going to see throughout this course.</p>
+<p>We can say that Python is:</p>
+<ul>
+<li><a href="day_1.html#interpreted">Interpreted</a></li>
+<li><a href="day_1.html#high-level">High-level</a></li>
+<li><a href="day_1.html#cross-platform">Cross-platform</a></li>
+<li><a href="day_1.html#multi-paradigm">Multi-paradigm</a></li>
+<li><a href="day_1.html#dynamically-and-strongly-typed">Dynamically and strongly typed</a></li>
+</ul>
+<h3 id="interpreted">Interpreted</h3>
+<p>The program directly executes the instructions written, without requiring them to have been previously compiled into a machine language program.</p>
+<h3 id="high-level">High-level</h3>
+<p>It is a programming language with strong abstraction from the details of the computer.</p>
+<h3 id="cross-platform">Cross-platform</h3>
+<p>Refers to a language that is supports in multiple platforms, such as Windows, Linux, Mac, Raspberry Pi, etc.</p>
+<h3 id="multi-paradigm">Multi-paradigm</h3>
+<p>It is a language that can use procedural programming, functional programming and/or object-oriented.</p>
+<h3 id="dynamically-and-strongly-typed">Dynamically and strongly typed</h3>
+<p>It is dynamically typed because we don&#x27;t have to define the type of a variable.</p>
+<p>However, starting from Python 3.5, <strong>type hinting</strong> was introduced, allowing developers to optionally specify the expected types of variables, function arguments, and return values. This helps improve code readability and enables better static analysis tools.</p>
+<p>It is also strongly typed because the interpreter keeps track of all variable types and does not allow implicit type conversions that could lead to unexpected behavior. For example, attempting to add a string and an integer will result in a <code>TypeError</code>.</p>
+<h2 id="why-python">Why Python?</h2>
+<p>Python is an easy to learn language since it has a simple syntax similar to the English language. It also has syntax that allows developers to write programs with fewer lines than some other programming languages.</p>
+<p>There are many more advantages, but these two qualities were the most important for me, since like many of us, we are self-taught developers.</p>
+<p>Having both an easy to learn and a very rich language, that can be supplemented with lots of libraries, are the things that makes Python a very powerful one.</p>
+<h2 id="clarifying">Clarifying</h2>
+<p>One of the key features of Python is that everything is an <strong>Object</strong>, and the type is just one attribute of an object. As an illustration, we can assign a single integer to a variable, and use the Python built-in function dir for finding out the attributes of the object.</p>
+<p>Having said that, you might read that Python is by definition a Object-oriented language. As we have seen before, Python is multiparadigm, so don&#x27;t be confused with these two concepts.</p>
+<h2 id="the-zen-of-python">The <em>Zen</em> of Python</h2>
+<p>It is a collection of 19 <em>guiding principles</em> for writing computer programs that influence the design of the Python programming language.</p>
+<p>The principles are:</p>
+<pre><code class="language-cmd">Beautiful is better than ugly.
+Explicit is better than implicit.
+Simple is better than complex.
+Complex is better than complicated.
+Flat is better than nested.
+Sparse is better than dense.
+Readability counts.
+Special cases aren&#x27;t special enough to break the rules.
+Although practicality beats purity.
+Errors should never pass silently.
+Unless explicitly silenced.
+In the face of ambiguity, refuse the temptation to guess.
+There should be one-- and preferably only one --obvious way to do it.
+Although that way may not be obvious at first unless you&#x27;re Dutch.
+Now is better than never.
+Although never is often better than *right* now.
+If the implementation is hard to explain, it&#x27;s a bad idea.
+If the implementation is easy to explain, it may be a good idea.
+Namespaces are one honking great idea -- let&#x27;s do more of those!</code></pre>
+<p>You can check them out, only running python on the console and then</p>
+<pre><code class="language-python">import this</code></pre>
+<h2 id="pep-s">PEP&#x27;s</h2>
+<p>Python&#x27;s development is conducted largely through the Python Enhancement Proposal (PEP) process, the primary mechanism for proposing major new features, collecting community input on issues and documenting Python design decisions.</p>
+<p>Python coding style is covered in <a href="https://www.python.org/dev/peps/pep-0008/">PEP 8</a>. Outstanding PEPs are reviewed and commented on by the Python community and the steering council.</p>
+<h2 id="starting-with-python"><strong>Starting with Python</strong></h2>
+<hr>
+<h3 id="install-python-and-pip">Install Python and Pip</h3>
+<p><a href="https://www.python.org/downloads/">https://www.python.org/downloads/</a></p>
+<h3 id="install-ide-vs-code">Install IDE (VS Code)</h3>
+<p><a href="https://code.visualstudio.com/">https://code.visualstudio.com/</a></p>
+<h3 id="pip">Pip</h3>
+<p><a href="https://pypi.org/project/pip/">Pip</a> is the package installer for Python. You can use pip to install packages from the Python Package Index and other indexes.</p>
+<h3 id="virtual-environments">Virtual Environments</h3>
+<p>Most of the times when developing with Python, you might need external libraries or packages. In order to do that, you&#x27;ll need to install them. This can be done with Pip command.</p>
+<p>But if we don&#x27;t create a virtual Environment, those packages are going to be installed globally and we might want to install only the packages we need for a certain program and not another.</p>
+<p>To do that, I recommend to use <strong>virtualenv</strong>.</p>
+<p>It can be installed with pip:</p>
+<pre><code class="language-bash">pip install virtualenv</code></pre>
+<p>Then we&#x27;ll need to create our own virtual Environment.</p>
+<pre><code class="language-bash">virtualenv &lt;environment_name&gt;</code></pre>
+<p>Once this is done we can activate/deactivate with</p>
+<ul>
+<li>On Windows run <code>&lt;environment_name&gt;\Scripts\activate.bat</code>  (<em><code>deactivate.bat</code> to deactivate the environment</em>).</li>
+<li>On Windows using PowerShell, run <code>&lt;environment_name&gt;\Scripts\activate.ps1</code>  (<em>just <code>deactivate</code> to deactivate the environment</em>).</li>
+<li>On Windows using Git Bash run <code>&lt;environment_name&gt;\Scripts\activate</code>  (<em><code>deactivate</code> to deactivate the environment</em>).</li>
+<li>On Linux run <code>source &lt;environment_name&gt;/bin/activate</code>     (<em><code>deactivate</code> to deactivate the environment</em>)</li>
+</ul>
+<h3 id="syntax">Syntax</h3>
+<p>Python uses indentation to indicate a block of code. Indentation refers to the spaces at the beginning of a code line.</p>
+<p>Where in other programming languages the indentation in code is for readability only, the indentation in Python is very important.</p>
+<pre><code class="language-python">if a &gt; 5:
+    print(&quot;Es mayor a 5&quot;)</code></pre>
+<hr>
+<p><a href="day_2.html">Go to Day 2</a></p>
+<hr>
+    </article>
+  </main>
+</body>
+</html>

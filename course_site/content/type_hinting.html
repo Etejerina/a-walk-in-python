@@ -1,0 +1,195 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Chapter: Type hinting in Python | A walk in Python</title>
+  <link rel="stylesheet" href="../assets/styles.css">
+</head>
+<body>
+  <header class="topbar">
+    <a class="brand" href="../index.html">A walk in Python</a>
+    <nav>
+      <a href="../index.html#lessons">Lessons</a>
+      <a href="../index.html#how-to-use">How to use</a>
+      <a class="nav-action" href="https://colab.research.google.com/github/Etejerina/a-walk-in-python/blob/codex-course-site-colab/notebooks/type_hinting.ipynb">Open in Colab</a>
+    </nav>
+  </header>
+  <main class="layout">
+    <aside class="sidebar">
+      <strong>Course</strong>
+      <nav><a href="README.html">Preface</a>
+<a href="day_1.html">Day 1</a>
+<a href="day_2.html">Day 2</a>
+<a href="day_3.html">Day 3</a>
+<a href="day_4.html">Day 4</a>
+<a href="day_5.html">Day 5</a>
+<a href="day_6.html">Day 6</a>
+<a href="day_7.html">Day 7</a>
+<a href="floats.html">0.1 + 0.2 == 0.3 results in True or False?</a>
+<a href="finally.html">Finally</a>
+<a href="docs/index.html">Welcome to GitHub Pages</a>
+<a href="multi_inheritance.html">ChatGPTs answer:</a>
+<a href="type_hinting.html">Chapter: Type hinting in Python</a></nav>
+    </aside>
+    <article class="content">
+      <div class="page-actions">
+        <span>type_hinting.md</span>
+        <a class="button" href="https://colab.research.google.com/github/Etejerina/a-walk-in-python/blob/codex-course-site-colab/notebooks/type_hinting.ipynb">Open notebook in Colab</a>
+      </div>
+      <h1 id="chapter-type-hinting-in-python">Chapter: Type hinting in Python</h1>
+<h2 id="1-introduction-to-type-hinting-in-python">1. Introduction to Type hinting in Python</h2>
+<p>Python is a dynamically typed language, meaning variables do not require explicit type definitions. However, Python introduced type hints (also called static typing) in <a href="https://peps.python.org/pep-0484/">PEP 484</a> to improve readability, maintainability, and error detection. Then some improvements were introduced in 3.9 with <a href="https://peps.python.org/pep-0585/">PEP 585</a></p>
+<h3 id="example-dynamic-typing-in-python">Example: Dynamic Typing in Python</h3>
+<pre><code class="language-python">def add(a, b):
+    return a + b  # No type specified</code></pre>
+<p>The function <code>add()</code> works for integers, floats, and even strings, but this flexibility can lead to unexpected errors.</p>
+<h3 id="example-using-type-hints">Example: Using Type Hints</h3>
+<pre><code class="language-python">def add(a: int, b: int) -&gt; int:
+    return a + b</code></pre>
+<ul>
+<li><code>a: int</code> and <code>b: int</code> indicate that <code>a</code> and <code>b</code> should be integers.</li>
+<li><code>-&gt; int</code> specifies that the function returns an integer.</li>
+</ul>
+<p>Type hints do not enforce types at runtime, but tools like <a href="https://mypy-lang.org/">mypy</a> can check for type errors statically.</p>
+<p>---</p>
+<h2 id="2-basic-type-hints">2. Basic Type Hints</h2>
+<p>Python provides basic type hints for primitive types:</p>
+<p>| Type   | Example                              |</p>
+<p>|--------|--------------------------------------|</p>
+<p>| <code>int</code>  | <code>x: int = 10</code>                        |</p>
+<p>| <code>float</code>| <code>y: float = 3.14</code>                    |</p>
+<p>| <code>str</code>  | <code>name: str = &quot;Alice&quot;</code>                |</p>
+<p>| <code>bool</code> | <code>is_active: bool = True</code>             |</p>
+<p>| <code>list</code> | <code>numbers: list[int] = [1, 2, 3]</code>     |</p>
+<p>| <code>tuple</code>| <code>coords: tuple[int, int] = (10, 20)</code> |</p>
+<p>| <code>dict</code> | <code>user: dict[str, int] = {&quot;age&quot;: 25}</code> |</p>
+<pre><code class="language-python">
+numbers: list[int] = [1, 2, 3]
+coordinates: tuple[int, float] = (10, 3.5)
+user_data: dict[str, int] = {&quot;age&quot;: 30, &quot;score&quot;: 100}</code></pre>
+<ul>
+<li><code>list[int]</code>: A list where all elements are integers.</li>
+<li><code>tuple[int, float]</code>: A tuple with an integer and a float.</li>
+<li><code>dict[str, int]</code>: A dictionary where keys are strings, and values are integers.</li>
+</ul>
+<p>---</p>
+<h2 id="3-function-type-annotations">3. Function Type Annotations</h2>
+<h3 id="example-function-with-type-hints">Example: Function with Type Hints</h3>
+<pre><code class="language-python">
+def multiply(numbers: list[int], factor: int) -&gt; list[int]:
+    return [n * factor for n in numbers]</code></pre>
+<ul>
+<li><code>numbers: list[int]</code>: Expects a list of integers.</li>
+<li><code>factor: int</code>: Expects an integer.</li>
+<li><code>-&gt; list[int]</code>: Returns a list of integers.</li>
+</ul>
+<p>---</p>
+<h2 id="4-type-hints-for-classes">4. Type Hints for Classes</h2>
+<h3 id="annotating-class-attributes">Annotating Class Attributes</h3>
+<pre><code class="language-python">class Person:
+    name: str
+    age: int
+
+    def __init__(self, name: str, age: int) -&gt; None:
+        self.name = name
+        self.age = age</code></pre>
+<p>---</p>
+<h2 id="5-type-checking-at-runtime-isinstance">5. Type Checking at Runtime (<code>isinstance</code>)</h2>
+<p>While type hints do not enforce types at runtime, you can check types using <code>isinstance()</code>:</p>
+<pre><code class="language-python">def process(value: int | str) -&gt; None:
+    if isinstance(value, int):
+        print(f&quot;Processing an integer: {value}&quot;)
+    elif isinstance(value, str):
+        print(f&quot;Processing a string: {value}&quot;)
+
+process(42)
+process(&quot;hello&quot;)</code></pre>
+<p>---</p>
+<h2 id="6-advanced-typing-concepts">6. Advanced Typing Concepts</h2>
+<h3 id="multiple-allowed-types">Multiple Allowed Types</h3>
+<p>If two or more types are allowed, you can separate them with <code>|</code>, as in the following example:</p>
+<pre><code class="language-python">def process(value: int | str) -&gt; None:
+    print(value)
+
+# so these would be valid:
+process(1)
+process(&quot;2&quot;)
+
+# and these would not:
+process(None)
+process(True)
+process([])
+process((,))</code></pre>
+<p>This also applies if  one of the valid types is None:</p>
+<pre><code class="language-python">def accept_int_or_None(val: int | None) -&gt; None:
+    print(val)</code></pre>
+<h3 id="using-callable-type-hint-for-functions">Using <code>Callable</code> (Type Hint for Functions)</h3>
+<pre><code class="language-python">from typing import Callable
+
+def apply(func: Callable[[int, int], int], x: int, y: int) -&gt; int:
+    return func(x, y)
+
+def add(a: int, b: int) -&gt; int:
+    return a + b
+
+print(apply(add, 2, 3))  # Output: 5</code></pre>
+<ul>
+<li><code>Callable[[int, int], int]</code> means a function that takes two <code>int</code> arguments and returns an <code>int</code>.</li>
+</ul>
+<p>---</p>
+<h3 id="using-any-accepts-any-type">Using <code>Any</code> (Accepts Any Type)</h3>
+<p>If a function can accept any type, use <code>Any</code>:</p>
+<pre><code class="language-python">from typing import Any
+
+def echo(value: Any) -&gt; Any:
+    return value  # Can accept and return any type</code></pre>
+<p>---</p>
+<h3 id="using-aliases">Using aliases:</h3>
+<p>You can use aliases to avoid code duplication like this:</p>
+<pre><code class="language-python">optional_number: int|float|complex|None
+
+def foo(value: optional_number) -&gt; optional_number:
+    return value
+</code></pre>
+<p>---</p>
+<h2 id="7-enforcing-type-checking-with-mypy">7. Enforcing Type Checking with <code>mypy</code></h2>
+<p>Even though Python does not enforce types at runtime, you can check them using <code>mypy</code>:</p>
+<h3 id="install-mypy">Install <code>mypy</code>:</h3>
+<pre><code class="language-bash">pip install mypy</code></pre>
+<h3 id="run-type-checking">Run Type Checking:</h3>
+<pre><code class="language-bash">mypy script.py</code></pre>
+<p>If there are mismatched types, <code>mypy</code> will report them.</p>
+<p>---</p>
+<h2 id="8-legacy-typing-uses">8. Legacy typing uses</h2>
+<p>Before PIP 585 you had to import special type aliases and utilities from typing:</p>
+<ul>
+<li>for collection types, you had to import <code>List</code>, <code>Tuple</code>, <code>Dict</code>, etc from <code>typing</code> (instead of just uding <code>list</code>, <code>tuple</code>, <code>dict</code>, etc)</li>
+<li>to specify two (or more) types you needed to import <code>Union</code> (instead of <code>|</code>)</li>
+<li>to specify an optional type (you can think of it as an union where one of the possible values is None) you could import <code>Optional</code> (instead of <code>&lt;some_type&gt; | None</code>)</li>
+</ul>
+<p>For more complex data structures, use <code>typing</code> module annotations:</p>
+<pre><code class="language-python">from typing import List, Tuple, Dict
+from typing import Union, Optional
+
+numbers: List[int] = [1, 2, 3]
+coordinates: Tuple[int, float] = (10, 3.5)
+user_data: Dict[str, int] = {&quot;age&quot;: 30, &quot;score&quot;: 100}
+a_number: Union[int, float] = 1
+a_number = 1.1  # this would be allowed
+discount: Optional[float] = 0.2</code></pre>
+<p>This is deprecated and you should use the newer style.</p>
+<p>---</p>
+<h2 id="9-summary">9. Summary</h2>
+<ul>
+<li>Type hints improve code readability and help with error detection.</li>
+<li>Use types (<code>int</code>, <code>str</code>, <code>bool</code>, <code>list</code>, <code>dict</code>, etc.).</li>
+<li>Use <code>|</code> to allow more than one type (even if the value is optional: <code>&lt;some_type&gt;|None</code> ).</li>
+<li>Use <code>Any</code> (from the typing module) if every type should be allowed.</li>
+<li>Use <code>Callable</code> (from the typing module) for a function that is passed as argument.</li>
+<li>Type hints do not affect runtime behavior but can be checked statically with <code>mypy</code>.</li>
+</ul>
+    </article>
+  </main>
+</body>
+</html>

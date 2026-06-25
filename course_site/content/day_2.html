@@ -1,0 +1,269 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Day 2 | A walk in Python</title>
+  <link rel="stylesheet" href="../assets/styles.css">
+</head>
+<body>
+  <header class="topbar">
+    <a class="brand" href="../index.html">A walk in Python</a>
+    <nav>
+      <a href="../index.html#lessons">Lessons</a>
+      <a href="../index.html#how-to-use">How to use</a>
+      <a class="nav-action" href="https://colab.research.google.com/github/Etejerina/a-walk-in-python/blob/codex-course-site-colab/notebooks/day_2.ipynb">Open in Colab</a>
+    </nav>
+  </header>
+  <main class="layout">
+    <aside class="sidebar">
+      <strong>Course</strong>
+      <nav><a href="README.html">Preface</a>
+<a href="day_1.html">Day 1</a>
+<a href="day_2.html">Day 2</a>
+<a href="day_3.html">Day 3</a>
+<a href="day_4.html">Day 4</a>
+<a href="day_5.html">Day 5</a>
+<a href="day_6.html">Day 6</a>
+<a href="day_7.html">Day 7</a>
+<a href="floats.html">0.1 + 0.2 == 0.3 results in True or False?</a>
+<a href="finally.html">Finally</a>
+<a href="docs/index.html">Welcome to GitHub Pages</a>
+<a href="multi_inheritance.html">ChatGPTs answer:</a>
+<a href="type_hinting.html">Chapter: Type hinting in Python</a></nav>
+    </aside>
+    <article class="content">
+      <div class="page-actions">
+        <span>day_2.md</span>
+        <a class="button" href="https://colab.research.google.com/github/Etejerina/a-walk-in-python/blob/codex-course-site-colab/notebooks/day_2.ipynb">Open notebook in Colab</a>
+      </div>
+      <h1 id="a-walk-in-python-readme-md"><a href="/README.md">A walk in Python</a></h1>
+<h2 id="day-2">Day 2</h2>
+<ul>
+<li>Variables</li>
+<ul>
+<li><a href="day_2.html#what-are-variables">What are Variables?</a></li>
+<li><a href="day_2.html#constants">Constants</a></li>
+<li><a href="day_2.html#global-variables">Global Variables</a></li>
+<li><a href="day_2.html#multiple-assignment-and-unpacking">Multiple assignment and unpacking</a></li>
+</ul>
+<li>Data Types</li>
+<ul>
+<li><a href="day_2.html#data-types">Built-in Data Types</a></li>
+</ul>
+</ul>
+<h2 id="variables"><strong>Variables</strong></h2>
+<hr>
+<h2 id="what-are-variables">What are variables?</h2>
+<p>Variables in Python are containers for storing data. There is no reserved word for declaring a variables. You just go like this...</p>
+<pre><code class="language-python">a = &quot;Hello world!&quot;
+
+b = 1
+
+c = True</code></pre>
+<p>As we said before, Python is dynamically typed, so the interpreter assumes the type from the type of the value assigned to that variable name. You can even change the type after they have been set.</p>
+<pre><code class="language-python">a = &quot;Hello world!&quot;
+print(a)
+
+a = 1
+print(a)</code></pre>
+<p>You must be asking yourself, why we are not using type hinting...</p>
+<p>Ok, so when should you use <strong>type hints</strong> in assignments?</p>
+<ul>
+<li>When writing library code or APIs</li>
+<li>When you want better IDE support</li>
+<li>When using type checkers like mypy</li>
+<li>In collaborative projects for clarity</li>
+<li>When a variable might be unclear in type:</li>
+</ul>
+<p>  ```python</p>
+<p>  result: list[str] = []</p>
+<p>  ```</p>
+<p>If you want to specify the type of a variable, this can be done using casting.</p>
+<pre><code class="language-python">a = str(&#x27;Hello world!&#x27;)  # a will be &#x27;Hello World!&#x27;
+b = str(1)               # b will be &#x27;1&#x27;
+c = int(1)               # c will be 1
+d = float(1)             # d will be 1.0</code></pre>
+<p>To know the type of a variable you can use the reserved word <strong>type</strong></p>
+<pre><code class="language-python">a = &quot;Hello world!&quot;
+print(type(a))
+
+# output
+&lt;class &#x27;str&#x27;&gt;  </code></pre>
+<p>In Python there are lots of things that are just conventions (<a href="https://www.python.org/dev/peps/pep-0008/#naming-conventions">PEP8</a>), this means that some things are in a certain way and all python developers should use them.</p>
+<p>For variables names, these are the rules:</p>
+<ul>
+<li>must start with a letter or _</li>
+<li>cannot start with a number</li>
+<li>can only contain alpha-numeric characters and _</li>
+<li>are case sensitive</li>
+</ul>
+<p>Lowercase letters are commonly used in variable names, with word separated by &#x27;_&#x27; as necessary in order to improve readability.</p>
+<p>Other conventions are:</p>
+<ul>
+<li>Module in lowercase</li>
+<li>Class in CapWords</li>
+<li>Functions in lowercase</li>
+<li>Methods in lowercase</li>
+<li>Type variables in CapWords</li>
+<li>Constants in UPPERCASE</li>
+<li>Package in lowercase</li>
+</ul>
+<h2 id="constants">Constants</h2>
+<p>Another one of these conventions, are constants as we just saw. There is no way to declare a variable as a constant. The convention says that if you see a variable name in uppercase, it is a constant.</p>
+<pre><code class="language-python">CONSTANT_NAME = 1
+ANOTHER_CONSTANT = &#x27;Hello&#x27;</code></pre>
+<p>You can change the value of these constants, although if you see the name in uppercase, you&#x27;re not supposed to. You will be cursed by the Python Community (:D).</p>
+<h2 id="global-variables">Global variables</h2>
+<p>All variables that are created outside of a function in Python are, by default, global variables. Global variables can be used outside and inside of a function.</p>
+<pre><code class="language-python">name = &#x27;Ezequiel&#x27;
+
+def greeting() -&gt; None:
+    print(&#x27;Hello &#x27; + name)
+
+print(&#x27;My name is &#x27; + name)
+greeting()
+
+#output
+My name is Ezequiel
+Hello Ezequiel</code></pre>
+<p>However, if a variable with the same name is declared inside the function, this variable is going to be local, available to use inside the function, and the one declared outside, will be used outside the function.</p>
+<pre><code class="language-python">name = &#x27;Ezequiel&#x27;
+
+def greeting() -&gt; None:
+    name = &#x27;Jose&#x27;
+    print(&#x27;Hello &#x27; + name)
+
+print(&#x27;My name is &#x27; + name)
+greeting()
+
+#output
+My name is Ezequiel
+Hello Jose</code></pre>
+<p>There is a way to declare a global variable inside a function though, using the reserved word &#x27;global&#x27;.</p>
+<pre><code class="language-python">name = &#x27;Ezequiel&#x27;
+
+def greeting() -&gt; None:
+    global name = &#x27;Jose&#x27;
+
+greeting()
+print(&#x27;My name is &#x27; + name)
+
+#output
+My name is Jose</code></pre>
+<h2 id="multiple-assignment-and-unpacking">Multiple assignment and unpacking</h2>
+<p>You can also assign multiple variables, like this...</p>
+<pre><code class="language-python">x, y, z = &#x27;Hello&#x27;, &#x27;beautiful&#x27;, &#x27;World&#x27;
+print(x)
+print(y)
+print(z)
+
+#output
+Hello
+beautiful
+World</code></pre>
+<blockquote>
+<p>Note: the number of values and variable names, should match, or you will get an error.</p>
+</blockquote>
+<p>Also, you can assign the same value to different variables in one line, like this...</p>
+<pre><code class="language-python">x = y = z = &#x27;Ezequiel&#x27;
+print(x)
+print(y)
+print(z)
+
+#output
+Ezequiel
+Ezequiel
+Ezequiel</code></pre>
+<p>There is a way to extract the values of a collection into different variables. This is called <strong>unpacking</strong></p>
+<pre><code class="language-python">words: list[str] = [&#x27;Hello&#x27;, &#x27;beautiful&#x27;, &#x27;World&#x27;]
+x, y, z = words
+print(x)
+print(y)
+print(z)
+
+#output
+Hello
+beautiful
+World</code></pre>
+<hr>
+<h2 id="data-types"><strong>Data Types</strong></h2>
+<h2 id="built-in-data-types">Built-in Data Types</h2>
+<p>In programming in general, data types are very important. You can do different things with different data types.</p>
+<p>As in Python everything is an object, every type has its own methods and attributes.</p>
+<p>Python has the following data types built-in by default, divided into these categories:</p>
+<p>Text Type: <strong><em>str</em></strong></p>
+<ul>
+<li>Strings in python are surrounded by either single quotation marks, or double quotation marks.</li>
+</ul>
+<p>&#x27;hello&#x27; is the same as &quot;hello&quot;.</p>
+<p>You can display a string literal with the print() function.</p>
+<ul>
+<li>Strings are immutable</li>
+</ul>
+<p>Numeric Types: <strong><em>int, float, complex</em></strong></p>
+<ul>
+<li>Int, or integer, is a whole number, positive or negative, without decimals, of unlimited length.</li>
+<li>Float, or &quot;floating point number&quot; is a number, positive or negative, containing one or more decimals. Float can also be scientific numbers with an &quot;e&quot; to indicate the power of 10.</li>
+<li>Complex numbers are written with a &quot;j&quot; as the imaginary part.</li>
+</ul>
+<p>Boolean Type: <strong><em>bool</em></strong></p>
+<ul>
+<li>In programming you often need to know if an expression is True or False. Those are boolean values.</li>
+</ul>
+<p>Sequence Types: <strong><em>list, tuple</em></strong></p>
+<ul>
+<li>Lists are one of 4 built-in data types in Python used to store collections of data.</li>
+</ul>
+<p>Lists are created using square brackets.</p>
+<ul>
+<li>Tuples are used to store multiple items in a single variable.</li>
+</ul>
+<p>A tuple is a collection which is ordered and unchangeable.</p>
+<p>Tuples are written with round brackets.</p>
+<p>Mapping Type: <strong><em>dict</em></strong></p>
+<ul>
+<li>Dictionaries are used to store data values in key:value pairs.</li>
+</ul>
+<p>A dictionary is a collection which is ordered*, changeable and do not allow duplicates.</p>
+<p>Set Types: <strong><em>set, frozenset</em></strong></p>
+<ul>
+<li>Sets are used to store multiple items in a single variable.</li>
+</ul>
+<p>A set is a collection which is unordered, unchangeable*, and unindexed.</p>
+<ul>
+<li>Frozenset is just an inmutable version of a set.</li>
+</ul>
+<p>In order to get the data type from a variable you can just run:</p>
+<pre><code class="language-python">name = &#x27;pepe&#x27;
+print(type(name))
+
+# output
+&lt;class &#x27;str&#x27;&gt;</code></pre>
+<p>Again, if you want to set a specific data type to a variable, you need to use the casting method.</p>
+<pre><code class="language-python">a = int(1)
+print(a)
+print(type(a))
+
+b = float(1)
+print(b)
+print(type(b))
+
+c = str(1)
+print(c)
+print(type(c))
+
+# output
+1
+&lt;class &#x27;int&#x27;&gt;
+1.0
+&lt;class &#x27;float&#x27;&gt;
+1
+&lt;class &#x27;str&#x27;&gt;</code></pre>
+<hr>
+<p><a href="day_3.html">Go to Day 3</a></p>
+<hr>
+    </article>
+  </main>
+</body>
+</html>

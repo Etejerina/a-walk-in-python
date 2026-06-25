@@ -1,0 +1,81 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>0.1 + 0.2 == 0.3 results in True or False? | A walk in Python</title>
+  <link rel="stylesheet" href="../assets/styles.css">
+</head>
+<body>
+  <header class="topbar">
+    <a class="brand" href="../index.html">A walk in Python</a>
+    <nav>
+      <a href="../index.html#lessons">Lessons</a>
+      <a href="../index.html#how-to-use">How to use</a>
+      <a class="nav-action" href="https://colab.research.google.com/github/Etejerina/a-walk-in-python/blob/codex-course-site-colab/notebooks/floats.ipynb">Open in Colab</a>
+    </nav>
+  </header>
+  <main class="layout">
+    <aside class="sidebar">
+      <strong>Course</strong>
+      <nav><a href="README.html">Preface</a>
+<a href="day_1.html">Day 1</a>
+<a href="day_2.html">Day 2</a>
+<a href="day_3.html">Day 3</a>
+<a href="day_4.html">Day 4</a>
+<a href="day_5.html">Day 5</a>
+<a href="day_6.html">Day 6</a>
+<a href="day_7.html">Day 7</a>
+<a href="floats.html">0.1 + 0.2 == 0.3 results in True or False?</a>
+<a href="finally.html">Finally</a>
+<a href="docs/index.html">Welcome to GitHub Pages</a>
+<a href="multi_inheritance.html">ChatGPTs answer:</a>
+<a href="type_hinting.html">Chapter: Type hinting in Python</a></nav>
+    </aside>
+    <article class="content">
+      <div class="page-actions">
+        <span>floats.md</span>
+        <a class="button" href="https://colab.research.google.com/github/Etejerina/a-walk-in-python/blob/codex-course-site-colab/notebooks/floats.ipynb">Open notebook in Colab</a>
+      </div>
+      <h1 id="0-1-0-2-0-3-results-in-true-or-false">0.1 + 0.2 == 0.3 results in True or False?</h1>
+<p>Here is where it gets weird...</p>
+<p>The answer is False!!! Although yes, this is counterintuitive.</p>
+<p>Here is why:</p>
+<pre><code class="language-python">a = 0.1
+b = 0.2
+c = a + b
+print(c == 3)
+# output
+False
+
+
+print(c)
+
+# output
+0.30000000000000004
+
+# solution
+round(a + b, 10) == round(.3, 10)</code></pre>
+<p>Recommendation:</p>
+<p>Using the &quot;decimal&quot; library</p>
+<pre><code class="language-python">from decimal import Decimal
+a = Decimal(&#x27;0.1&#x27;)
+b = Decimal(&#x27;0.2&#x27;)
+c = Decimal(a + b)
+print(c == Decimal(&#x27;0.3&#x27;))
+# output
+True
+
+print(c)
+
+# output
+Decimal(&#x27;0.3&#x27;)</code></pre>
+<blockquote>
+<p>notice the quotes in the parameter, otherwhise the number would be cast to float, with it´s precision issues, as you could see in the following article.</p>
+</blockquote>
+<p>Go here for a deeper dive on the topic:</p>
+<p>&lt;https://www.laac.dev/blog/float-vs-decimal-python/&gt;</p>
+    </article>
+  </main>
+</body>
+</html>

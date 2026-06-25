@@ -1,0 +1,462 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Day 6 | A walk in Python</title>
+  <link rel="stylesheet" href="../assets/styles.css">
+</head>
+<body>
+  <header class="topbar">
+    <a class="brand" href="../index.html">A walk in Python</a>
+    <nav>
+      <a href="../index.html#lessons">Lessons</a>
+      <a href="../index.html#how-to-use">How to use</a>
+      <a class="nav-action" href="https://colab.research.google.com/github/Etejerina/a-walk-in-python/blob/codex-course-site-colab/notebooks/day_6.ipynb">Open in Colab</a>
+    </nav>
+  </header>
+  <main class="layout">
+    <aside class="sidebar">
+      <strong>Course</strong>
+      <nav><a href="README.html">Preface</a>
+<a href="day_1.html">Day 1</a>
+<a href="day_2.html">Day 2</a>
+<a href="day_3.html">Day 3</a>
+<a href="day_4.html">Day 4</a>
+<a href="day_5.html">Day 5</a>
+<a href="day_6.html">Day 6</a>
+<a href="day_7.html">Day 7</a>
+<a href="floats.html">0.1 + 0.2 == 0.3 results in True or False?</a>
+<a href="finally.html">Finally</a>
+<a href="docs/index.html">Welcome to GitHub Pages</a>
+<a href="multi_inheritance.html">ChatGPTs answer:</a>
+<a href="type_hinting.html">Chapter: Type hinting in Python</a></nav>
+    </aside>
+    <article class="content">
+      <div class="page-actions">
+        <span>day_6.md</span>
+        <a class="button" href="https://colab.research.google.com/github/Etejerina/a-walk-in-python/blob/codex-course-site-colab/notebooks/day_6.ipynb">Open notebook in Colab</a>
+      </div>
+      <h1 id="a-walk-in-python-readme-md"><a href="/README.md">A walk in Python</a></h1>
+<h2 id="day-6">Day 6</h2>
+<ul>
+<li><a href="day_6.html#classes--objects">Classes / Objects</a></li>
+<li><a href="day_6.html#inheritance">Inheritance</a></li>
+<ul>
+<li><a href="day_6.html#python-super">Python super()</a></li>
+</ul>
+<li><a href="day_6.html#method-resolution-order-mro">Method Resolution Order (MRO)</a></li>
+<li><a href="day_6.html#dunder-methods">Dunder Methods</a></li>
+</ul>
+<h2 id="classes-objects"><strong>Classes / Objects</strong></h2>
+<hr>
+<p>An object is simply a collection of data (variables) and methods (functions) that act on those data. Similarly, a class is a blueprint for that object. Creating a new class creates a new type of object, allowing new instances of that type to be made.</p>
+<p>We an think of a <strong>Class</strong> as a prototype or blueprint of something.</p>
+<p>Classes are dynamic as they are created at runtime, and can be modified further after creation.</p>
+<p>Classes are, by convention, named using Pascal Case (PascalCase). This is naming the class with words, without using spaces or underscores and starting every word with a capitalized letter.</p>
+<p>Syntax:</p>
+<pre><code class="language-python">class MyClass:
+    &#x27;&#x27;&#x27;This is a docstring. I have created a new class&#x27;&#x27;&#x27;
+    pass</code></pre>
+<blockquote>
+<p>Note: It&#x27;s also common and a good practice, to use a docstring as a description of the class.</p>
+</blockquote>
+<p>A class has attributes and methods, as any other object we already used in Python. Remember that Python is a multi-paradigm language, but everything in Python is an object.</p>
+<p>For example...</p>
+<pre><code class="language-python">class Person:
+    &#x27;&#x27;&#x27;
+    This is a person class and have name in it.
+    &#x27;&#x27;&#x27;
+    name = &quot;Ezequiel&quot;  # Atributo de clase
+
+    def say_hi(self) -&gt; None:
+        print(f&#x27;Hello, my name is {self.name}&#x27;)
+
+
+eze = Person() # instantiate an object or instance eze from the class Person
+
+print(Person.name)
+print(Person.say_hi)
+print(eze.say_hi)
+eze.say_hi()
+
+# output
+Ezequiel
+&lt;function Person.say_hi at 0x000001D2DCBC0670&gt;
+&lt;bound method Person.say_hi of &lt;__main__.Person object at 0x000001D2DCBADFD0&gt;&gt;
+Hello, my name is Ezequiel</code></pre>
+<p>Maybe is too much for our first time... Let&#x27;s review that!</p>
+<p>We have a Person class to begin with... It has an attribute <em>name</em> and a method <em>say_hi</em>.</p>
+<p>So in the example <strong>eze</strong> is an instance of the Person class, right? Well, I&#x27;m (almost) a Person... haha</p>
+<p>So, if we print <strong>Person.name</strong> we can see the output is the name attribute with the value &#x27;Ezequiel&#x27;.</p>
+<p>In the next <em>print statement</em> we can see, as we said, tha <em>say_hi</em> is a function and when instantiated, is the method bound to the class method.</p>
+<p>Finally, calling that method of the instance, we get to execute that function and print <strong>&#x27;Hello, my name is Ezequiel&#x27;</strong></p>
+<p>We can see, when defining the method <em>say_hi</em>, that there is parameter called <strong>self</strong>.</p>
+<p>Self refers to each and every instance of that class.  Also we can see that when we called &#x27;eze.say_hi()&#x27; in the example, we didn&#x27;t pass an argument... What happened here??? There is one parameter declared but no argument passed! That&#x27;s weird!</p>
+<p>The answer to that question is that when we call a method, Python automatically includes as first argument the instance created. We could say that this is something like <strong>&#x27;Person.say_hi(eze)&#x27;</strong></p>
+<p>Can we change the name attribute in the instance?</p>
+<pre><code class="language-python">class Person:
+    &#x27;&#x27;&#x27;
+    This is a person class and have name in it.
+    &#x27;&#x27;&#x27;
+    name = &quot;Ezequiel&quot;
+
+    def say_hi(self) -&gt; None:
+        print(f&#x27;Hello, my name is {self.name}&#x27;)
+
+
+eze = Person()
+eze.name = &#x27;Nicolas&#x27;
+eze.say_hi()
+
+#output
+Hello, my name is Nicolas</code></pre>
+<p>Let&#x27;s suppose that we don&#x27;t want the instance to have a default name... we want to create a persons instance and set a name. For that we are going to need a special method.</p>
+<p>For that we&#x27;ll need to use the built-in <strong>\_\_init__()</strong> special method, which is always executed when the class is being initiated.</p>
+<pre><code class="language-python">class Person:
+    &#x27;&#x27;&#x27;
+    This is a person class and have name in it. Now we can pass it to the __init__() special method!.
+    &#x27;&#x27;&#x27;
+
+    def __init__(self, name: str) -&gt; None:
+        self.name = name
+
+    def say_hi(self) -&gt; None:
+        print(f&#x27;Hello, my name is {self.name}&#x27;)
+
+
+a_person = Person(&#x27;Nicolas&#x27;)
+a_person.say_hi()
+print(a_person.__doc__)
+
+# output
+Hello, my name is Nicolas
+This is a person class and have name in it. Now we can pass it to the __init__() special method !.</code></pre>
+<blockquote>
+<p>Note: with the special attribute &#x27;\_\_doc__&#x27;  we can see the docstring of that class.</p>
+</blockquote>
+<p>We <strong>can</strong> add attributes dynamically to an instance of a class.</p>
+<pre><code class="language-python">
+class Person:
+    def __init__(self, name: str) -&gt; None:
+        self.name = name
+
+    def say_hi(self) -&gt; None:
+        print(f&#x27;Hello, my name is {self.name}&#x27;)
+
+
+a_person = Person(&#x27;Nicolas&#x27;)
+a_person.say_hi()
+print(a_person.name)
+a_person.lastname = &#x27;Perez&#x27;
+print(a_person.lastname)
+
+# output
+Hello, my name is Nicolas
+Nicolas
+Perez</code></pre>
+<h2 id="inheritance">Inheritance</h2>
+<p><em>Inheritance</em> enable us to define a class that takes all the functionalities and attributes from a parent class and allows us to add more.</p>
+<p>It refers to defining a new class with little or no modification to an existing class. The new class is called derived (or child) class and the one from which it inherits is called the base (or parent) class.</p>
+<p>For example:</p>
+<pre><code class="language-python">class Person:
+    &#x27;&#x27;&#x27;
+    This is a person class and have name in it.
+    &#x27;&#x27;&#x27;
+
+    def __init__(self, name: str) -&gt; None:
+        self.name = name
+
+    def say_hi(self) -&gt; None:
+        print(f&#x27;Hello, my name is {self.name}&#x27;)
+
+
+class Son(Person):
+    &quot;This is a child class from Person&quot;
+    isSon = True
+
+
+my_father = Person(&#x27;Pedro&#x27;)
+my_father.say_hi()
+me = Son(&#x27;Ezequiel&#x27;)
+me.say_hi()
+print(me.isSon)
+
+# output
+Hello, my name is Pedro
+Hello, my name is Ezequiel
+True</code></pre>
+<p>We can see that the child class has the <em>say_hi()</em> method, inherited from the parent class Person. So we only add, in this case, one attribute (<em>isSon</em>).</p>
+<p>We can also override a parent class method, like this.</p>
+<pre><code class="language-python">class Person:
+    &#x27;&#x27;&#x27;
+    This is a person class and have name in it.
+    &#x27;&#x27;&#x27;
+
+    def __init__(self, name: str) -&gt; None:
+        self.name = name
+
+    def say_hi(self) -&gt; None:
+        print(f&#x27;Hello, my name is {self.name}&#x27;)
+
+
+class Son(Person):
+    &quot;This is a child class from Person&quot;
+    isSon = True
+
+    def say_hi(self) -&gt; None:
+        print(f&#x27;Hello, I am a Son and my name is {self.name}&#x27;)
+
+
+my_father = Person(&#x27;Pedro&#x27;)
+my_father.say_hi()
+me = Son(&#x27;Ezequiel&#x27;)
+me.say_hi()
+
+# output
+Hello, my name is Pedro
+Hello, I am a Son and my name is Ezequiel</code></pre>
+<p>We can override all the methods from the parent class, including \_\_init__(), and all the other built-in, or dunder (preceded and succeeded by double underscores), methods.</p>
+<p>We can also use methods from the parent class and add them some other actions.</p>
+<h3 id="python-super">Python super()</h3>
+<p>The super function returns a temporary object of the parent class (superclass) that allows access to all of its methods to its child class.</p>
+<p>Let&#x27;s see it in action.</p>
+<pre><code class="language-python">class Person:
+    &#x27;&#x27;&#x27;
+    This is a person class and have name in it.
+    &#x27;&#x27;&#x27;
+
+    def __init__(self, name: str) -&gt; None:
+        self.name = name
+
+    def say_hi(self) -&gt; None:
+        print(f&#x27;Hello, my name is {self.name}&#x27;)
+
+
+class Son(Person):
+    &quot;This is a child class from Person&quot;
+    isSon = True
+
+    def say_hi(self) -&gt; None:
+        super().say_hi() # or Person.say_hi(self)
+        print(f&#x27;I am a Son!&#x27;)
+
+
+my_father = Person(&#x27;Pedro&#x27;)
+my_father.say_hi()
+me = Son(&#x27;Ezequiel&#x27;)
+me.say_hi()
+
+# output
+Hello, my name is Pedro
+Hello, my name is Ezequiel # this in on the Son class, calling say_hi() from the parent class.
+I am a Son</code></pre>
+<p>In Python we can inherit from more than one class. The child class will get all the methods and attributes from all the parent classes.</p>
+<p>Let&#x27;s see an example.</p>
+<pre><code class="language-python">class Father:
+    &#x27;&#x27;&#x27;
+    This is a person class and have name in it.
+    &#x27;&#x27;&#x27;
+
+    def __init__(self) -&gt; None:
+        print(f&#x27;Fathers last name&#x27;)
+
+
+class Mother:
+    &#x27;&#x27;&#x27;
+    This is a person class and have name in it.
+    &#x27;&#x27;&#x27;
+
+    def __init__(self) -&gt; None:
+        print(f&#x27;Mothers last name&#x27;)
+
+
+class Son(Father, Mother):
+    &quot;This is a child class from Mother and Father&quot;
+    isSon = True
+
+    def __init__(self) -&gt; None:
+        Father.__init__(self)
+        Mother.__init__(self)
+        print(f&#x27;I am a Son and I have both last names&#x27;)
+
+
+me = Son()
+
+# output
+Fathers last name
+Mothers last name
+I am a Son and I have both last names</code></pre>
+<p>Here, in the child class, we are calling explicitly both parent classes init methods. Now, if we use the super function, Python will check, it will check first the method in the first parent class. If the method doesn&#x27;t exists, i&#x27;ll check the second parent class and so on (if there were more parent classes). This is called Method Resolution Order (<strong>MRO</strong>).</p>
+<p>Let&#x27;s see an example first.</p>
+<pre><code class="language-python">class Father:
+    &#x27;&#x27;&#x27;
+    This is a person class and have name in it.
+    &#x27;&#x27;&#x27;
+
+    def __init__(self) -&gt; None:
+        print(f&#x27;Fathers last name&#x27;)
+
+
+class Mother:
+    &#x27;&#x27;&#x27;
+    This is a person class and have name in it.
+    &#x27;&#x27;&#x27;
+
+    def __init__(self) -&gt; None:
+        print(f&#x27;Mothers last name&#x27;)
+
+
+class Son(Father, Mother):
+    &quot;This is a child class from Mother and Father&quot;
+    isSon = True
+
+    def __init__(self) -&gt; None:
+        super().__init__()
+        print(f&#x27;I am a Son and I have both last names&#x27;)
+
+
+me = Son()
+
+# output
+Fathers last name
+I am a Son and I have both last names</code></pre>
+<h2 id="method-resolution-order-mro">Method Resolution Order (<strong>MRO</strong>)</h2>
+<p>To keep it simple, it is the order in which a method is searched for in a classes hierarchy, as we saw above.</p>
+<p>if we call that function with the last example, this is what will happen:</p>
+<pre><code class="language-python">print(Son.mro()) # or print(Son.__mro__)
+
+# output
+(&lt;class &#x27;__main__.Son&#x27;&gt;, &lt;class &#x27;__main__.Father&#x27;&gt;, &lt;class &#x27;__main__.Mother&#x27;&gt;, &lt;class &#x27;object&#x27;&gt;)</code></pre>
+<p>There are far more complex scenarios, but you get the idea.</p>
+<p>If you want to go deeper checkout the file <a href="/multi_inheritance.md">multi_inheritance.md</a></p>
+<h2 id="encapsulation">Encapsulation</h2>
+<p>Encapsulation is a mechanism for restricting direct access to some of an object&#x27;s or class components.</p>
+<p>Also refers to a language construct that facilitates the bundling of data with the methods (or other functions) operating on those data.</p>
+<p>In Python, encapsulation can be achieved by using private variables and public methods/functions (members), without a prefix.</p>
+<p>Also, we have to differentiate <strong>protected</strong> from <strong>private</strong> and, as a bunch of things in Python, there are conventions.</p>
+<ul>
+<li><strong>protected</strong> members are prefixed with &#x27;<code>_</code>&#x27; and can be accessed from outside the class (but should NOT!)</li>
+<li><strong>private</strong> members are prefixed with &#x27;<code>__</code>&#x27; (doble underscore)</li>
+</ul>
+<p>Let&#x27;s see an example or protected members:</p>
+<pre><code class="language-python">class ClassA:
+    def __init__(self) -&gt; None:
+  
+        # Protected member
+        self._a = 2
+
+an_instance = ClassA()
+
+print(&quot;Accessing protected member: &quot;, an_instance._a)
+
+#output
+Accessing protected member:  2</code></pre>
+<p>Now let&#x27;s see an example or private members:</p>
+<pre><code class="language-python">class ClassB:
+    def __init__(self) -&gt; None:
+  
+        # Private member
+        self.__a = 2
+
+an_instance = ClassB()
+
+print(&quot;Accessing private member: &quot;, an_instance.__a)
+
+#output
+Traceback (most recent call last):
+  File &quot;c:\a-walk-in-python\test.py&quot;, line 182, in &lt;module&gt;
+    print(&quot;Accessing private member: &quot;, an_instance.__a)
+AttributeError: &#x27;ClassB&#x27; object has no attribute &#x27;__a&#x27;</code></pre>
+<p>In order to use encapsulation properly, this is how we sphould proceed.</p>
+<pre><code class="language-python">class Person():
+  def __init__(self, name: str) -&gt; None:
+    self.name = name
+    self.__password = &quot;estoEsUnaPass&quot;
+    
+  @property
+  def password(self) -&gt; None:
+    return self.__password
+  
+  @password.setter
+  def password(self, password: str) -&gt; None:
+    self.__password = password
+    
+
+me = Person(&quot;Eze&quot;)
+print(me.password)
+me.password = &quot;other&quot;
+print(me.password)
+
+#output
+th1sIs4Pass
+other</code></pre>
+<blockquote>
+<p>Note: There is no point on using the setter in this example, but we can use that to validate data, before this private attribute gets setted.</p>
+</blockquote>
+<h2 id="dunder-methods">Dunder Methods</h2>
+<p>Dunder Methods are the special methods that start and end with the double underscores. Dunder methods are not meant to be invoked directly by you, but the invocation happens internally from the class on a certain action.</p>
+<p>For example, when you add two numbers using the <code>+</code> operator, internally, the <code>__add__()</code> method will be called.</p>
+<p>We can use the dir() function to see the number of dunder methods inherited by a class, but not only dunder methods but all methods.</p>
+<p>Let&#x27;s see an example with the classes defined above...</p>
+<pre><code class="language-python">print(dir(Father))
+
+# output
+[&#x27;__class__&#x27;, &#x27;__delattr__&#x27;, &#x27;__dict__&#x27;, &#x27;__dir__&#x27;, &#x27;__doc__&#x27;, &#x27;__eq__&#x27;, &#x27;__format__&#x27;, &#x27;__ge__&#x27;, &#x27;__getattribute__&#x27;, &#x27;__gt__&#x27;, &#x27;__hash__&#x27;, &#x27;__init__&#x27;, &#x27;__init_subclass__&#x27;, &#x27;__le__&#x27;, &#x27;__lt__&#x27;, &#x27;__module__&#x27;, &#x27;__ne__&#x27;, &#x27;__new__&#x27;, &#x27;__reduce__&#x27;, &#x27;__reduce_ex__&#x27;, &#x27;__repr__&#x27;, &#x27;__setattr__&#x27;, &#x27;__sizeof__&#x27;, &#x27;__str__&#x27;, &#x27;__subclasshook__&#x27;, &#x27;__weakref__&#x27;]</code></pre>
+<p>As we know, everything is a class in Python, so we can run this...</p>
+<pre><code class="language-python">print(dir(int))
+
+# output
+[&#x27;__abs__&#x27;, &#x27;__add__&#x27;, &#x27;__and__&#x27;, &#x27;__bool__&#x27;, &#x27;__ceil__&#x27;, &#x27;__class__&#x27;, &#x27;__delattr__&#x27;, &#x27;__dir__&#x27;, &#x27;__divmod__&#x27;, &#x27;__doc__&#x27;, &#x27;__eq__&#x27;, &#x27;__float__&#x27;, &#x27;__floor__&#x27;, &#x27;__floordiv__&#x27;, &#x27;__format__&#x27;, &#x27;__ge__&#x27;, &#x27;__getattribute__&#x27;, &#x27;__getnewargs__&#x27;, &#x27;__gt__&#x27;, &#x27;__hash__&#x27;, &#x27;__index__&#x27;, &#x27;__init__&#x27;, &#x27;__init_subclass__&#x27;, &#x27;__int__&#x27;, &#x27;__invert__&#x27;, &#x27;__le__&#x27;, &#x27;__lshift__&#x27;, &#x27;__lt__&#x27;, &#x27;__mod__&#x27;, &#x27;__mul__&#x27;, &#x27;__ne__&#x27;, &#x27;__neg__&#x27;, &#x27;__new__&#x27;, &#x27;__or__&#x27;, &#x27;__pos__&#x27;, &#x27;__pow__&#x27;, &#x27;__radd__&#x27;, &#x27;__rand__&#x27;, &#x27;__rdivmod__&#x27;, &#x27;__reduce__&#x27;, &#x27;__reduce_ex__&#x27;, &#x27;__repr__&#x27;, &#x27;__rfloordiv__&#x27;, &#x27;__rlshift__&#x27;, &#x27;__rmod__&#x27;, &#x27;__rmul__&#x27;, &#x27;__ror__&#x27;, &#x27;__round__&#x27;, &#x27;__rpow__&#x27;, &#x27;__rrshift__&#x27;, &#x27;__rshift__&#x27;, &#x27;__rsub__&#x27;, &#x27;__rtruediv__&#x27;, &#x27;__rxor__&#x27;, &#x27;__setattr__&#x27;, &#x27;__sizeof__&#x27;, &#x27;__str__&#x27;, &#x27;__sub__&#x27;, &#x27;__subclasshook__&#x27;, &#x27;__truediv__&#x27;, &#x27;__trunc__&#x27;, &#x27;__xor__&#x27;, &#x27;as_integer_ratio&#x27;, &#x27;bit_length&#x27;, &#x27;conjugate&#x27;, &#x27;denominator&#x27;, &#x27;from_bytes&#x27;, &#x27;imag&#x27;, &#x27;numerator&#x27;, &#x27;real&#x27;, &#x27;to_bytes&#x27;]</code></pre>
+<p>Another example:</p>
+<pre><code class="language-python">print(dir(Son))
+
+# output
+[&#x27;__class__&#x27;, &#x27;__delattr__&#x27;, &#x27;__dict__&#x27;, &#x27;__dir__&#x27;, &#x27;__doc__&#x27;, &#x27;__eq__&#x27;, &#x27;__format__&#x27;, &#x27;__ge__&#x27;, &#x27;__getattribute__&#x27;, &#x27;__gt__&#x27;, &#x27;__hash__&#x27;, &#x27;__init__&#x27;, &#x27;__init_subclass__&#x27;, &#x27;__le__&#x27;, &#x27;__lt__&#x27;, &#x27;__module__&#x27;, &#x27;__ne__&#x27;, &#x27;__new__&#x27;, &#x27;__reduce__&#x27;, &#x27;__reduce_ex__&#x27;, &#x27;__repr__&#x27;, &#x27;__setattr__&#x27;, &#x27;__sizeof__&#x27;, &#x27;__str__&#x27;, &#x27;__subclasshook__&#x27;, &#x27;__weakref__&#x27;, &#x27;isSon&#x27;]</code></pre>
+<blockquote>
+<p>Note at the end of the list, we can see the &quot;isSon&quot; method we have created!</p>
+</blockquote>
+<p>We have also said that, if needed, we can override these methods. Actually, this is what many libraries do.</p>
+<pre><code class="language-python">class Person:
+    &#x27;&#x27;&#x27;
+    This is a person class and has an atribute name in it.
+    &#x27;&#x27;&#x27;
+
+    def __init__(self, name: str) -&gt; None:
+        self.name = name
+
+me = Person(&#x27;Ezequiel&#x27;)
+another_guy = Person(&#x27;Nicolas&#x27;)
+print(me)
+print(another_guy)
+
+# output
+&lt;__main__.Person object at 0x000001F95E1DDFD0&gt;
+&lt;__main__.Person object at 0x000001F95E1DDD60&gt;</code></pre>
+<p>In this output we can&#x27;t tell which is which, so let&#x27;s do something to get a more interesting output.</p>
+<pre><code class="language-python">class Person:
+    &#x27;&#x27;&#x27;
+    This is a person class and have name in it.
+    &#x27;&#x27;&#x27;
+
+    def __init__(self, name: str) -&gt; None:
+        self.name = name
+
+    def __repr__(self) -&gt; str:
+        return f&#x27;I am of class Person and my name is {self.name}&#x27;
+
+me = Person(&#x27;Ezequiel&#x27;)
+another_guy = Person(&#x27;Nicolas&#x27;)
+print(me)
+print(another_guy)
+
+# output
+I am of class Person and my name is Ezequiel
+I am of class Person and my name is Nicolas</code></pre>
+<hr>
+<p><a href="day_7.html">Go to Day 7</a></p>
+<hr>
+    </article>
+  </main>
+</body>
+</html>

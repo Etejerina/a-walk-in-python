@@ -1,0 +1,209 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>ChatGPTs answer: | A walk in Python</title>
+  <link rel="stylesheet" href="../assets/styles.css">
+</head>
+<body>
+  <header class="topbar">
+    <a class="brand" href="../index.html">A walk in Python</a>
+    <nav>
+      <a href="../index.html#lessons">Lessons</a>
+      <a href="../index.html#how-to-use">How to use</a>
+      <a class="nav-action" href="https://colab.research.google.com/github/Etejerina/a-walk-in-python/blob/codex-course-site-colab/notebooks/multi_inheritance.ipynb">Open in Colab</a>
+    </nav>
+  </header>
+  <main class="layout">
+    <aside class="sidebar">
+      <strong>Course</strong>
+      <nav><a href="README.html">Preface</a>
+<a href="day_1.html">Day 1</a>
+<a href="day_2.html">Day 2</a>
+<a href="day_3.html">Day 3</a>
+<a href="day_4.html">Day 4</a>
+<a href="day_5.html">Day 5</a>
+<a href="day_6.html">Day 6</a>
+<a href="day_7.html">Day 7</a>
+<a href="floats.html">0.1 + 0.2 == 0.3 results in True or False?</a>
+<a href="finally.html">Finally</a>
+<a href="docs/index.html">Welcome to GitHub Pages</a>
+<a href="multi_inheritance.html">ChatGPTs answer:</a>
+<a href="type_hinting.html">Chapter: Type hinting in Python</a></nav>
+    </aside>
+    <article class="content">
+      <div class="page-actions">
+        <span>multi_inheritance.md</span>
+        <a class="button" href="https://colab.research.google.com/github/Etejerina/a-walk-in-python/blob/codex-course-site-colab/notebooks/multi_inheritance.ipynb">Open notebook in Colab</a>
+      </div>
+      <p>Here is a chat with ChatGPT 4o that will shine a light on multiple inheritance and MRO:</p>
+<p>(pay attention to the note at the end, there is an error in the AI&#x27;s fixed version of the code)</p>
+<p>Why does the following code throw an error when creating an instance of class Son?:</p>
+<pre><code class="language-python">class Person():
+    &quot;&quot;&quot;Basic person class&quot;&quot;&quot;
+    def __init__(self, first=&quot;&quot;, last=&quot;&quot;, gender=&quot;n/a&quot;):
+        self.first_name = first
+        self.last_name = last
+        self.gender = gender
+
+
+class Father(Person):
+    &quot;&quot;&quot;Person of masculine gender that has descendants&quot;&quot;&quot;
+    def __init__(self, first=&quot;&quot;, last=&quot;&quot;):
+        super().__init__(first=first, last=last, gender=&quot;m&quot;)
+        self.has_children = True
+
+class Mother(Person):
+    &quot;&quot;&quot;Person of femenine gender that has descendants&quot;&quot;&quot;
+    def __init__(self, first=&quot;&quot;, last=&quot;&quot;):
+        super().__init__(first=first, last=last, gender=&quot;f&quot;)
+        self.has_children = True
+
+
+class Son(Father, Mother):
+    &quot;&quot;&quot;Naive example of a person that IS mother and father!&quot;&quot;&quot;
+    pass</code></pre>
+<h1 id="chatgpts-answer">ChatGPTs answer:</h1>
+<p>Great question — this code throws an error when trying to create an instance of the <code>Son</code> class due to <strong>Python’s Method Resolution Order (MRO)</strong> and the use of <strong>multiple inheritance</strong>.</p>
+<p>Let’s walk through the issue step-by-step:</p>
+<p>---</p>
+<h3 id="the-problem">⚠️ The Problem</h3>
+<p>You&#x27;re using <strong>multiple inheritance</strong> like this:</p>
+<pre><code class="language-python">class Son(Father, Mother):</code></pre>
+<p>This means Python will try to construct <code>Son</code> by calling the constructors (<code>__init__</code> methods) of its base classes <strong>in MRO order</strong>, which is:</p>
+<pre><code class="language-python">Son → Father → Mother → Person</code></pre>
+<p>Now, here&#x27;s the critical part:</p>
+<ul>
+<li><code>Son()</code> does not define its own <code>__init__</code>, so it inherits <code>Father.__init__</code>.</li>
+<li><code>Father.__init__</code> <strong>explicitly calls <code>super().__init__()</code></strong>, which means it’s calling <code>Mother.__init__()</code> because <code>Mother</code> is the next in line in the MRO <strong>after <code>Father</code></strong>.</li>
+<li>But <code>Mother.__init__</code> expects only <code>first</code> and <code>last</code> (and passes them to <code>Person.__init__</code> along with <code>gender=&quot;f&quot;</code>).</li>
+<li>The error arises because both <code>Father</code> and <code>Mother</code> call <code>super().__init__()</code> directly to <code>Person</code>, <strong>without cooperating in a true cooperative multiple inheritance model</strong>.</li>
+</ul>
+<p>This causes one base class to skip the other&#x27;s initialization, or to be initialized multiple times incorrectly. Eventually, you get:</p>
+<pre><code class="language-">TypeError: object.__init__() takes exactly one argument (the instance to initialize)</code></pre>
+<p>This happens because <code>super()</code> reaches <code>object.__init__()</code> at the end of the MRO chain, and it&#x27;s being called with arguments it doesn&#x27;t accept.</p>
+<p>---</p>
+<h3 id="why-it-really-fails-the-technical-details">🧠 Why It Really Fails (The Technical Details)</h3>
+<ul>
+<li>In Python, for <strong>multiple inheritance to work</strong>, all classes involved must use <code>super()</code> <strong>cooperatively</strong> and consistently, i.e., they all should:</li>
+</ul>
+<p>  1. Call <code>super().__init__()</code>, <strong>not</strong> <code>ParentClass.__init__()</code>.</p>
+<p>  2. Accept arbitrary arguments like <code><em>args</code> and <code></em>*kwargs</code>, and pass them along.</p>
+<p>In your code, <code>Father</code> and <code>Mother</code> each define an <code>__init__</code> that assumes it&#x27;s the only one calling <code>Person.__init__</code>, which breaks the cooperative chain.</p>
+<p>---</p>
+<h3 id="fixing-it-cooperative-multiple-inheritance">✅ Fixing It (Cooperative Multiple Inheritance)</h3>
+<p>To make this work properly, all classes involved must:</p>
+<p>1. Use <code>super().__init__()</code></p>
+<p>2. Accept <code><em>args, </em>*kwargs</code> in <code>__init__</code></p>
+<p>3. Pass unused arguments forward with <code>super()</code></p>
+<p>Here’s a corrected version:</p>
+<pre><code class="language-python">class Person():
+    def __init__(self, first=&quot;&quot;, last=&quot;&quot;, gender=&quot;n/a&quot;, **kwargs):
+        super().__init__(**kwargs)
+        self.first_name = first
+        self.last_name = last
+        self.gender = gender
+
+class Father(Person):
+    def __init__(self, first=&quot;&quot;, last=&quot;&quot;, **kwargs):
+        super().__init__(first=first, last=last, gender=&quot;m&quot;, **kwargs)
+        self.has_children = True
+
+class Mother(Person):
+    def __init__(self, first=&quot;&quot;, last=&quot;&quot;, **kwargs):
+        super().__init__(first=first, last=last, gender=&quot;f&quot;, **kwargs)
+        self.has_children = True
+
+class Son(Father, Mother):
+    pass</code></pre>
+<p>Now, <code>super()</code> in each class will follow the <strong>MRO</strong>, and all constructors will be called in a clean and cooperative way.</p>
+<p>---</p>
+<h3 id="mro-check">🔁 MRO Check</h3>
+<p>You can inspect the method resolution order with:</p>
+<pre><code class="language-python">print(Son.__mro__)</code></pre>
+<p>Output:</p>
+<pre><code class="language-">(&lt;class &#x27;__main__.Son&#x27;&gt;, &lt;class &#x27;__main__.Father&#x27;&gt;, &lt;class &#x27;__main__.Mother&#x27;&gt;, &lt;class &#x27;__main__.Person&#x27;&gt;, &lt;class &#x27;object&#x27;&gt;)</code></pre>
+<p>---</p>
+<h3 id="summary">Summary</h3>
+<ul>
+<li>❌ The original code fails due to improper handling of <code>super()</code> in a multiple inheritance scenario.</li>
+<li>✅ Fix it by using <code><em>args, </em>*kwargs</code> and cooperative <code>super()</code> calls throughout the hierarchy.</li>
+</ul>
+<p>Want a visual breakdown of the MRO or how <code>super()</code> travels through the classes?</p>
+<h1 id="me">Me:</h1>
+<p>Yes, please, I would like the visual breakdown</p>
+<h1 id="chatgpt">ChatGPT:</h1>
+<p>Awesome! Here&#x27;s a <strong>visual breakdown</strong> of the Method Resolution Order (MRO) and how <code>super()</code> travels through the classes in your <code>Son</code> example.</p>
+<p>---</p>
+<p>Awesome! Here&#x27;s a <strong>visual breakdown</strong> of the Method Resolution Order (MRO) and how <code>super()</code> travels through the classes in your <code>Son</code> example.</p>
+<p>---</p>
+<h3 id="class-hierarchy">📦 Class Hierarchy</h3>
+<pre><code class="language-">         Person
+        /      \
+   Father      Mother
+        \      /
+           Son</code></pre>
+<p>---</p>
+<h3 id="mro-method-resolution-order-for-son">🧭 MRO (Method Resolution Order) for <code>Son</code></h3>
+<p>When you create <code>Son()</code>, Python determines the order in which constructors (<code>__init__</code>) should be called using the <strong>C3 linearization</strong> algorithm. The MRO for <code>Son</code> is:</p>
+<pre><code class="language-python">Son → Father → Mother → Person → object</code></pre>
+<p>This is what you&#x27;ll see when running:</p>
+<pre><code class="language-python">print(Son.__mro__)</code></pre>
+<h3 id="super-chain-step-by-step">🔁 <code>super()</code> Chain — Step by Step</h3>
+<p>Let’s assume you call:</p>
+<pre><code class="language-python">s = Son(first=&quot;Alex&quot;, last=&quot;Smith&quot;)</code></pre>
+<p>If the classes are written cooperatively with <code>super()</code>, here’s how the flow works:</p>
+<p>---</p>
+<h4 id="step-by-step-init-chain-with-cooperative-super">✅ Step-by-step init chain (with cooperative <code>super()</code>):</h4>
+<pre><code class="language-text">1. Son() uses Father.__init__()
+2. Father.__init__() calls super().__init__() → goes to Mother.__init__()
+3. Mother.__init__() calls super().__init__() → goes to Person.__init__()
+4. Person.__init__() calls super().__init__() → goes to object.__init__()
+5. object.__init__() does nothing (default base class)</code></pre>
+<p>Each class sets up its own data and passes the rest along. No class is skipped.</p>
+<p>---</p>
+<h3 id="what-happens-without-cooperative-super-i-e-the-original-code">🚨 What Happens Without Cooperative <code>super()</code> (i.e., the original code)</h3>
+<p>Your original <code>Father.__init__()</code> and <code>Mother.__init__()</code> each call <code>super().__init__()</code> assuming they&#x27;re directly inheriting from <code>Person</code>. This breaks the chain.</p>
+<p>So in this situation:</p>
+<pre><code class="language-python">s = Son(first=&quot;Alex&quot;, last=&quot;Smith&quot;)</code></pre>
+<p>Here’s what happens:</p>
+<pre><code class="language-text">1. Son() uses Father.__init__()
+2. Father.__init__() calls super().__init__() → goes to Mother.__init__()
+3. Mother.__init__() calls super().__init__() → goes to Person.__init__()
+4. Person.__init__() calls super().__init__() → goes to object.__init__()
+   BUT Person passes parameters like `first`, `last`, `gender` to object.__init__()
+   ❌ object.__init__() only accepts `self` → 💥 TypeError</code></pre>
+<p>---</p>
+<h3 id="visual-chain-flow-correct-version">🧪 Visual Chain Flow (Correct Version)</h3>
+<p>Here&#x27;s a clean diagram showing the call flow for <code>__init__</code>:</p>
+<pre><code class="language-">Son()
+  ↓
+Father.__init__()
+  ↓
+super() →
+Mother.__init__()
+  ↓
+super() →
+Person.__init__()
+  ↓
+super() →
+object.__init__() ✅</code></pre>
+<p>Each class contributes to the initialization and passes unused arguments along the chain.</p>
+<p>---</p>
+<h3 id="summary">🧙 Summary</h3>
+<ul>
+<li>Use cooperative <code>super()</code> for multiple inheritance.</li>
+<li>Each <code>__init__</code> should accept <code><em>args, </em>*kwargs</code> and pass them to <code>super().__init__()</code> to keep the chain alive.</li>
+<li>Python MRO ensures that every class is only initialized once and in the correct order.</li>
+</ul>
+<p>Let me know if you&#x27;d like a <strong>graphical image</strong> of this hierarchy or want to test MRO dynamically!</p>
+<h1 id="important-note">Important note:</h1>
+<p>There is an error in ChatGPTs answer, the corrected code in the <code>✅ Fixing It (Cooperative Multiple Inheritance)</code> section doesn´t work. That&#x27;s because in the base class <code>Person</code> the call to <code>super().__init__</code> can´t pass the kwarg parameters, because that class doesn&#x27;t inherit from any other class (at least explicitly, it implicitly inherits from <code>object</code>): the constructor is not expecting those parameters and fails.</p>
+<blockquote>
+<p>This can also serve as a reminder that ChatGPT&#x27;s answers need to be checked and validated. Don´t put blind trust on the tool -at least not yet :D</p>
+</blockquote>
+    </article>
+  </main>
+</body>
+</html>
