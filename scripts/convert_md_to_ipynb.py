@@ -13,6 +13,7 @@ NOTEBOOK_ROOT = ROOT / "notebooks"
 CODE_FENCE_RE = re.compile(r"^(\s*)```([A-Za-z0-9_+.-]*)\s*$")
 OUTPUT_RE = re.compile(r"^\s*#\s*output\b", re.IGNORECASE)
 LOCAL_MD_LINK_RE = re.compile(r"!?\[[^\]]*\]\(([^)]+)\)")
+NEXT_LESSON_LINK_RE = re.compile(r"\[(Go to Day \d+)\]\(([^)]+\.ipynb)\)")
 EXCLUDED_DIRS = {".git", ".venv", "__pycache__", "notebooks", "course_site"}
 EXCLUDED_MARKDOWN_FILES = {ROOT / "docs" / "index.md"}
 EXCLUDED_MARKDOWN_PATHS = {path.resolve() for path in EXCLUDED_MARKDOWN_FILES}
@@ -72,7 +73,13 @@ def rewrite_local_markdown_links(
         query = f"?{parsed.query}" if parsed.query else ""
         return f"{label}]({target_link}{query}{fragment})"
 
-    return LOCAL_MD_LINK_RE.sub(replacement, text)
+    text = LOCAL_MD_LINK_RE.sub(replacement, text)
+
+    def next_lesson_replacement(match: re.Match[str]) -> str:
+        label, href = match.groups()
+        return f'<a href="{href}" target="_self">{label}</a>'
+
+    return NEXT_LESSON_LINK_RE.sub(next_lesson_replacement, text)
 
 
 def new_markdown_cell(
