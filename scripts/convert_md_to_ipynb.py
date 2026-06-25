@@ -13,7 +13,9 @@ NOTEBOOK_ROOT = ROOT / "notebooks"
 CODE_FENCE_RE = re.compile(r"^(\s*)```([A-Za-z0-9_+.-]*)\s*$")
 OUTPUT_RE = re.compile(r"^\s*#\s*output\b", re.IGNORECASE)
 LOCAL_MD_LINK_RE = re.compile(r"!?\[[^\]]*\]\(([^)]+)\)")
-EXCLUDED_DIRS = {".git", ".venv", "__pycache__", "notebooks"}
+EXCLUDED_DIRS = {".git", ".venv", "__pycache__", "notebooks", "course_site"}
+EXCLUDED_MARKDOWN_FILES = {ROOT / "docs" / "index.md"}
+EXCLUDED_MARKDOWN_PATHS = {path.resolve() for path in EXCLUDED_MARKDOWN_FILES}
 
 
 def normalize_source(text: str) -> list[str]:
@@ -216,6 +218,8 @@ def markdown_files_in_navigation_order() -> list[Path]:
         if EXCLUDED_DIRS.intersection(path.parts):
             continue
         resolved = path.resolve()
+        if resolved in EXCLUDED_MARKDOWN_PATHS:
+            continue
         if resolved not in seen:
             discovered.append(resolved)
             seen.add(resolved)

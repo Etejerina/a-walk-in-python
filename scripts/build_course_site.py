@@ -15,6 +15,8 @@ README = ROOT / "README.md"
 GITHUB_REPO = os.environ.get("GITHUB_REPOSITORY", "Etejerina/a-walk-in-python")
 GITHUB_REF = os.environ.get("GITHUB_REF_NAME", "codex-course-site-colab")
 EXCLUDED_DIRS = {".git", ".venv", "__pycache__", "notebooks", "course_site"}
+EXCLUDED_MARKDOWN_FILES = {ROOT / "docs" / "index.md"}
+EXCLUDED_MARKDOWN_PATHS = {path.resolve() for path in EXCLUDED_MARKDOWN_FILES}
 LOCAL_MD_LINK_RE = re.compile(r"(!?)\[([^\]]*)\]\(([^)]+)\)")
 CODE_FENCE_RE = re.compile(r"^```([A-Za-z0-9_+.-]*)\s*$")
 
@@ -220,6 +222,8 @@ def discover_markdown_files() -> list[Path]:
         if EXCLUDED_DIRS.intersection(path.parts):
             continue
         resolved = path.resolve()
+        if resolved in EXCLUDED_MARKDOWN_PATHS:
+            continue
         if resolved not in seen:
             files.append(resolved)
             seen.add(resolved)
