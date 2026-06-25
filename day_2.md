@@ -142,7 +142,8 @@ There is a way to declare a global variable inside a function though, using the 
 name = 'Ezequiel'
 
 def greeting() -> None:
-    global name = 'Jose'
+    global name
+    name = 'Jose'
 
 greeting()
 print('My name is ' + name)

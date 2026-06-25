@@ -143,7 +143,8 @@ Hello Jose</code></pre>
 <pre><code class="language-python">name = &#x27;Ezequiel&#x27;
 
 def greeting() -&gt; None:
-    global name = &#x27;Jose&#x27;
+    global name
+    name = &#x27;Jose&#x27;
 
 greeting()
 print(&#x27;My name is &#x27; + name)
