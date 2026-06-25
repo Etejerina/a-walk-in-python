@@ -46,9 +46,9 @@ Ok, so when should you use **type hints** in assignments?
 * In collaborative projects for clarity
 * When a variable might be unclear in type:
 
-  ```python
-  result: list[str] = []
-  ```
+```python
+result: list[str] = []
+```
 
 If you want to specify the type of a variable, this can be done using casting.
 
