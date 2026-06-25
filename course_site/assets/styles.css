@@ -9,6 +9,28 @@
   --accent: #0f7b8c;
   --accent-strong: #075c69;
   --warm: #f4b942;
+  --button-ink: #ffffff;
+  --topbar-bg: rgba(251, 252, 253, 0.94);
+  --code-bg: #111920;
+  --code-ink: #e8f2f4;
+  --quote-bg: #fff8e6;
+}
+
+:root[data-theme="dark"] {
+  color-scheme: dark;
+  --ink: #edf4f7;
+  --muted: #adc0ca;
+  --line: #2f3b42;
+  --paper: #101416;
+  --panel: #181f22;
+  --accent: #58c4d4;
+  --accent-strong: #8ddfed;
+  --warm: #f6c661;
+  --button-ink: #0d1518;
+  --topbar-bg: rgba(16, 20, 22, 0.94);
+  --code-bg: #0b1114;
+  --code-ink: #eef8fb;
+  --quote-bg: #221f15;
 }
 
 * { box-sizing: border-box; }
@@ -33,7 +55,7 @@ a { color: var(--accent-strong); }
   gap: 24px;
   padding: 14px 28px;
   border-bottom: 1px solid var(--line);
-  background: rgba(251, 252, 253, 0.94);
+  background: var(--topbar-bg);
   backdrop-filter: blur(12px);
 }
 
@@ -61,7 +83,7 @@ a { color: var(--accent-strong); }
   padding: 0 14px;
   border: 1px solid var(--accent);
   background: var(--accent);
-  color: #fff;
+  color: var(--button-ink);
   text-decoration: none;
   font-weight: 650;
 }
@@ -69,6 +91,48 @@ a { color: var(--accent-strong); }
 .button.secondary {
   background: transparent;
   color: var(--accent-strong);
+}
+
+.theme-toggle {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  min-width: 92px;
+  min-height: 38px;
+  padding: 0 12px;
+  border: 1px solid var(--line);
+  background: var(--panel);
+  color: var(--ink);
+  cursor: pointer;
+  font: inherit;
+  font-weight: 650;
+}
+
+.theme-toggle-indicator {
+  position: relative;
+  width: 34px;
+  height: 18px;
+  border: 1px solid var(--line);
+  border-radius: 999px;
+  background: var(--paper);
+  flex: 0 0 auto;
+}
+
+.theme-toggle-indicator::after {
+  position: absolute;
+  top: 3px;
+  left: 3px;
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: var(--accent);
+  content: "";
+  transition: transform 160ms ease;
+}
+
+:root[data-theme="dark"] .theme-toggle-indicator::after {
+  transform: translateX(16px);
 }
 
 .hero {
@@ -128,8 +192,8 @@ h1 {
 pre {
   overflow: auto;
   padding: 16px;
-  background: #111920;
-  color: #e8f2f4;
+  background: var(--code-bg);
+  color: var(--code-ink);
 }
 
 code {
@@ -264,7 +328,7 @@ blockquote {
   margin: 18px 0;
   padding: 1px 18px;
   border-left: 4px solid var(--warm);
-  background: #fff8e6;
+  background: var(--quote-bg);
 }
 
 @media (max-width: 820px) {

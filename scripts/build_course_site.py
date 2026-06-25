@@ -261,6 +261,7 @@ def write_page(
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>{html.escape(title)} | A walk in Python</title>
+  <script src="{prefix}assets/theme-toggle.js"></script>
   <link rel="stylesheet" href="{prefix}assets/styles.css">
 </head>
 <body>
@@ -270,6 +271,10 @@ def write_page(
       <a href="{prefix}index.html#lessons">Lessons</a>
       <a href="{prefix}index.html#how-to-use">How to use</a>
       <a class="nav-action" href="{colab_url}">Open in Colab</a>
+      <button class="theme-toggle" type="button" data-theme-toggle aria-label="Toggle dark mode" aria-pressed="false">
+        <span class="theme-toggle-indicator" aria-hidden="true"></span>
+        <span>Theme</span>
+      </button>
     </nav>
   </header>
   <main class="layout">
@@ -323,6 +328,7 @@ def main() -> None:
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>A walk in Python</title>
+  <script src="assets/theme-toggle.js"></script>
   <link rel="stylesheet" href="assets/styles.css">
 </head>
 <body>
@@ -332,6 +338,10 @@ def main() -> None:
       <a href="#lessons">Lessons</a>
       <a href="#how-to-use">How to use</a>
       <a class="nav-action" href="https://github.com/{GITHUB_REPO}">GitHub</a>
+      <button class="theme-toggle" type="button" data-theme-toggle aria-label="Toggle dark mode" aria-pressed="false">
+        <span class="theme-toggle-indicator" aria-hidden="true"></span>
+        <span>Theme</span>
+      </button>
     </nav>
   </header>
   <main>
@@ -382,6 +392,95 @@ print(f"Hello, {{name}}!")
 """
     (SITE_ROOT / "index.html").write_text(index, encoding="utf-8")
 
+    theme_toggle = """(function () {
+  var storageKey = "a-walk-in-python-theme";
+  var root = document.documentElement;
+  var mediaQuery = window.matchMedia
+    ? window.matchMedia("(prefers-color-scheme: dark)")
+    : null;
+
+  function getStoredTheme() {
+    try {
+      return localStorage.getItem(storageKey);
+    } catch (error) {
+      return null;
+    }
+  }
+
+  function storeTheme(theme) {
+    try {
+      localStorage.setItem(storageKey, theme);
+    } catch (error) {
+      // Theme changes still work for the current page when storage is unavailable.
+    }
+  }
+
+  function normalizeTheme(theme) {
+    return theme === "dark" || theme === "light" ? theme : null;
+  }
+
+  function systemTheme() {
+    return mediaQuery && mediaQuery.matches ? "dark" : "light";
+  }
+
+  function updateToggle(theme) {
+    var toggles = document.querySelectorAll("[data-theme-toggle]");
+
+    toggles.forEach(function (toggle) {
+      toggle.setAttribute("aria-pressed", theme === "dark" ? "true" : "false");
+    });
+  }
+
+  function setTheme(theme, persist) {
+    root.setAttribute("data-theme", theme);
+    root.style.colorScheme = theme;
+    if (persist) {
+      storeTheme(theme);
+    }
+    updateToggle(theme);
+  }
+
+  function currentTheme() {
+    return normalizeTheme(root.getAttribute("data-theme")) || systemTheme();
+  }
+
+  setTheme(normalizeTheme(getStoredTheme()) || systemTheme(), false);
+
+  document.addEventListener("DOMContentLoaded", function () {
+    updateToggle(currentTheme());
+
+    document.addEventListener("click", function (event) {
+      var target = event.target;
+      if (!target || !target.closest) {
+        return;
+      }
+
+      var toggle = target.closest("[data-theme-toggle]");
+      if (!toggle) {
+        return;
+      }
+
+      setTheme(currentTheme() === "dark" ? "light" : "dark", true);
+    });
+  });
+
+  if (mediaQuery) {
+    var handleSystemThemeChange = function () {
+      if (!normalizeTheme(getStoredTheme())) {
+        setTheme(systemTheme(), false);
+      }
+    };
+
+    if (mediaQuery.addEventListener) {
+      mediaQuery.addEventListener("change", handleSystemThemeChange);
+    } else if (mediaQuery.addListener) {
+      mediaQuery.addListener(handleSystemThemeChange);
+    }
+  }
+})();
+"""
+    (SITE_ROOT / "assets" / "theme-toggle.js").write_text(theme_toggle, encoding="utf-8")
+
     styles = """
 :root {
   color-scheme: light;
@@ -393,6 +492,28 @@ print(f"Hello, {{name}}!")
   --accent: #0f7b8c;
   --accent-strong: #075c69;
   --warm: #f4b942;
+  --button-ink: #ffffff;
+  --topbar-bg: rgba(251, 252, 253, 0.94);
+  --code-bg: #111920;
+  --code-ink: #e8f2f4;
+  --quote-bg: #fff8e6;
+}
+
+:root[data-theme="dark"] {
+  color-scheme: dark;
+  --ink: #edf4f7;
+  --muted: #adc0ca;
+  --line: #2f3b42;
+  --paper: #101416;
+  --panel: #181f22;
+  --accent: #58c4d4;
+  --accent-strong: #8ddfed;
+  --warm: #f6c661;
+  --button-ink: #0d1518;
+  --topbar-bg: rgba(16, 20, 22, 0.94);
+  --code-bg: #0b1114;
+  --code-ink: #eef8fb;
+  --quote-bg: #221f15;
 }
 
 * { box-sizing: border-box; }
@@ -417,7 +538,7 @@ a { color: var(--accent-strong); }
   gap: 24px;
   padding: 14px 28px;
   border-bottom: 1px solid var(--line);
-  background: rgba(251, 252, 253, 0.94);
+  background: var(--topbar-bg);
   backdrop-filter: blur(12px);
 }
 
@@ -445,7 +566,7 @@ a { color: var(--accent-strong); }
   padding: 0 14px;
   border: 1px solid var(--accent);
   background: var(--accent);
-  color: #fff;
+  color: var(--button-ink);
   text-decoration: none;
   font-weight: 650;
 }
@@ -453,6 +574,48 @@ a { color: var(--accent-strong); }
 .button.secondary {
   background: transparent;
   color: var(--accent-strong);
+}
+
+.theme-toggle {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  min-width: 92px;
+  min-height: 38px;
+  padding: 0 12px;
+  border: 1px solid var(--line);
+  background: var(--panel);
+  color: var(--ink);
+  cursor: pointer;
+  font: inherit;
+  font-weight: 650;
+}
+
+.theme-toggle-indicator {
+  position: relative;
+  width: 34px;
+  height: 18px;
+  border: 1px solid var(--line);
+  border-radius: 999px;
+  background: var(--paper);
+  flex: 0 0 auto;
+}
+
+.theme-toggle-indicator::after {
+  position: absolute;
+  top: 3px;
+  left: 3px;
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: var(--accent);
+  content: "";
+  transition: transform 160ms ease;
+}
+
+:root[data-theme="dark"] .theme-toggle-indicator::after {
+  transform: translateX(16px);
 }
 
 .hero {
@@ -512,8 +675,8 @@ h1 {
 pre {
   overflow: auto;
   padding: 16px;
-  background: #111920;
-  color: #e8f2f4;
+  background: var(--code-bg);
+  color: var(--code-ink);
 }
 
 code {
@@ -648,7 +811,7 @@ blockquote {
   margin: 18px 0;
   padding: 1px 18px;
   border-left: 4px solid var(--warm);
-  background: #fff8e6;
+  background: var(--quote-bg);
 }
 
 @media (max-width: 820px) {
