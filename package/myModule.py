@@ -4,8 +4,7 @@ def a_function():
 
 my_name = "Eze"
 
-
-# print(__name__)
+print(f'myModule.py file - {__name__}')
 
 if __name__ == "__main__":
     a_function()
