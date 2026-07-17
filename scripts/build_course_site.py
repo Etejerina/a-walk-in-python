@@ -19,6 +19,47 @@ EXCLUDED_MARKDOWN_FILES = {ROOT / "docs" / "index.md"}
 EXCLUDED_MARKDOWN_PATHS = {path.resolve() for path in EXCLUDED_MARKDOWN_FILES}
 LOCAL_MD_LINK_RE = re.compile(r"(!?)\[([^\]]*)\]\(([^)]+)\)")
 CODE_FENCE_RE = re.compile(r"^```([A-Za-z0-9_+.-]*)\s*$")
+TITLE_OVERRIDES = {
+    "day_5": "Day 5 - Functions",
+    "day_6": "Day 6 - Classes / Objects / Dunder Methods",
+}
+
+
+def strip_markdown_links(text: str) -> str:
+    return re.sub(r"\[([^\]]+)\]\([^)]+\)", r"\1", text)
+
+
+def topic_summary_from_markdown(markdown: str) -> str | None:
+    lines = markdown.splitlines()
+    day_heading_index = None
+    for index, line in enumerate(lines):
+        if line.startswith("## Day "):
+            day_heading_index = index
+            break
+
+    if day_heading_index is None:
+        return None
+
+    topics: list[str] = []
+    for line in lines[day_heading_index + 1 :]:
+        stripped = line.strip()
+        if not stripped:
+            continue
+        if stripped.startswith("## "):
+            break
+
+        bullet = re.match(r"^[*-]\s+(.+)$", stripped)
+        if not bullet:
+            continue
+        if line[: len(line) - len(line.lstrip())]:
+            continue
+
+        topic = strip_markdown_links(bullet.group(1))
+        topic = re.sub(r"[*_`]", "", topic).strip()
+        if topic:
+            topics.append(topic)
+
+    return " / ".join(topics) or None
 
 
 def slugify(text: str) -> str:
@@ -29,8 +70,13 @@ def slugify(text: str) -> str:
 
 
 def title_from_markdown(path: Path, markdown: str) -> str:
+    override = TITLE_OVERRIDES.get(path.stem)
+    if override:
+        return override
+
     in_code = False
     fallback: str | None = None
+    topic_summary = topic_summary_from_markdown(markdown)
     for line in markdown.splitlines():
         if CODE_FENCE_RE.match(line.strip()):
             in_code = not in_code
@@ -38,7 +84,8 @@ def title_from_markdown(path: Path, markdown: str) -> str:
         if in_code:
             continue
         if line.startswith("## Day "):
-            return line[3:].strip()
+            day_title = line[3:].strip()
+            return f"{day_title} - {topic_summary}" if topic_summary else day_title
         if line.startswith("## ") and fallback is None:
             fallback = re.sub(r"[*_`]", "", line[3:]).strip()
         if line.startswith("# ") and fallback is None:
@@ -116,6 +163,7 @@ def markdown_to_html(markdown_path: Path, markdown: str) -> str:
     code_language = ""
     code_buffer: list[str] = []
     in_blockquote = False
+    page_title = title_from_markdown(markdown_path, markdown)
 
     def close_lists() -> None:
         while list_stack:
@@ -160,8 +208,10 @@ def markdown_to_html(markdown_path: Path, markdown: str) -> str:
             close_lists()
             close_blockquote()
             level = len(heading.group(1))
-            text = rewrite_inline(heading.group(2), markdown_path)
-            anchor = slugify(heading.group(2))
+            raw_heading = heading.group(2)
+            display_heading = page_title if level == 2 and raw_heading.startswith("Day ") else raw_heading
+            text = rewrite_inline(display_heading, markdown_path)
+            anchor = slugify(raw_heading)
             html_lines.append(f'<h{level} id="{anchor}">{text}</h{level}>')
             continue
 
